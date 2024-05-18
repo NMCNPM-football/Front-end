@@ -1,0 +1,102 @@
+/* Header.css */
+.container {
+    width: 100%;
+    background-color: #fff;
+  }
+  
+.header {
+display: flex;
+justify-content: center;
+padding: 10px;
+background-color: #fff;
+}
+
+.team-logos ul {
+display: flex;
+justify-content: center;
+list-style: none;
+padding: 0;
+margin: 10px 0;
+}
+
+.team-logos li {
+margin: 0 5px;
+}
+
+.team-logos img {
+  height: 35px;
+  width: 35px;
+  border: 1px solid transparent; 
+  padding: 7px;
+  border-color: rgb(160, 170, 170); /* Màu viền */
+  border-radius: 5px; /* Bo tròn viền */
+  margin-right: 10px;
+}
+
+.team-logos img:hover {
+  border-color: #ffa500; /* Màu viền khi di chuột qua */
+  animation: pulse 1s infinite alternate; /* Animation nhấp nháy */
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* Kích thước ban đầu */
+  }
+  100% {
+    transform: scale(1.1); /* Kích thước tăng lên */
+  }
+}
+
+.nav {
+background-color: #D41819
+;
+display: flex;
+align-items: center;
+padding: 10px;
+}
+
+.left-section {
+display: flex;
+align-items: center;
+}
+
+.logo {
+margin-right: 20px; /* Khoảng cách giữa logo và tiêu đề/menu */
+}
+
+.logo img {
+height: 100px; /* Điều chỉnh chiều cao của logo nếu cần thiết */
+}
+
+.title-menu {
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.title-header {
+color: #fff;
+text-align: left;
+}
+
+.menu {
+display: flex;
+list-style: none;
+padding: 0;
+margin: 10px 0 0 0; /* Điều chỉnh khoảng cách trên nếu cần */
+color: #fff;
+}
+
+.menu li {
+margin: 0 10px;
+}
+.title-header h1 {
+margin: 0;
+font-size: 20px; /* Điều chỉnh kích thước chữ nếu cần */
+font-weight: normal; /* Đảm bảo chữ không in đậm */
+}
+.title-header h2 {
+margin: 0;
+font-size: 24px; /* Điều chỉnh kích thước chữ nếu cần */
+font-weight: bold; /* Đảm bảo chữ in đậm */
+}
+  
