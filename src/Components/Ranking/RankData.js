@@ -13,7 +13,7 @@ export const Rankdata2023 = [
   {
     sumid: 2,
     image: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Logo_LPBank_Hoang_Anh_Gia_Lai.jpg",
-    teamname: "Hoàng Anh Gia Lai",
+    teamname: "LPBank Hoàng Anh Gia Lai",
     play: 20,
     win: 14,
     draw: 4,
