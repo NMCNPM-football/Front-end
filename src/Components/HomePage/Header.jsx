@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './Header.css';
-import LeagueTable from '../../Components/Ranking/LeagueTable';
+// import LeagueTable from '../../Components/Ranking/LeagueTable';
 import { Link } from 'react-router-dom';
 const Header = () => {
-  const [currentPage, setCurrentPage] = useState('home'); // State to manage the current page
+  const [setCurrentPage] = useState('home'); // State to manage the current page
   const [hoveredMenu, setHoveredMenu] = useState(null);
 
   const handleMouseEnter = (menu) => {
@@ -35,9 +35,9 @@ const Header = () => {
     { name: "Download", path: "download" }
   ];
 
-  if (currentPage === 'bang-xep-hang') {
-    return <LeagueTable />;
-  }
+  // if (currentPage === 'bang-xep-hang') {
+  //   return <LeagueTable />;
+  // }
 
   return (
     <div className="container">

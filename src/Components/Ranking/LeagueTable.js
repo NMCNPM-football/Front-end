@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import DataTable from './DataTable';
 import { Rankdata2023, Rankdata2022 } from './RankData';
-import Header from '../HomePage/Header';
-import Footer from '../HomePage/Footer';
+// import Header from '../HomePage/Header';
+// import Footer from '../HomePage/Footer';
 const LeagueTable = () => {
   const [selectedSeason, setSelectedSeason] = useState('2023');
 
@@ -94,7 +94,7 @@ const LeagueTable = () => {
 
   return (
     <div>
-      <Header/> 
+      {/*<Header/> */}
       <div className="league-table">
         <h1 className='TitleRank'>{seasonTitles[selectedSeason]}</h1>
         <div className="season-selector">
@@ -107,7 +107,7 @@ const LeagueTable = () => {
         </div>
         <DataTable columns={columns} data={sortedData} />
       </div>
-      <Footer/>
+      {/*<Footer/>*/}
     </div>
   );
 };
