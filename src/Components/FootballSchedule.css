@@ -70,7 +70,7 @@
 }
 
 .match {
-  background-color: #fff;
+  background-color: #b7afaf;
   padding: 15px;
   border-radius: 4px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -97,22 +97,27 @@
   font-weight: bold;
   flex: 1;
   text-align: center;
+  padding-bottom: 5px;
 }
 
 .team-logo {
-  width: 40px;
-  height: 40px;
+  width: 37px;
+  height: 37px;
   object-fit: contain;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 .score {
   font-size: 16px;
   font-weight: bold;
   color: #d00;
-  margin: 0 10px;
+  margin:  10px;
   flex: 0;
   text-align: center;
   min-width: 60px;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 .arrow {

@@ -1,7 +1,38 @@
-import React from 'react';
-import './Header.css'; // Đảm bảo rằng bạn có một tệp CSS để định kiểu cho trang
+import React, { useState } from 'react';
+import './Header.css'; // Ensure you have a CSS file for styling
 
 const Header = () => {
+  const [hoveredMenu, setHoveredMenu] = useState(null);
+
+  const handleMouseEnter = (menu) => {
+    setHoveredMenu(menu);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredMenu(null);
+  };
+
+  const menuItems = [
+    "Lịch thi đấu và Kết quả",
+    "Bảng xếp hạng",
+    "Thông báo",
+    "Các đội bóng",
+    "Điều lệ",
+    "Bình chọn",  // only for "VÔ ĐỊCH QUỐC GIA"
+    "Thư viện",
+    "Download"
+  ];
+
+  const firstDivisionMenuItems = [
+    "Lịch thi đấu và Kết quả",
+    "Bảng xếp hạng",
+    "Thông báo",
+    "Các đội bóng",
+    "Điều lệ",
+    "Thư viện",
+    "Download"
+  ];
+
   return (
     <div className="container">
       <header className="header">
@@ -35,8 +66,42 @@ const Header = () => {
               <li>VPF</li>
               <li>Highlights</li>
               <li>Tin tức</li>
-              <li>Vô địch quốc gia</li>
-              <li>Hạng nhất quốc gia</li>
+              <li
+                onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
+                onMouseLeave={handleMouseLeave}
+                className="dropdown-trigger"
+              >
+                Vô địch quốc gia
+                {hoveredMenu === 'vô địch quốc gia' && (
+                  <ul
+                    className="dropdown-menu"
+                    onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {menuItems.map((item, index) => (
+                      <li key={index} className="dropdown-item">{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+              <li
+                onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}
+                onMouseLeave={handleMouseLeave}
+                className="dropdown-trigger"
+              >
+                Hạng nhất quốc gia
+                {hoveredMenu === 'hạng nhất quốc gia' && (
+                  <ul
+                    className="dropdown-menu"
+                    onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {firstDivisionMenuItems.map((item, index) => (
+                      <li key={index} className="dropdown-item">{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </li>
               <li>Cúp quốc gia</li>
               <li>Play-off</li>
               <li>Thư viện</li>

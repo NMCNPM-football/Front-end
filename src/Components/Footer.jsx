@@ -4,6 +4,27 @@ import './Footer.css';
 const Footer = () => {
   return (
     <footer className="footer">
+      <div className="sponsors">
+        <div className="sponsors-main">
+          <h2>TÀI TRỢ CHÍNH</h2>
+          <div className="sponsors-main-logos">
+            <img style={{width: '400px', height: '223px', objectFit: 'cover',borderRadius:'10px', marginTop :'30px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-HNQG-300x167.png" alt="Gold Star V.League 2 - 2023/24" />
+            <img  style={{width: '400px', height: '223px',borderRadius:'10px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-VDQG-300x167.png" alt="Gold Star V.League 2 - 2023/24" />
+            <img style={{width: '400px', height: '223px', objectFit: 'cover',borderRadius:'10px', marginTop: '30px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-HNQG-300x167.png" alt="Gold Star V.League 2 - 2023/24" />
+          </div>
+        </div>
+        <div className="sponsors-secondary">
+          <h2>TÀI TRỢ ĐỒNG HÀNH</h2>
+          <div className="sponsors-secondary-logos">
+          <a href='https://fptplay.vn' target="_blank" rel="noreferrer">
+            <img src="https://vpf.vn/wp-content/uploads/2023/01/fpt-play-2k3.png" alt="FPT Play" />
+          </a>
+          <a href='https://dongluc.vn/' target="_blank" rel="noreferrer">
+            <img src="https://vpf.vn/wp-content/uploads/2023/01/dong-luc-2k3.png" alt="Động Lực" />
+          </a>
+          </div>
+        </div>
+      </div>
       <div className="footer-top">
         <nav className="footer-nav">
           <a href="#!">LIÊN HỆ</a>
@@ -17,7 +38,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-column">
           <div className="footer-section">
-            <img src="path/to/icon1.png" alt="Icon 1" />
+            <img style={{height:'50px', width:'49px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-1.png" alt="Icon 1" />
             <p>
               <strong>Đơn vị chủ quản</strong>
               <br />
@@ -25,29 +46,30 @@ const Footer = () => {
             </p>
           </div>
           <div className="footer-section">
-            <img src="path/to/icon2.png" alt="Icon 2" />
+            <img style={{height:'50px',width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-2.png" alt="Icon 2" />
             <p><strong>Địa chỉ</strong><br />Số 18, Phố Lý Văn Phức, Cát Linh, Đống Đa, TP. Hà Nội.</p>
           </div>
         </div>
         <div className="footer-column">
           <div className="footer-section">
-            <img src="path/to/icon3.png" alt="Icon 3" />
+            <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-3.png" alt="Icon 3" />
             <p><strong>Giấy phép</strong><br />Giấy phép số 4593/GP-TTĐT do sở TT&TT Hà Nội cấp ngày 31/10/2017</p>
           </div>
           <div className="footer-section">
-            <img src="path/to/icon4.png" alt="Icon 4" />
+            <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-4.png" alt="Icon 4" />
             <p><strong>Người chịu trách nhiệm nội dung</strong><br />Nguyễn Thị Thu Huyền (Trưởng phòng Truyền Thông - 02437858457 (máy lẻ 126))</p>
           </div>
         </div>
         <div className="footer-column">
           <div className="footer-section">
-            <img src="path/to/icon5.png" alt="Icon 5" />
+            <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-5.png" alt="Icon 5" />
             <p><strong>Liên lạc</strong><br />024.3785.8457/58 - FAX: 024.3785.8462</p>
           </div>
           <div className="footer-section">
+          <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-6.png" alt="" />
             <p>
-              <a href="http://www.vpf.vn">www.vpf.vn</a><br />
-              <a href="http://www.vnleague.com">www.vnleague.com</a><br />
+              <a style={{paddingRight: '10px'}} href="http://www.vpf.vn">www.vpf.vn</a>     
+              <a style={{paddingRight: '10px'}} href="http://www.vnleague.com">www.vnleague.com</a>
               <a href="mailto:info@vpf.vn">info@vpf.vn</a>
             </p>
           </div>

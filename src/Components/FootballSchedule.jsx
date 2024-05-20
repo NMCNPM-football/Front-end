@@ -3,11 +3,11 @@ import './FootballSchedule.css';
 
 const FootballSchedule = () => {
   const [activeLeague, setActiveLeague] = useState('night-wolf');
-  const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(0);
 
   const handleLeagueClick = (league) => {
     setActiveLeague(league);
-    setCurrentMatchIndex(0); // Reset to the first match when league changes
+    setStartIndex(0); // Reset to the first group of matches when league changes
   };
 
   const matches = {
@@ -17,8 +17,8 @@ const FootballSchedule = () => {
         dateTime: '17/05 18:00',
         venue: 'SVĐ Bình Dương',
         teams: [
-          { name: 'BDFC', logo: 'BDFC.png' },
-          { name: 'CAHN', logo: 'CAHN.png' },
+          { name: 'BDFC', logo: './assets/becamexbinhduong.png' },
+          { name: 'CAHN', logo: './assets/hanoi.png' },
         ],
         score: '4 - 1',
         broadcast: 'VTV5, FPT Play, TV360',
@@ -28,8 +28,8 @@ const FootballSchedule = () => {
         dateTime: '17/05 18:00',
         venue: 'SVĐ Thanh Hóa',
         teams: [
-          { name: 'THFC', logo: 'THFC.png' },
-          { name: 'QNFC', logo: 'QNFC.png' },
+          { name: 'THFC', logo: './assets/Dongathanhhoa.png' },
+          { name: 'QNFC', logo: './assets/quangnam.png' },
         ],
         score: '3 - 1',
         broadcast: 'FPT Play, TV360',
@@ -39,8 +39,8 @@ const FootballSchedule = () => {
         dateTime: '17/05 18:00',
         venue: 'SVĐ Hà Tĩnh',
         teams: [
-          { name: 'HLHT', logo: 'HLHT.png' },
-          { name: 'HCMC', logo: 'HCMC.png' },
+          { name: 'HLHT', logo: './assets/honglinhhatinh.png' },
+          { name: 'HCMC', logo: './assets/tphcm.png' },
         ],
         score: '2 - 1',
         broadcast: 'HTV Thể thao, FPT Play, TV360',
@@ -99,12 +99,14 @@ const FootballSchedule = () => {
   };
 
   const handlePrevClick = () => {
-    setCurrentMatchIndex((prevIndex) => (prevIndex === 0 ? matches[activeLeague].length - 1 : prevIndex - 1));
+    setStartIndex((prevIndex) => (prevIndex === 0 ? matches[activeLeague].length - 3 : prevIndex - 1));
   };
 
   const handleNextClick = () => {
-    setCurrentMatchIndex((prevIndex) => (prevIndex === matches[activeLeague].length - 1 ? 0 : prevIndex + 1));
+    setStartIndex((prevIndex) => (prevIndex + 3 >= matches[activeLeague].length ? 0 : prevIndex + 1));
   };
+
+  const displayedMatches = matches[activeLeague].slice(startIndex, startIndex + 3);
 
   return (
     <div className="schedule-container">
@@ -137,23 +139,25 @@ const FootballSchedule = () => {
 
       <div className="matches">
         <button className="arrow left-arrow" onClick={handlePrevClick}>‹</button>
-        <div className="match">
-          <div className="round">{matches[activeLeague][currentMatchIndex].round}</div>
-          <div className="date-time">{matches[activeLeague][currentMatchIndex].dateTime}</div>
-          <div className="venue">{matches[activeLeague][currentMatchIndex].venue}</div>
-          <div className="teams">
-            <div className="team">
-              <div className="team-name">{matches[activeLeague][currentMatchIndex].teams[0].name}</div>
-              <img src={matches[activeLeague][currentMatchIndex].teams[0].logo} alt={matches[activeLeague][currentMatchIndex].teams[0].name} className="team-logo" />
+        {displayedMatches.map((match, index) => (
+          <div key={index} className="match">
+            <div className="round">{match.round}</div>
+            <div className="date-time">{match.dateTime}</div>
+            <div className="venue">{match.venue}</div>
+            <div className="teams">
+              <div className="team">
+                <div className="team-name">{match.teams[0].name}</div>
+                <img src={match.teams[0].logo} alt={match.teams[0].name} className="team-logo" />
+              </div>
+              <div className="score">{match.score}</div>
+              <div className="team">
+                <div className="team-name">{match.teams[1].name}</div>
+                <img src={match.teams[1].logo} alt={match.teams[1].name} className="team-logo" />
+              </div>
             </div>
-            <div className="score">{matches[activeLeague][currentMatchIndex].score}</div>
-            <div className="team">
-              <div className="team-name">{matches[activeLeague][currentMatchIndex].teams[1].name}</div>
-              <img src={matches[activeLeague][currentMatchIndex].teams[1].logo} alt={matches[activeLeague][currentMatchIndex].teams[1].name} className="team-logo" />
-            </div>
+            <div className="broadcast">{match.broadcast}</div>
           </div>
-          <div className="broadcast">{matches[activeLeague][currentMatchIndex].broadcast}</div>
-        </div>
+        ))}
         <button className="arrow right-arrow" onClick={handleNextClick}>›</button>
       </div>
     </div>
