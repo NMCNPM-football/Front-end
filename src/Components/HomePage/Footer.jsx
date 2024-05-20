@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="sponsors-main-logos">
             <img style={{width: '400px', height: '223px', objectFit: 'cover',borderRadius:'10px', marginTop :'30px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-HNQG-300x167.png" alt="Gold Star V.League 2 - 2023/24" />
             <img  style={{width: '400px', height: '223px',borderRadius:'10px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-VDQG-300x167.png" alt="Gold Star V.League 2 - 2023/24" />
-            <img style={{width: '400px', height: '223px', objectFit: 'cover',borderRadius:'10px', marginTop: '30px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-HNQG-300x167.png" alt="Gold Star V.League 2 - 2023/24" />
+            <img style={{width: '400px', height: '223px', objectFit: 'cover',borderRadius:'10px', marginTop: '30px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-CupQG.png" alt="Gold Star V.League 2 - 2023/24" />
           </div>
         </div>
         <div className="sponsors-secondary">

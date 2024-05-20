@@ -1,10 +1,9 @@
-/* General Container Styles */
+/* Header.css */
 .container {
   width: 100%;
   background-color: #fff;
 }
 
-/* Header Styles */
 .header {
   display: flex;
   justify-content: center;
@@ -12,7 +11,6 @@
   background-color: #fff;
 }
 
-/* Team Logos Styles */
 .team-logos ul {
   display: flex;
   justify-content: center;
@@ -49,7 +47,6 @@
   }
 }
 
-/* Navigation Styles */
 .nav {
   background-color: #D41819;
   display: flex;
@@ -70,7 +67,6 @@
   height: 100px;
 }
 
-/* Title and Menu Styles */
 .title-menu {
   display: flex;
   flex-direction: column;
@@ -82,19 +78,6 @@
   text-align: left;
 }
 
-.title-header h1 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: normal;
-}
-
-.title-header h2 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-/* Menu Styles */
 .menu {
   display: flex;
   list-style: none;
@@ -109,18 +92,18 @@
   padding: 10px;
 }
 
-.menu li a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s;
+.title-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
 }
 
-.menu li a:hover {
-  color: black;
+.title-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-
-/* Dropdown Menu Styles */
 .dropdown-trigger {
   position: relative;
   padding: 10px;
@@ -138,11 +121,7 @@
   top: 100%;
   left: 0;
   width: 200px;
-  color: #000;
-}
-
-.dropdown-trigger:hover .dropdown-menu {
-  display: block;
+  z-index: 1000;
 }
 
 .dropdown-item {
@@ -156,13 +135,20 @@
   color: red;
 }
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-  .menu {
-    flex-direction: column;
-  }
+.dropdown-item a {
+  text-decoration: none;
+  color: inherit;
+}
 
-  .team-logos ul {
-    flex-wrap: wrap;
-  }
+.dropdown-item a:hover {
+  color: red;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu-item a:hover {
+  color: inherit;
 }

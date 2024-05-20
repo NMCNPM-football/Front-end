@@ -1,9 +1,9 @@
-// Header.js
 import React, { useState } from 'react';
+import './Header.css';
+import LeagueTable from '../../Components/Ranking/LeagueTable';
 import { Link } from 'react-router-dom';
-import './Header.css'; // Ensure you have a CSS file for styling
-
 const Header = () => {
+  const [currentPage, setCurrentPage] = useState('home'); // State to manage the current page
   const [hoveredMenu, setHoveredMenu] = useState(null);
 
   const handleMouseEnter = (menu) => {
@@ -15,25 +15,29 @@ const Header = () => {
   };
 
   const menuItems = [
-    { name: "Lịch thi đấu và Kết quả", path: "/schedule" },
-    { name: "Bảng xếp hạng", path: "/league-table" },
-    { name: "Thông báo", path: "/announcements" },
-    { name: "Các đội bóng", path: "/teams" },
-    { name: "Điều lệ", path: "/rules" },
-    { name: "Bình chọn", path: "/voting" },  // only for "VÔ ĐỊCH QUỐC GIA"
-    { name: "Thư viện", path: "/library" },
-    { name: "Download", path: "/download" }
+    { name: "Lịch thi đấu và Kết quả", path: "lich-thi-dau-va-ket-qua" },
+    { name: "Bảng xếp hạng", path: "bang-xep-hang" },
+    { name: "Thông báo", path: "thong-bao" },
+    { name: "Các đội bóng", path: "cac-doi-bong" },
+    { name: "Điều lệ", path: "dieu-le" },
+    { name: "Bình chọn", path: "binh-chon" },
+    { name: "Thư viện", path: "thu-vien" },
+    { name: "Download", path: "download" }
   ];
 
   const firstDivisionMenuItems = [
-    { name: "Lịch thi đấu và Kết quả", path: "/first-division/schedule" },
-    { name: "Bảng xếp hạng", path: "/first-division/league-table" },
-    { name: "Thông báo", path: "/first-division/announcements" },
-    { name: "Các đội bóng", path: "/first-division/teams" },
-    { name: "Điều lệ", path: "/first-division/rules" },
-    { name: "Thư viện", path: "/first-division/library" },
-    { name: "Download", path: "/first-division/download" }
+    { name: "Lịch thi đấu và Kết quả", path: "lich-thi-dau-va-ket-qua" },
+    { name: "Bảng xếp hạng", path: "bang-xep-hang" },
+    { name: "Thông báo", path: "thong-bao" },
+    { name: "Các đội bóng", path: "cac-doi-bong" },
+    { name: "Điều lệ", path: "dieu-le" },
+    { name: "Thư viện", path: "thu-vien" },
+    { name: "Download", path: "download" }
   ];
+
+  if (currentPage === 'bang-xep-hang') {
+    return <LeagueTable />;
+  }
 
   return (
     <div className="container">
@@ -64,16 +68,16 @@ const Header = () => {
               <h2>Vietnam Professional Football</h2>
             </div>
             <ul className="menu">
-              <li><Link to="/">Trang chủ</Link></li>
-              <li><Link to="/vpf">VPF</Link></li>
-              <li><Link to="/highlights">Highlights</Link></li>
-              <li ><Link to="/news">Tin tức</Link></li>
+            <li className="menu-item"><Link to="/home" className="menu-link" onClick={() => setCurrentPage('/home')}>Trang chủ</Link></li>
+              <li className="menu-item">VPF</li>
+              <li className="menu-item">Highlights</li>
+              <li className="menu-item">Tin tức</li>
               <li
                 onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
                 onMouseLeave={handleMouseLeave}
-                className="dropdown-trigger"
+                className="dropdown-trigger menu-item"
               >
-                <a href="#">Vô địch quốc gia</a>
+                Vô địch quốc gia
                 {hoveredMenu === 'vô địch quốc gia' && (
                   <ul
                     className="dropdown-menu"
@@ -82,7 +86,7 @@ const Header = () => {
                   >
                     {menuItems.map((item, index) => (
                       <li key={index} className="dropdown-item">
-                        <Link to={item.path}>{item.name}</Link>
+                        <Link to={item.path} className="dropdown-link" onClick={() => setCurrentPage(item.path)}>{item.name}</Link>
                       </li>
                     ))}
                   </ul>
@@ -91,9 +95,9 @@ const Header = () => {
               <li
                 onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}
                 onMouseLeave={handleMouseLeave}
-                className="dropdown-trigger"
+                className="dropdown-trigger menu-item"
               >
-                <a href='#'>Hạng nhất quốc gia</a>
+                Hạng nhất quốc gia
                 {hoveredMenu === 'hạng nhất quốc gia' && (
                   <ul
                     className="dropdown-menu"
@@ -102,16 +106,16 @@ const Header = () => {
                   >
                     {firstDivisionMenuItems.map((item, index) => (
                       <li key={index} className="dropdown-item">
-                        <Link to={item.path}>{item.name}</Link>
+                        <Link to={item.path} className="dropdown-link" onClick={() => setCurrentPage(item.path)}>{item.name}</Link>
                       </li>
                     ))}
                   </ul>
                 )}
               </li>
-              <li><Link to="/cup">Cúp quốc gia</Link></li>
-              <li><Link to="/playoff">Play-off</Link></li>
-              <li><Link to="/library">Thư viện</Link></li>
-              <li><Link to="/sponsors">Nhà tài trợ</Link></li>
+              <li className="menu-item">Cúp quốc gia</li>
+              <li className="menu-item">Play-off</li>
+              <li className="menu-item">Thư viện</li>
+              <li className="menu-item">Nhà tài trợ</li>
             </ul>
           </div>
         </div>

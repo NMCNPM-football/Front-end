@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import DataTable from './DataTable';
 import { Rankdata2023, Rankdata2022 } from './RankData';
-
+import Header from '../HomePage/Header';
+import Footer from '../HomePage/Footer';
 const LeagueTable = () => {
   const [selectedSeason, setSelectedSeason] = useState('2023');
 
@@ -92,17 +93,21 @@ const LeagueTable = () => {
   );
 
   return (
-    <div className="league-table">
-      <h1 className='TitleRank'>{seasonTitles[selectedSeason]}</h1>
-      <div className="season-selector">
-        <label htmlFor="season">Mùa giải: </label>
-        <select id="season" value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
-          <option value="2023">2023-2024</option>
-          <option value="2022">2022-2023</option>
-          {/* Add more seasons as needed */}
-        </select>
+    <div>
+      <Header/> 
+      <div className="league-table">
+        <h1 className='TitleRank'>{seasonTitles[selectedSeason]}</h1>
+        <div className="season-selector">
+          <label htmlFor="season">Mùa giải: </label>
+          <select id="season" value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
+            <option value="2023">2023-2024</option>
+            <option value="2022">2022-2023</option>
+            {/* Add more seasons as needed */}
+          </select>
+        </div>
+        <DataTable columns={columns} data={sortedData} />
       </div>
-      <DataTable columns={columns} data={sortedData} />
+      <Footer/>
     </div>
   );
 };
