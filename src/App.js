@@ -1,4 +1,5 @@
 import './App.css';
+<<<<<<< HEAD
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 // import TeamGrid from './Components/ClubInfo/TeamGrid';
 import Footer from './Components/Footer';
@@ -22,6 +23,25 @@ function App() {
     </div>
     </Router>
 
+=======
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import FootballSchedule from './Components/FootballSchedule';
+import Footer from './Components/Footer';
+import Header from './Components/Header';
+import LeagueTable from './Components/Ranking/LeagueTable';
+
+function App() {
+  return (
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<FootballSchedule />} />
+        <Route path="/league-table" element={<LeagueTable />} />
+        {/* Add other routes as needed */}
+      </Routes>
+      <Footer />
+    </Router>
+>>>>>>> 54e1c1e7ce3d52efbee0e4eba19d07353e9697bb
   );
 }
 

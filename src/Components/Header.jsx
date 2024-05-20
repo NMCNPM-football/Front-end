@@ -1,4 +1,6 @@
+// Header.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css'; // Ensure you have a CSS file for styling
 
 const Header = () => {
@@ -13,24 +15,24 @@ const Header = () => {
   };
 
   const menuItems = [
-    "Lịch thi đấu và Kết quả",
-    "Bảng xếp hạng",
-    "Thông báo",
-    "Các đội bóng",
-    "Điều lệ",
-    "Bình chọn",  // only for "VÔ ĐỊCH QUỐC GIA"
-    "Thư viện",
-    "Download"
+    { name: "Lịch thi đấu và Kết quả", path: "/schedule" },
+    { name: "Bảng xếp hạng", path: "/league-table" },
+    { name: "Thông báo", path: "/announcements" },
+    { name: "Các đội bóng", path: "/teams" },
+    { name: "Điều lệ", path: "/rules" },
+    { name: "Bình chọn", path: "/voting" },  // only for "VÔ ĐỊCH QUỐC GIA"
+    { name: "Thư viện", path: "/library" },
+    { name: "Download", path: "/download" }
   ];
 
   const firstDivisionMenuItems = [
-    "Lịch thi đấu và Kết quả",
-    "Bảng xếp hạng",
-    "Thông báo",
-    "Các đội bóng",
-    "Điều lệ",
-    "Thư viện",
-    "Download"
+    { name: "Lịch thi đấu và Kết quả", path: "/first-division/schedule" },
+    { name: "Bảng xếp hạng", path: "/first-division/league-table" },
+    { name: "Thông báo", path: "/first-division/announcements" },
+    { name: "Các đội bóng", path: "/first-division/teams" },
+    { name: "Điều lệ", path: "/first-division/rules" },
+    { name: "Thư viện", path: "/first-division/library" },
+    { name: "Download", path: "/first-division/download" }
   ];
 
   return (
@@ -62,16 +64,16 @@ const Header = () => {
               <h2>Vietnam Professional Football</h2>
             </div>
             <ul className="menu">
-              <li>Trang chủ</li>
-              <li>VPF</li>
-              <li>Highlights</li>
-              <li>Tin tức</li>
+              <li><Link to="/">Trang chủ</Link></li>
+              <li><Link to="/vpf">VPF</Link></li>
+              <li><Link to="/highlights">Highlights</Link></li>
+              <li ><Link to="/news">Tin tức</Link></li>
               <li
                 onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
                 onMouseLeave={handleMouseLeave}
                 className="dropdown-trigger"
               >
-                Vô địch quốc gia
+                <a href="#">Vô địch quốc gia</a>
                 {hoveredMenu === 'vô địch quốc gia' && (
                   <ul
                     className="dropdown-menu"
@@ -79,7 +81,9 @@ const Header = () => {
                     onMouseLeave={handleMouseLeave}
                   >
                     {menuItems.map((item, index) => (
-                      <li key={index} className="dropdown-item">{item}</li>
+                      <li key={index} className="dropdown-item">
+                        <Link to={item.path}>{item.name}</Link>
+                      </li>
                     ))}
                   </ul>
                 )}
@@ -89,7 +93,7 @@ const Header = () => {
                 onMouseLeave={handleMouseLeave}
                 className="dropdown-trigger"
               >
-                Hạng nhất quốc gia
+                <a href='#'>Hạng nhất quốc gia</a>
                 {hoveredMenu === 'hạng nhất quốc gia' && (
                   <ul
                     className="dropdown-menu"
@@ -97,15 +101,17 @@ const Header = () => {
                     onMouseLeave={handleMouseLeave}
                   >
                     {firstDivisionMenuItems.map((item, index) => (
-                      <li key={index} className="dropdown-item">{item}</li>
+                      <li key={index} className="dropdown-item">
+                        <Link to={item.path}>{item.name}</Link>
+                      </li>
                     ))}
                   </ul>
                 )}
               </li>
-              <li>Cúp quốc gia</li>
-              <li>Play-off</li>
-              <li>Thư viện</li>
-              <li>Nhà tài trợ</li>
+              <li><Link to="/cup">Cúp quốc gia</Link></li>
+              <li><Link to="/playoff">Play-off</Link></li>
+              <li><Link to="/library">Thư viện</Link></li>
+              <li><Link to="/sponsors">Nhà tài trợ</Link></li>
             </ul>
           </div>
         </div>
