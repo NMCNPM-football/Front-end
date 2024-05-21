@@ -47,23 +47,35 @@ const Footer = () => {
           </div>
           <div className="footer-section">
             <img style={{height:'50px',width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-2.png" alt="Icon 2" />
-            <p><strong>Địa chỉ</strong><br />Số 18, Phố Lý Văn Phức, Cát Linh, Đống Đa, TP. Hà Nội.</p>
+            <p><strong>Địa chỉ</strong>
+              <br />
+              <span style={{ fontSize: '15px' }}>Số 18, Phố Lý Văn Phức, Cát Linh, Đống Đa, TP. Hà Nội.</span>
+            </p>
           </div>
         </div>
         <div className="footer-column">
           <div className="footer-section">
             <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-3.png" alt="Icon 3" />
-            <p><strong>Giấy phép</strong><br />Giấy phép số 4593/GP-TTĐT do sở TT&TT Hà Nội cấp ngày 31/10/2017</p>
+            <p><strong>Giấy phép</strong>
+              <br />
+              <span style={{ fontSize: '15px' }}>Giấy phép số 4593/GP-TTĐT do sở TT&TT Hà Nội cấp ngày 31/10/2017</span>
+            </p>
           </div>
           <div className="footer-section">
             <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-4.png" alt="Icon 4" />
-            <p><strong>Người chịu trách nhiệm nội dung</strong><br />Nguyễn Thị Thu Huyền (Trưởng phòng Truyền Thông - 02437858457 (máy lẻ 126))</p>
+            <p><strong>Người chịu trách nhiệm nội dung</strong>
+              <br />
+              <span style={{ fontSize: '15px' }}>Nguyễn Thị Thu Huyền (Trưởng phòng Truyền Thông - 02437858457 (máy lẻ 126))</span>
+            </p>
           </div>
         </div>
         <div className="footer-column">
           <div className="footer-section">
             <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-5.png" alt="Icon 5" />
-            <p><strong>Liên lạc</strong><br />024.3785.8457/58 - FAX: 024.3785.8462</p>
+            <p><strong>Liên lạc</strong>
+              <br />
+              <span style={{ fontSize: '15px' }}>024.3785.8457/58 - FAX: 024.3785.8462</span>
+            </p>
           </div>
           <div className="footer-section">
             <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-6.png" alt="" />
