@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import HomePage from './Components/HomePage/HomePage.jsx';
 import LeagueTable from './Components/Ranking/LeagueTable';
-import Header from './Components/HomePage/Header';
-import Footer from './Components/HomePage/Footer';
+import Header from './Components/Header.jsx';
+import Footer from './Components/Footer.jsx';
+import HomePage from './Components/HomePage.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
