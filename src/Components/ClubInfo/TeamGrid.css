@@ -1,4 +1,4 @@
-git .team-grid {
+.team-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
