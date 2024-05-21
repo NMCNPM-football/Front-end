@@ -1,0 +1,35 @@
+/* Team.css */
+
+.InfoAround{
+  display: flex;
+  align-items: center;
+}
+
+.team-logo-TI {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.InfoHLV {
+  text-align: right;
+  margin-right: 60px;
+}
+
+.team-table {
+  width: 85%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.team-table th, .team-table td {
+  border: 1px solid #dee2e6;
+  padding: 8px;
+  text-align: left;
+}
+
+.team-table th {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
