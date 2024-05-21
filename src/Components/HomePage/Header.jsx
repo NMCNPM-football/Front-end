@@ -117,7 +117,6 @@ const Header = () => {
                 )}
               </li>
               <li className="menu-item">Cúp quốc gia</li>
-              <li className="menu-item">Play-off</li>
               <li className="menu-item">Thư viện</li>
               <li className="menu-item">Nhà tài trợ</li>
             </ul>
