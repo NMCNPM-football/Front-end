@@ -16,7 +16,7 @@ const Header = () => {
 
   const menuItems = [
     { name: "Lịch thi đấu và Kết quả", path: "/lich-thi-dau-va-ket-qua" },
-    { name: "Bảng xếp hạng", path: "/bang-xep-hang" },
+    { name: "Bảng xếp hạng", path: "/league-table" },
     { name: "Thông báo", path: "/thong-bao" },
     { name: "Các đội bóng", path: "/cac-doi-bong" },
     { name: "Điều lệ", path: "/dieu-le" },
