@@ -1,92 +1,63 @@
 .news-container {
   display: flex;
   flex-direction: column;
-  font-family: Arial, sans-serif;
-}
-
-.header {
-  background-color: #fff;
-  padding: 10px;
-  text-align: left;
-}
-
-.header h1 {
-  color: red;
-}
-
-.main-content {
-  display: flex;
-  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #ddd;
+  width: 100%;
   padding: 20px;
 }
 
-.highlight-news {
-  flex: 3;
-  margin-right: 20px;
-}
-
-.highlight-news img {
-  width: 100%;
-  height: auto;
-}
-
-.highlight-description {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-}
-
-.news-grid {
-  display: flex;
-  flex-direction: column;
-  flex: 2;
-}
-
-.news-item {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.news-item img {
-  width: 100px;
-  height: 100px;
-  margin-right: 10px;
-}
-
-.news-description {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.ranking {
-  flex: 1;
-  margin-left: 20px;
-}
-
-.ranking h2 {
+.news-container h1 {
   background: red;
   color: white;
   padding: 10px;
   text-align: center;
+  margin: 0;
 }
 
-.ranking-table {
-  background: white;
-  border: 1px solid #ddd;
-  margin-top: 10px;
-}
-
-.ranking-header {
+.highlight-news {
   display: flex;
-  justify-content: space-between;
-  background: #f5f5f5;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.ranking-header span {
+.highlight-news img {
+  width: 800px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.highlight-description {
   flex: 1;
-  text-align: center;
 }
 
-/* Add additional styles for team rankings here */
+.news-grid {
+  display: flex;
+  flex-direction: column; /* Đổi từ 'grid' thành 'flex' và 'row' thành 'column' */
+  margin-top: 20px;
+}
+
+.news-item {
+  margin-bottom: 20px; /* Thêm margin bottom để tạo khoảng cách giữa các news-item */
+}
+
+.news-description {
+  display: flex;
+  align-items: center;
+}
+
+.news-description img {
+  width: 100px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-content h3, .text-content p {
+  margin: 0;
+}
