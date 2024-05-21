@@ -1,0 +1,680 @@
+Index: src/Components/FootballSchedule.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Components/FootballSchedule.jsx b/src/Components/HomePage/FootballSchedule.jsx
+rename from src/Components/FootballSchedule.jsx
+rename to src/Components/HomePage/FootballSchedule.jsx
+--- a/src/Components/FootballSchedule.jsx	
++++ b/src/Components/HomePage/FootballSchedule.jsx	
+@@ -109,58 +109,58 @@
+   const displayedMatches = matches[activeLeague].slice(startIndex, startIndex + 3);
+ 
+   return (
+-    <div className="schedule-container">
+-      <div className="headers">
+-        <div
+-          className={`header night-wolf ${activeLeague === 'night-wolf' ? 'active' : ''}`}
+-          onClick={() => handleLeagueClick('night-wolf')}
+-        >
+-          <img src="./assets/Logo_Vleague1_2023.svg.png" alt="icon" />
+-          <div className="title">VÔ ĐỊCH QUỐC GIA NIGHT WOLF 2023/24</div>
+-          {activeLeague === 'night-wolf' && <div className="triangle"></div>}
+-        </div>
+-        <div
+-          className={`header sao-vang ${activeLeague === 'sao-vang' ? 'active' : ''}`}
+-          onClick={() => handleLeagueClick('sao-vang')}
+-        >
+-          <img src="./assets/Logo_V.League_2_2023.svg.png" alt="icon" />
+-          <div className="title">HẠNG NHẤT QUỐC GIA BIA SAO VÀNG 2023/24</div>
+-          {activeLeague === 'sao-vang' && <div className="triangle"></div>}
+-        </div>
+-        <div
+-          className={`header casper ${activeLeague === 'casper' ? 'active' : ''}`}
+-          onClick={() => handleLeagueClick('casper')}
+-        >
+-          <img src="./assets/cup-quoc-gia-casper.png" alt="icon" />
+-          <div className="title">CÚP QUỐC GIA CASPER 2023/24</div>
+-          {activeLeague === 'casper' && <div className="triangle"></div>}
+-        </div>
+-      </div>
++      <div className="schedule-container">
++        <div className="headers">
++          <div
++              className={`header night-wolf ${activeLeague === 'night-wolf' ? 'active' : ''}`}
++              onClick={() => handleLeagueClick('night-wolf')}
++          >
++            <img src="./assets/Logo_Vleague1_2023.svg.png" alt="icon" />
++            <div className="title">VÔ ĐỊCH QUỐC GIA NIGHT WOLF 2023/24</div>
++            {activeLeague === 'night-wolf' && <div className="triangle"></div>}
++          </div>
++          <div
++              className={`header sao-vang ${activeLeague === 'sao-vang' ? 'active' : ''}`}
++              onClick={() => handleLeagueClick('sao-vang')}
++          >
++            <img src="./assets/Logo_V.League_2_2023.svg.png" alt="icon" />
++            <div className="title">HẠNG NHẤT QUỐC GIA BIA SAO VÀNG 2023/24</div>
++            {activeLeague === 'sao-vang' && <div className="triangle"></div>}
++          </div>
++          <div
++              className={`header casper ${activeLeague === 'casper' ? 'active' : ''}`}
++              onClick={() => handleLeagueClick('casper')}
++          >
++            <img src="./assets/cup-quoc-gia-casper.png" alt="icon" />
++            <div className="title">CÚP QUỐC GIA CASPER 2023/24</div>
++            {activeLeague === 'casper' && <div className="triangle"></div>}
++          </div>
++        </div>
+ 
+-      <div className="matches">
+-        <button className="arrow left-arrow" onClick={handlePrevClick}>‹</button>
+-        {displayedMatches.map((match, index) => (
+-          <div key={index} className="match">
+-            <div className="round">{match.round}</div>
+-            <div className="date-time">{match.dateTime}</div>
+-            <div className="venue">{match.venue}</div>
+-            <div className="teams">
+-              <div className="team">
+-                <div className="team-name">{match.teams[0].name}</div>
+-                <img src={match.teams[0].logo} alt={match.teams[0].name} className="team-logo" />
+-              </div>
+-              <div className="score">{match.score}</div>
+-              <div className="team">
+-                <div className="team-name">{match.teams[1].name}</div>
+-                <img src={match.teams[1].logo} alt={match.teams[1].name} className="team-logo" />
+-              </div>
+-            </div>
+-            <div className="broadcast">{match.broadcast}</div>
+-          </div>
+-        ))}
+-        <button className="arrow right-arrow" onClick={handleNextClick}>›</button>
+-      </div>
+-    </div>
++        <div className="matches">
++          <button className="arrow left-arrow" onClick={handlePrevClick}>‹</button>
++          {displayedMatches.map((match, index) => (
++              <div key={index} className="match">
++                <div className="round">{match.round}</div>
++                <div className="date-time">{match.dateTime}</div>
++                <div className="venue">{match.venue}</div>
++                <div className="teams">
++                  <div className="team">
++                    <div className="team-name">{match.teams[0].name}</div>
++                    <img src={match.teams[0].logo} alt={match.teams[0].name} className="team-logo" />
++                  </div>
++                  <div className="score">{match.score}</div>
++                  <div className="team">
++                    <div className="team-name">{match.teams[1].name}</div>
++                    <img src={match.teams[1].logo} alt={match.teams[1].name} className="team-logo" />
++                  </div>
++                </div>
++                <div className="broadcast">{match.broadcast}</div>
++              </div>
++          ))}
++          <button className="arrow right-arrow" onClick={handleNextClick}>›</button>
++        </div>
++      </div>
+   );
+ }
+ 
+Index: src/Components/FootballSchedule.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Components/FootballSchedule.css b/src/Components/HomePage/FootballSchedule.css
+rename from src/Components/FootballSchedule.css
+rename to src/Components/HomePage/FootballSchedule.css
+--- a/src/Components/FootballSchedule.css	
++++ b/src/Components/HomePage/FootballSchedule.css	
+@@ -136,18 +136,18 @@
+ }
+ 
+ .header.casper img {
+-  width: 20px; 
++  width: 20px;
+   height: 20px;
+   padding-right: 10px;
+ }
+ 
+ .header.sao-vang img {
+-  width: 20px; 
++  width: 20px;
+   height: 20px;
+ }
+ 
+ .header.night-wolf img {
+-  width: 40px; 
++  width: 40px;
+   height: 20px;
+   margin-left: 10px;
+ }
+\ No newline at end of file
+Index: src/Components/Footer.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Components/Footer.css b/src/Components/HomePage/Footer.css
+rename from src/Components/Footer.css
+rename to src/Components/HomePage/Footer.css
+--- a/src/Components/Footer.css	
++++ b/src/Components/HomePage/Footer.css	
+@@ -122,4 +122,4 @@
+   background-color: #111;
+   padding: 10px;
+   text-align: center;
+-}
++}
+\ No newline at end of file
+Index: src/Components/Header.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Components/Header.css b/src/Components/HomePage/Header.css
+rename from src/Components/Header.css
+rename to src/Components/HomePage/Header.css
+--- a/src/Components/Header.css	
++++ b/src/Components/HomePage/Header.css	
+@@ -1,9 +1,10 @@
+-/* Header.css */
++/* General Container Styles */
+ .container {
+   width: 100%;
+   background-color: #fff;
+ }
+ 
++/* Header Styles */
+ .header {
+   display: flex;
+   justify-content: center;
+@@ -11,6 +12,7 @@
+   background-color: #fff;
+ }
+ 
++/* Team Logos Styles */
+ .team-logos ul {
+   display: flex;
+   justify-content: center;
+@@ -47,6 +49,7 @@
+   }
+ }
+ 
++/* Navigation Styles */
+ .nav {
+   background-color: #D41819;
+   display: flex;
+@@ -67,6 +70,7 @@
+   height: 100px;
+ }
+ 
++/* Title and Menu Styles */
+ .title-menu {
+   display: flex;
+   flex-direction: column;
+@@ -78,6 +82,19 @@
+   text-align: left;
+ }
+ 
++.title-header h1 {
++  margin: 0;
++  font-size: 20px;
++  font-weight: normal;
++}
++
++.title-header h2 {
++  margin: 0;
++  font-size: 24px;
++  font-weight: bold;
++}
++
++/* Menu Styles */
+ .menu {
+   display: flex;
+   list-style: none;
+@@ -92,18 +109,18 @@
+   padding: 10px;
+ }
+ 
+-.title-header h1 {
+-  margin: 0;
+-  font-size: 20px;
+-  font-weight: normal;
++.menu li a {
++  color: white;
++  text-decoration: none;
++  transition: color 0.3s;
+ }
+ 
+-.title-header h2 {
+-  margin: 0;
+-  font-size: 24px;
+-  font-weight: bold;
++.menu li a:hover {
++  color: black;
+ }
+ 
++
++/* Dropdown Menu Styles */
+ .dropdown-trigger {
+   position: relative;
+   padding: 10px;
+@@ -121,7 +138,11 @@
+   top: 100%;
+   left: 0;
+   width: 200px;
+-  z-index: 1000;
++  color: #000;
++}
++
++.dropdown-trigger:hover .dropdown-menu {
++  display: block;
+ }
+ 
+ .dropdown-item {
+@@ -135,24 +156,13 @@
+   color: red;
+ }
+ 
+-.dropdown-item a {
+-  text-decoration: none;
+-  color: inherit;
+-}
+-
+-.dropdown-item a:hover {
+-  color: red;
+-}
+-
+-.menu-item{
+-  cursor: pointer;
+-}
++/* Mobile Styles */
++@media (max-width: 768px) {
++  .menu {
++    flex-direction: column;
++  }
+ 
+-.menu-item a {
+-  text-decoration: none;
+-  color: inherit;
+-}
+-
+-.menu-item a:hover {
+-  color: inherit;
++  .team-logos ul {
++    flex-wrap: wrap;
++  }
+ }
+Index: src/Components/Ranking/LeagueTable.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Components/Ranking/LeagueTable.js b/src/Components/Ranking/LeagueTable.jsx
+rename from src/Components/Ranking/LeagueTable.js
+rename to src/Components/Ranking/LeagueTable.jsx
+--- a/src/Components/Ranking/LeagueTable.js	
++++ b/src/Components/Ranking/LeagueTable.jsx	
+@@ -1,8 +1,7 @@
+ import React, { useState, useMemo } from 'react';
+ import DataTable from './DataTable';
+ import { Rankdata2023, Rankdata2022 } from './RankData';
+-// import Header from '../HomePage/Header';
+-// import Footer from '../HomePage/Footer';
++
+ const LeagueTable = () => {
+   const [selectedSeason, setSelectedSeason] = useState('2023');
+ 
+@@ -93,23 +92,19 @@
+   );
+ 
+   return (
+-    <div>
+-      {/*<Header/> */}
+-      <div className="league-table">
+-        <h1 className='TitleRank'>{seasonTitles[selectedSeason]}</h1>
+-        <div className="season-selector">
+-          <label htmlFor="season">Mùa giải: </label>
+-          <select id="season" value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
+-            <option value="2023">2023-2024</option>
+-            <option value="2022">2022-2023</option>
+-            {/* Add more seasons as needed */}
+-          </select>
+-        </div>
+-        <DataTable columns={columns} data={sortedData} />
+-      </div>
+-      {/*<Footer/>*/}
++    <div className="league-table">
++      <h1 className='TitleRank'>{seasonTitles[selectedSeason]}</h1>
++      <div className="season-selector">
++        <label htmlFor="season">Mùa giải: </label>
++        <select id="season" value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
++          <option value="2023">2023-2024</option>
++          <option value="2022">2022-2023</option>
++          {/* Add more seasons as needed */}
++        </select>
++      </div>
++      <DataTable columns={columns} data={sortedData} />
+     </div>
+   );
+ };
+ 
+-export default LeagueTable;
+\ No newline at end of file
++export default LeagueTable;
+Index: src/Components/Footer.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport './Footer.css';\n\nconst Footer = () => {\n  return (\n    <footer className=\"footer\">\n      <div className=\"sponsors\">\n        <div className=\"sponsors-main\">\n          <h2>TÀI TRỢ CHÍNH</h2>\n          <div className=\"sponsors-main-logos\">\n            <img style={{width: '400px', height: '223px', objectFit: 'cover',borderRadius:'10px', marginTop :'30px'}} src=\"https://vpf.vn/wp-content/uploads/2023/01/Banner-HNQG-300x167.png\" alt=\"Gold Star V.League 2 - 2023/24\" />\n            <img  style={{width: '400px', height: '223px',borderRadius:'10px'}} src=\"https://vpf.vn/wp-content/uploads/2023/01/Banner-VDQG-300x167.png\" alt=\"Gold Star V.League 2 - 2023/24\" />\n            <img style={{width: '400px', height: '223px', objectFit: 'cover',borderRadius:'10px', marginTop: '30px'}} src=\"https://vpf.vn/wp-content/uploads/2023/01/Banner-CupQG.png\" alt=\"Gold Star V.League 2 - 2023/24\" />\n          </div>\n        </div>\n        <div className=\"sponsors-secondary\">\n          <h2>TÀI TRỢ ĐỒNG HÀNH</h2>\n          <div className=\"sponsors-secondary-logos\">\n          <a href='https://fptplay.vn' target=\"_blank\" rel=\"noreferrer\">\n            <img src=\"https://vpf.vn/wp-content/uploads/2023/01/fpt-play-2k3.png\" alt=\"FPT Play\" />\n          </a>\n          <a href='https://dongluc.vn/' target=\"_blank\" rel=\"noreferrer\">\n            <img src=\"https://vpf.vn/wp-content/uploads/2023/01/dong-luc-2k3.png\" alt=\"Động Lực\" />\n          </a>\n          </div>\n        </div>\n      </div>\n      <div className=\"footer-top\">\n        <nav className=\"footer-nav\">\n          <a href=\"#!\">LIÊN HỆ</a>\n          <a href=\"#!\">HỎI ĐÁP</a>\n          <a href=\"#!\">CƠ HỘI NGHỀ NGHIỆP</a>\n          <a href=\"#!\">CHÍNH SÁCH BẢO MẬT</a>\n          <a href=\"#!\">ĐIỀU KHOẢN SỬ DỤNG</a>\n          <a href=\"#!\">ĐỐI TÁC</a>\n        </nav>\n      </div>\n      <div className=\"footer-content\">\n        <div className=\"footer-column\">\n          <div className=\"footer-section\">\n            <img style={{height:'50px', width:'49px'}} src=\"https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-1.png\" alt=\"Icon 1\" />\n            <p>\n              <strong>Đơn vị chủ quản</strong>\n              <br />\n              <span style={{ fontSize: '15px' }}>Công ty cổ phần bóng đá chuyên nghiệp Việt Nam (VPF)</span>\n            </p>\n          </div>\n          <div className=\"footer-section\">\n            <img style={{height:'50px',width:'50px'}} src=\"https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-2.png\" alt=\"Icon 2\" />\n            <p><strong>Địa chỉ</strong><br />Số 18, Phố Lý Văn Phức, Cát Linh, Đống Đa, TP. Hà Nội.</p>\n          </div>\n        </div>\n        <div className=\"footer-column\">\n          <div className=\"footer-section\">\n            <img style={{height:'50px', width:'50px'}} src=\"https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-3.png\" alt=\"Icon 3\" />\n            <p><strong>Giấy phép</strong><br />Giấy phép số 4593/GP-TTĐT do sở TT&TT Hà Nội cấp ngày 31/10/2017</p>\n          </div>\n          <div className=\"footer-section\">\n            <img style={{height:'50px', width:'50px'}} src=\"https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-4.png\" alt=\"Icon 4\" />\n            <p><strong>Người chịu trách nhiệm nội dung</strong><br />Nguyễn Thị Thu Huyền (Trưởng phòng Truyền Thông - 02437858457 (máy lẻ 126))</p>\n          </div>\n        </div>\n        <div className=\"footer-column\">\n          <div className=\"footer-section\">\n            <img style={{height:'50px', width:'50px'}} src=\"https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-5.png\" alt=\"Icon 5\" />\n            <p><strong>Liên lạc</strong><br />024.3785.8457/58 - FAX: 024.3785.8462</p>\n          </div>\n          <div className=\"footer-section\">\n          <img style={{height:'50px', width:'50px'}} src=\"https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-6.png\" alt=\"\" />\n            <p>\n              <a style={{paddingRight: '10px'}} href=\"http://www.vpf.vn\">www.vpf.vn</a>     \n              <a style={{paddingRight: '10px'}} href=\"http://www.vnleague.com\">www.vnleague.com</a>\n              <a href=\"mailto:info@vpf.vn\">info@vpf.vn</a>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div className=\"footer-bottom\">\n        <p>© 2018 Vietnam Professional Football All Rights Reserved</p>\n      </div>\n    </footer>\n  );\n};\n\nexport default Footer;\n
+===================================================================
+diff --git a/src/Components/Footer.jsx b/src/Components/Footer.jsx
+--- a/src/Components/Footer.jsx	
++++ b/src/Components/Footer.jsx	
+@@ -10,7 +10,7 @@
+           <div className="sponsors-main-logos">
+             <img style={{width: '400px', height: '223px', objectFit: 'cover',borderRadius:'10px', marginTop :'30px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-HNQG-300x167.png" alt="Gold Star V.League 2 - 2023/24" />
+             <img  style={{width: '400px', height: '223px',borderRadius:'10px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-VDQG-300x167.png" alt="Gold Star V.League 2 - 2023/24" />
+-            <img style={{width: '400px', height: '223px', objectFit: 'cover',borderRadius:'10px', marginTop: '30px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-CupQG.png" alt="Gold Star V.League 2 - 2023/24" />
++            <img style={{width: '400px', height: '223px', objectFit: 'cover',borderRadius:'10px', marginTop: '30px'}} src="https://vpf.vn/wp-content/uploads/2023/01/Banner-HNQG-300x167.png" alt="Gold Star V.League 2 - 2023/24" />
+           </div>
+         </div>
+         <div className="sponsors-secondary">
+Index: src/Components/Header.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Header.jsx\nimport React, { useState } from 'react';\nimport './Header.css';\nimport { Link } from 'react-router-dom';\n\nconst Header = () => {\n    const [hoveredMenu, setHoveredMenu] = useState(null);\n\n    const handleMouseEnter = (menu) => {\n        setHoveredMenu(menu);\n    };\n\n    const handleMouseLeave = () => {\n        setHoveredMenu(null);\n    };\n\n    const menuItems = [\n        { name: \"Lịch thi đấu và Kết quả\", path: \"/lich-thi-dau-va-ket-qua\" },\n        { name: \"Bảng xếp hạng\", path: \"/bang-xep-hang\" },\n        { name: \"Thông báo\", path: \"/thong-bao\" },\n        { name: \"Các đội bóng\", path: \"/cac-doi-bong\" },\n        { name: \"Điều lệ\", path: \"/dieu-le\" },\n        { name: \"Bình chọn\", path: \"/binh-chon\" },\n        { name: \"Thư viện\", path: \"/thu-vien\" },\n        { name: \"Download\", path: \"/download\" }\n    ];\n\n    const firstDivisionMenuItems = [\n        { name: \"Lịch thi đấu và Kết quả\", path: \"/lich-thi-dau-va-ket-qua\" },\n        { name: \"Bảng xếp hạng\", path: \"/bang-xep-hang\" },\n        { name: \"Thông báo\", path: \"/thong-bao\" },\n        { name: \"Các đội bóng\", path: \"/cac-doi-bong\" },\n        { name: \"Điều lệ\", path: \"/dieu-le\" },\n        { name: \"Thư viện\", path: \"/thu-vien\" },\n        { name: \"Download\", path: \"/download\" }\n    ];\n\n    return (\n        <div className=\"container\">\n            <header className=\"header\">\n                <div className=\"team-logos\">\n                    <ul>\n                        <li><img src=\"https://vpf.vn/wp-content/uploads/2018/10/binh-duong-2021.png\" alt=\"Team 1\" /></li>\n                        <li><img src=\"https://vpf.vn/wp-content/uploads/2018/10/cong-an-ha-noi-fc-300x300.png\" alt=\"Team 2\" /></li>\n                        <li><img src=\"https://vpf.vn/wp-content/uploads/2018/10/Logo-CLB-Dong-A-Thanh-Hoa_chuan-300x249.png\" alt=\"Team 3\" /></li>\n                        <li><img src=\"https://vpf.vn/wp-content/uploads/2018/10/HNFC-6-sao-300x300.png\" alt=\"Team 4\" /></li>\n                        <li><img src=\"https://vpf.vn/wp-content/uploads/2018/10/haiphongfc-300x291.jpg\" alt=\"Team 5\" /></li>\n                        <li><img src=\"https://vpf.vn/wp-content/uploads/2018/10/Logo-HAGL-300x300.jpg\" alt=\"Team 6\" /></li>\n                        <li><img src=\"https://vpf.vn/wp-content/uploads/2018/10/Logo-Ha-Tinh-update.png\" alt=\"Team 7\" /></li>\n                        <li><img src=\"https://vpf.vn/wp-content/uploads/2018/10/Binh-Dinh-300x300.png\" alt=\"Team 8\" /></li>\n                        <li><img src=\"./assets/quangnam.png\" alt=\"Team 9\" /></li>\n                        <li><img src=\"./assets/merryland.png\" alt=\"Team 10\" /></li>\n                    </ul>\n                </div>\n            </header>\n            <nav className=\"nav\">\n                <div className=\"left-section\">\n                    <div className=\"logo\">\n                        <img src=\"./assets/logo_vpf.png\" alt=\"VPF Logo\" />\n                    </div>\n                    <div className=\"title-menu\">\n                        <div className=\"title-header\">\n                            <h1>OFFICIAL WEBSITE OF</h1>\n                            <h2>Vietnam Professional Football</h2>\n                        </div>\n                        <ul className=\"menu\">\n                            <li className=\"menu-item\">\n                                <Link to=\"/\" className=\"menu-link\">\n                                    Trang chủ\n                                </Link>\n                            </li>\n                            <li className=\"menu-item\">VPF</li>\n                            <li className=\"menu-item\">Highlights</li>\n                            <li className=\"menu-item\">Tin tức</li>\n                            <li\n                                onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}\n                                onMouseLeave={handleMouseLeave}\n                                className=\"dropdown-trigger menu-item\"\n                            >\n                                Vô địch quốc gia\n                                {hoveredMenu === 'vô địch quốc gia' && (\n                                    <ul\n                                        className=\"dropdown-menu\"\n                                        onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}\n                                        onMouseLeave={handleMouseLeave}\n                                    >\n                                        {menuItems.map((item, index) => (\n                                            <li key={index} className=\"dropdown-item\">\n                                                <Link to={item.path} className=\"dropdown-link\">\n                                                    {item.name}\n                                                </Link>\n                                            </li>\n                                        ))}\n                                    </ul>\n                                )}\n                            </li>\n                            <li\n                                onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}\n                                onMouseLeave={handleMouseLeave}\n                                className=\"dropdown-trigger menu-item\"\n                            >\n                                Hạng nhất quốc gia\n                                {hoveredMenu === 'hạng nhất quốc gia' && (\n                                    <ul\n                                        className=\"dropdown-menu\"\n                                        onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}\n                                        onMouseLeave={handleMouseLeave}\n                                    >\n                                        {firstDivisionMenuItems.map((item, index) => (\n                                            <li key={index} className=\"dropdown-item\">\n                                                <Link to={item.path} className=\"dropdown-link\">\n                                                    {item.name}\n                                                </Link>\n                                            </li>\n                                        ))}\n                                    </ul>\n                                )}\n                            </li>\n                            <li className=\"menu-item\">Cúp quốc gia</li>\n                            <li className=\"menu-item\">Play-off</li>\n                            <li className=\"menu-item\">Thư viện</li>\n                            <li className=\"menu-item\">Nhà tài trợ</li>\n                        </ul>\n                    </div>\n                </div>\n            </nav>\n        </div>\n    );\n};\n\nexport default Header;\n
+===================================================================
+diff --git a/src/Components/Header.jsx b/src/Components/Header.jsx
+--- a/src/Components/Header.jsx	
++++ b/src/Components/Header.jsx	
+@@ -1,131 +1,123 @@
+-// Header.jsx
++// Header.js
+ import React, { useState } from 'react';
+-import './Header.css';
+ import { Link } from 'react-router-dom';
++import './Header.css'; // Ensure you have a CSS file for styling
+ 
+ const Header = () => {
+-    const [hoveredMenu, setHoveredMenu] = useState(null);
++  const [hoveredMenu, setHoveredMenu] = useState(null);
+ 
+-    const handleMouseEnter = (menu) => {
+-        setHoveredMenu(menu);
+-    };
++  const handleMouseEnter = (menu) => {
++    setHoveredMenu(menu);
++  };
+ 
+-    const handleMouseLeave = () => {
+-        setHoveredMenu(null);
+-    };
++  const handleMouseLeave = () => {
++    setHoveredMenu(null);
++  };
+ 
+-    const menuItems = [
+-        { name: "Lịch thi đấu và Kết quả", path: "/lich-thi-dau-va-ket-qua" },
+-        { name: "Bảng xếp hạng", path: "/bang-xep-hang" },
+-        { name: "Thông báo", path: "/thong-bao" },
+-        { name: "Các đội bóng", path: "/cac-doi-bong" },
+-        { name: "Điều lệ", path: "/dieu-le" },
+-        { name: "Bình chọn", path: "/binh-chon" },
+-        { name: "Thư viện", path: "/thu-vien" },
+-        { name: "Download", path: "/download" }
+-    ];
++  const menuItems = [
++    { name: "Lịch thi đấu và Kết quả", path: "/schedule" },
++    { name: "Bảng xếp hạng", path: "/league-table" },
++    { name: "Thông báo", path: "/announcements" },
++    { name: "Các đội bóng", path: "/teams" },
++    { name: "Điều lệ", path: "/rules" },
++    { name: "Bình chọn", path: "/voting" },  // only for "VÔ ĐỊCH QUỐC GIA"
++    { name: "Thư viện", path: "/library" },
++    { name: "Download", path: "/download" }
++  ];
+ 
+-    const firstDivisionMenuItems = [
+-        { name: "Lịch thi đấu và Kết quả", path: "/lich-thi-dau-va-ket-qua" },
+-        { name: "Bảng xếp hạng", path: "/bang-xep-hang" },
+-        { name: "Thông báo", path: "/thong-bao" },
+-        { name: "Các đội bóng", path: "/cac-doi-bong" },
+-        { name: "Điều lệ", path: "/dieu-le" },
+-        { name: "Thư viện", path: "/thu-vien" },
+-        { name: "Download", path: "/download" }
+-    ];
++  const firstDivisionMenuItems = [
++    { name: "Lịch thi đấu và Kết quả", path: "/first-division/schedule" },
++    { name: "Bảng xếp hạng", path: "/first-division/league-table" },
++    { name: "Thông báo", path: "/first-division/announcements" },
++    { name: "Các đội bóng", path: "/first-division/teams" },
++    { name: "Điều lệ", path: "/first-division/rules" },
++    { name: "Thư viện", path: "/first-division/library" },
++    { name: "Download", path: "/first-division/download" }
++  ];
+ 
+-    return (
+-        <div className="container">
+-            <header className="header">
+-                <div className="team-logos">
+-                    <ul>
+-                        <li><img src="https://vpf.vn/wp-content/uploads/2018/10/binh-duong-2021.png" alt="Team 1" /></li>
+-                        <li><img src="https://vpf.vn/wp-content/uploads/2018/10/cong-an-ha-noi-fc-300x300.png" alt="Team 2" /></li>
+-                        <li><img src="https://vpf.vn/wp-content/uploads/2018/10/Logo-CLB-Dong-A-Thanh-Hoa_chuan-300x249.png" alt="Team 3" /></li>
+-                        <li><img src="https://vpf.vn/wp-content/uploads/2018/10/HNFC-6-sao-300x300.png" alt="Team 4" /></li>
+-                        <li><img src="https://vpf.vn/wp-content/uploads/2018/10/haiphongfc-300x291.jpg" alt="Team 5" /></li>
+-                        <li><img src="https://vpf.vn/wp-content/uploads/2018/10/Logo-HAGL-300x300.jpg" alt="Team 6" /></li>
+-                        <li><img src="https://vpf.vn/wp-content/uploads/2018/10/Logo-Ha-Tinh-update.png" alt="Team 7" /></li>
+-                        <li><img src="https://vpf.vn/wp-content/uploads/2018/10/Binh-Dinh-300x300.png" alt="Team 8" /></li>
+-                        <li><img src="./assets/quangnam.png" alt="Team 9" /></li>
+-                        <li><img src="./assets/merryland.png" alt="Team 10" /></li>
+-                    </ul>
+-                </div>
+-            </header>
+-            <nav className="nav">
+-                <div className="left-section">
+-                    <div className="logo">
+-                        <img src="./assets/logo_vpf.png" alt="VPF Logo" />
+-                    </div>
+-                    <div className="title-menu">
+-                        <div className="title-header">
+-                            <h1>OFFICIAL WEBSITE OF</h1>
+-                            <h2>Vietnam Professional Football</h2>
+-                        </div>
+-                        <ul className="menu">
+-                            <li className="menu-item">
+-                                <Link to="/" className="menu-link">
+-                                    Trang chủ
+-                                </Link>
+-                            </li>
+-                            <li className="menu-item">VPF</li>
+-                            <li className="menu-item">Highlights</li>
+-                            <li className="menu-item">Tin tức</li>
+-                            <li
+-                                onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
+-                                onMouseLeave={handleMouseLeave}
+-                                className="dropdown-trigger menu-item"
+-                            >
+-                                Vô địch quốc gia
+-                                {hoveredMenu === 'vô địch quốc gia' && (
+-                                    <ul
+-                                        className="dropdown-menu"
+-                                        onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
+-                                        onMouseLeave={handleMouseLeave}
+-                                    >
+-                                        {menuItems.map((item, index) => (
+-                                            <li key={index} className="dropdown-item">
+-                                                <Link to={item.path} className="dropdown-link">
+-                                                    {item.name}
+-                                                </Link>
+-                                            </li>
+-                                        ))}
+-                                    </ul>
+-                                )}
+-                            </li>
+-                            <li
+-                                onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}
+-                                onMouseLeave={handleMouseLeave}
+-                                className="dropdown-trigger menu-item"
+-                            >
+-                                Hạng nhất quốc gia
+-                                {hoveredMenu === 'hạng nhất quốc gia' && (
+-                                    <ul
+-                                        className="dropdown-menu"
+-                                        onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}
+-                                        onMouseLeave={handleMouseLeave}
+-                                    >
+-                                        {firstDivisionMenuItems.map((item, index) => (
+-                                            <li key={index} className="dropdown-item">
+-                                                <Link to={item.path} className="dropdown-link">
+-                                                    {item.name}
+-                                                </Link>
+-                                            </li>
+-                                        ))}
+-                                    </ul>
+-                                )}
+-                            </li>
+-                            <li className="menu-item">Cúp quốc gia</li>
+-                            <li className="menu-item">Play-off</li>
+-                            <li className="menu-item">Thư viện</li>
+-                            <li className="menu-item">Nhà tài trợ</li>
+-                        </ul>
+-                    </div>
+-                </div>
+-            </nav>
+-        </div>
+-    );
++  return (
++    <div className="container">
++      <header className="header">
++        <div className="team-logos">
++          <ul>
++            <li><img src="./assets/becamexbinhduong.png" alt="Team 1" /></li>
++            <li><img src="./assets/conganhanoi.png" alt="Team 2" /></li>
++            <li><img src="./assets/Dongathanhhoa.png" alt="Team 3" /></li>
++            <li><img src="./assets/hanoi.png" alt="Team 4" /></li>
++            <li><img src="./assets/haiphong.png" alt="Team 5" /></li>
++            <li><img src="./assets/hoanganhgialai.png" alt="Team 6" /></li>
++            <li><img src="./assets/honglinhhatinh.png" alt="Team 7" /></li>
++            <li><img src="./assets/khanhhoa.png" alt="Team 8" /></li>
++            <li><img src="./assets/quangnam.png" alt="Team 9" /></li>
++            <li><img src="./assets/merryland.png" alt="Team 10" /></li>
++          </ul>
++        </div>
++      </header>
++      <nav className="nav">
++        <div className="left-section">
++          <div className="logo">
++            <img src="./assets/logo_vpf.png" alt="VPF Logo" />
++          </div>
++          <div className="title-menu">
++            <div className="title-header">
++              <h1>OFFICIAL WEBSITE OF</h1>
++              <h2>Vietnam Professional Football</h2>
++            </div>
++            <ul className="menu">
++              <li><Link to="/">Trang chủ</Link></li>
++              <li><Link to="/vpf">VPF</Link></li>
++              <li><Link to="/highlights">Highlights</Link></li>
++              <li ><Link to="/news">Tin tức</Link></li>
++              <li
++                onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
++                onMouseLeave={handleMouseLeave}
++                className="dropdown-trigger"
++              >
++                <a href="#">Vô địch quốc gia</a>
++                {hoveredMenu === 'vô địch quốc gia' && (
++                  <ul
++                    className="dropdown-menu"
++                    onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
++                    onMouseLeave={handleMouseLeave}
++                  >
++                    {menuItems.map((item, index) => (
++                      <li key={index} className="dropdown-item">
++                        <Link to={item.path}>{item.name}</Link>
++                      </li>
++                    ))}
++                  </ul>
++                )}
++              </li>
++              <li
++                onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}
++                onMouseLeave={handleMouseLeave}
++                className="dropdown-trigger"
++              >
++                <a href='#'>Hạng nhất quốc gia</a>
++                {hoveredMenu === 'hạng nhất quốc gia' && (
++                  <ul
++                    className="dropdown-menu"
++                    onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}
++                    onMouseLeave={handleMouseLeave}
++                  >
++                    {firstDivisionMenuItems.map((item, index) => (
++                      <li key={index} className="dropdown-item">
++                        <Link to={item.path}>{item.name}</Link>
++                      </li>
++                    ))}
++                  </ul>
++                )}
++              </li>
++              <li><Link to="/cup">Cúp quốc gia</Link></li>
++              <li><Link to="/playoff">Play-off</Link></li>
++              <li><Link to="/library">Thư viện</Link></li>
++              <li><Link to="/sponsors">Nhà tài trợ</Link></li>
++            </ul>
++          </div>
++        </div>
++      </nav>
++    </div>
++  );
+ };
+ 
+ export default Header;
+Index: src/App.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\nimport './App.css';\nimport LeagueTable from './Components/Ranking/LeagueTable';\nimport Header from './Components/Header.jsx';\nimport Footer from './Components/Footer.jsx';\nimport HomePage from './Components/HomePage.jsx';\nimport { BrowserRouter as Router, Route, Routes } from 'react-router-dom';\n\nfunction App() {\n    return (\n        <Router>\n            <Header />\n            <Routes>\n                <Route path=\"/\" element={<HomePage />} />\n                <Route path=\"/bang-xep-hang\" element={<LeagueTable />} />\n            </Routes>\n            <Footer />\n        </Router>\n    );\n}\n\nexport default App;\n
+===================================================================
+diff --git a/src/App.js b/src/App.js
+--- a/src/App.js	
++++ b/src/App.js	
+@@ -1,22 +1,22 @@
+-import React from 'react';
+ import './App.css';
+-import LeagueTable from './Components/Ranking/LeagueTable';
+-import Header from './Components/Header.jsx';
+-import Footer from './Components/Footer.jsx';
+-import HomePage from './Components/HomePage.jsx';
+ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
++import FootballSchedule from './Components/FootballSchedule';
++import Footer from './Components/Footer';
++import Header from './Components/Header';
++import LeagueTable from './Components/Ranking/LeagueTable';
+ 
+ function App() {
+-    return (
+-        <Router>
+-            <Header />
+-            <Routes>
+-                <Route path="/" element={<HomePage />} />
+-                <Route path="/bang-xep-hang" element={<LeagueTable />} />
+-            </Routes>
+-            <Footer />
+-        </Router>
+-    );
++  return (
++    <Router>
++      <Header />
++      <Routes>
++        <Route path="/" element={<FootballSchedule />} />
++        <Route path="/league-table" element={<LeagueTable />} />
++        {/* Add other routes as needed */}
++      </Routes>
++      <Footer />
++    </Router>
++  );
+ }
+ 
+ export default App;

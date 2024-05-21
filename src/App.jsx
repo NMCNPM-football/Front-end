@@ -1,4 +1,4 @@
-    import React from 'react';
+import React from 'react';
 import './App.css';
 import HomePage from './Components/HomePage/HomePage.jsx';
 import LeagueTable from './Components/Ranking/LeagueTable';
