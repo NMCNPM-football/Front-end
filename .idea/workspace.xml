@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="86503c1a-504d-4893-97aa-2e418f0d147c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/FootballSchedule.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/FootballSchedule.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/FootballSchedule.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/FootballSchedule.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/HomePage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

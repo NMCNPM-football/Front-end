@@ -144,6 +144,10 @@
   color: red;
 }
 
+.menu-item{
+  cursor: pointer;
+}
+
 .menu-item a {
   text-decoration: none;
   color: inherit;
