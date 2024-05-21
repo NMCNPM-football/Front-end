@@ -17,10 +17,7 @@ function App() {
                 {/* <LeagueTable /> */}
                 {/* <TeamGrid /> */}
                 <Routes>
-                    <Route path="/" element={<Navigate to="/match/0" />} />
-                    <Route path="/home" element={<HomePage />} />
-                    <Route path="/match/:id" element={<MatchPage />} />
-                    <Route path="/schedule" element={<FootballSchedule />} />
+                    <Route path="/" element={<HomePage />} />
                     <Route path="/league-table" element={<LeagueTable />} />
                 </Routes>
                 <Footer />
