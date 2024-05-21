@@ -18,9 +18,9 @@ function App() {
                 {/* <TeamGrid /> */}
                 <Routes>
                     <Route path="/" element={<Navigate to="/match/0" />} />
-                    <Route path="/" element={<HomePage />} />
+                    <Route path="/home" element={<HomePage />} />
                     <Route path="/match/:id" element={<MatchPage />} />
-                    <Route path="/" element={<FootballSchedule />} />
+                    <Route path="/schedule" element={<FootballSchedule />} />
                     <Route path="/league-table" element={<LeagueTable />} />
                 </Routes>
                 <Footer />

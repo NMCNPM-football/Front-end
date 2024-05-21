@@ -1,17 +1,16 @@
-import React, { useState, useMemo } from 'react';
+import React, { Component } from 'react';
 import DataTable from './DataTable';
 import { Rankdata2023, Rankdata2022 } from './RankData';
 
-const LeagueTable = () => {
-  const [selectedSeason, setSelectedSeason] = useState('2023');
+class LeagueTable extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedSeason: '2023',
+    };
+  }
 
-  const seasonTitles = {
-    '2023': 'Vô địch Quốc gia Night Wolf 2023/24',
-    '2022': 'Vô địch Quốc gia Night Wolf 2022/23',
-    // Add more seasons and titles as needed
-  };
-
-  const getRankData = (season) => {
+  getRankData(season) {
     switch (season) {
       case '2022':
         return Rankdata2022;
@@ -19,11 +18,16 @@ const LeagueTable = () => {
       default:
         return Rankdata2023;
     }
-  };
+  }
 
-  const sortedData = useMemo(() => {
-    const data = getRankData(selectedSeason);
-    return data
+  render() {
+    const seasonTitles = {
+      '2023': 'Vô địch Quốc gia Night Wolf 2023/24',
+      '2022': 'Vô địch Quốc gia Night Wolf 2022/23',
+    };
+
+    const data = this.getRankData(this.state.selectedSeason);
+    const sortedData = data
       .slice()
       .map((team) => ({
         ...team,
@@ -37,10 +41,8 @@ const LeagueTable = () => {
         return b.PTS - a.PTS;
       })
       .map((team, index) => ({ ...team, stt: index + 1 }));
-  }, [selectedSeason]);
 
-  const columns = useMemo(
-    () => [
+    const columns = [
       {
         Header: 'Pos',
         accessor: 'stt',
@@ -87,24 +89,22 @@ const LeagueTable = () => {
         Header: 'Points',
         accessor: 'PTS',
       },
-    ],
-    []
-  );
+    ];
 
-  return (
-    <div className="league-table">
-      <h1 className='TitleRank'>{seasonTitles[selectedSeason]}</h1>
-      <div className="season-selector">
-        <label htmlFor="season">Mùa giải: </label>
-        <select id="season" value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
-          <option value="2023">2023-2024</option>
-          <option value="2022">2022-2023</option>
-          {/* Add more seasons as needed */}
-        </select>
+    return (
+      <div className="league-table">
+        <h1 className='TitleRank'>{seasonTitles[this.state.selectedSeason]}</h1>
+        <div className="season-selector">
+          <label htmlFor="season">Mùa giải: </label>
+          <select id="season" value={this.state.selectedSeason} onChange={(e) => this.setState({ selectedSeason: e.target.value })}>
+            <option value="2023">2023-2024</option>
+            <option value="2022">2022-2023</option>
+          </select>
+        </div>
+        <DataTable columns={columns} data={sortedData} />
       </div>
-      <DataTable columns={columns} data={sortedData} />
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default LeagueTable;
