@@ -64,7 +64,7 @@ const DataTeam = () => {
   return (
     <div>
       <div className="team-header-tab">
-        <img src={team.logo} alt={team.clubName} className="team-logo" />
+        <img src={team.logo} alt={team.clubName} className="team-logo-tab" />
         <h1 className='clubnametab'>{team.clubName}</h1>
       </div>
       <div className='stacoach'>
