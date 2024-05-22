@@ -109,7 +109,11 @@ const Header = () => {
               </li>
               <li className="menu-item">VPF</li>
               <li className="menu-item">Highlights</li>
-              <li className="menu-item">Tin tức</li>
+              <li className="menu-item">
+                <Link to="/tin-tuc" className="menu-link">
+                  Tin tức
+                </Link>
+              </li>
               <li
                 onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
                 onMouseLeave={handleMouseLeave}

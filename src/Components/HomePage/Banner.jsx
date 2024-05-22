@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Banner.css';
 
 const Banner = () => {
   const [currentBanner, setCurrentBanner] = useState(0);
-  const [fadeOut, setFadeOut] = useState(false); // Declare fadeOut state variable
+  const [fadeOut, setFadeOut] = useState(false);
 
   const banners = [
     "https://vpf.vn/wp-content/uploads/2024/04/Intro-VLeague1-2324.png",
@@ -11,29 +11,29 @@ const Banner = () => {
     "https://vpf.vn/wp-content/uploads/2024/04/Intro-CupQG-2324.png"
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextBanner();
-    }, 5000); // Chuyển đổi banner sau mỗi 5 giây
-
-    return () => clearInterval(interval); // Clear interval khi component bị unmount
-  }, [currentBanner]); // Thêm currentBanner vào dependency array để reset interval khi currentBanner thay đổi
-
-  const nextBanner = () => {
+  const nextBanner = useCallback(() => {
     setFadeOut(true);
     setTimeout(() => {
       setCurrentBanner((currentBanner + 1) % banners.length);
       setFadeOut(false);
-    }, 500); // Thời gian trễ để hiệu ứng fade out
-  };
+    }, 500);
+  }, [currentBanner, banners.length]);
 
-  const prevBanner = () => {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextBanner();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [nextBanner]);
+
+  const prevBanner = useCallback(() => {
     setFadeOut(true);
     setTimeout(() => {
       setCurrentBanner((currentBanner - 1 + banners.length) % banners.length);
       setFadeOut(false);
-    }, 500); // Thời gian trễ để hiệu ứng fade out
-  };
+    }, 500);
+  }, [currentBanner, banners.length]);
 
   return (
     <div className="banner-container">
