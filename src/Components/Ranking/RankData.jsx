@@ -20,6 +20,7 @@ export const Rankdata2023 = [
     lost: 2,
     GF: 40,
     GA: 25,
+    idteam:1,
   },
   {
     sumid: 3,
