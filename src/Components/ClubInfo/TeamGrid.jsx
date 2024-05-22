@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Clubdata2022, Clubdata2023 } from './Clubdata';
 import './TeamGrid.css';
 import SeasonSelector from './SeasonSelect';
 import { Link } from 'react-router-dom';
@@ -33,7 +32,7 @@ const TeamGrid = () => {
             <Link key={index} to={`/team/${team.id}`} className="team-link">
               <div className="team-card">
                 <img src={team.logo} alt={team.nameClub}/>
-                <p>{team.nameClub}</p>
+                <p className='Team-name-grid'>{team.nameClub}</p>
               </div>
             </Link>
           );
