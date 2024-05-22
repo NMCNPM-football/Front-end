@@ -1,6 +1,7 @@
 export const DataPlayers ={
-    "data": [
-        {
+"data": [
+        {   
+            "PlayerId": 1,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -14,7 +15,8 @@ export const DataPlayers ={
             "birthDay": "1991-04-12",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 2,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "Naturalization Player",
@@ -28,7 +30,8 @@ export const DataPlayers ={
             "birthDay": "1992-10-25",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 3,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -43,6 +46,7 @@ export const DataPlayers ={
             "status": ""
         },
         {
+            "PlayerId": 4,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -56,7 +60,8 @@ export const DataPlayers ={
             "birthDay": "1995-03-28",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 5,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -71,6 +76,7 @@ export const DataPlayers ={
             "status": ""
         },
         {
+            "PlayerId": 6,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -84,7 +90,7 @@ export const DataPlayers ={
             "birthDay": "2001-05-07",
             "status": ""
         },
-        {
+        {   "PlayerId": 7,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "Naturalization Player",
@@ -98,7 +104,7 @@ export const DataPlayers ={
             "birthDay": "1994-12-08",
             "status": ""
         },
-        {
+        {   "PlayerId": 8,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -112,7 +118,8 @@ export const DataPlayers ={
             "birthDay": "1996-04-12",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 9,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -126,7 +133,8 @@ export const DataPlayers ={
             "birthDay": "1989-01-17",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 10,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -141,6 +149,7 @@ export const DataPlayers ={
             "status": ""
         },
         {
+            "PlayerId": 11,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -154,7 +163,8 @@ export const DataPlayers ={
             "birthDay": "2000-08-14",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 12,    
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -168,7 +178,8 @@ export const DataPlayers ={
             "birthDay": "1995-04-28",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 13,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -182,7 +193,8 @@ export const DataPlayers ={
             "birthDay": "2000-10-25",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 14,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -197,6 +209,7 @@ export const DataPlayers ={
             "status": ""
         },
         {
+            "PlayerId": 15,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -211,6 +224,7 @@ export const DataPlayers ={
             "status": ""
         },
         {
+            "PlayerId": 16,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "Naturalization Player",
@@ -224,7 +238,8 @@ export const DataPlayers ={
             "birthDay": "1991-02-08",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 17,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -238,7 +253,8 @@ export const DataPlayers ={
             "birthDay": "2000-07-14",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 18,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "Naturalization Player",
@@ -252,7 +268,8 @@ export const DataPlayers ={
             "birthDay": "1990-08-18",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 19,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -267,6 +284,7 @@ export const DataPlayers ={
             "status": ""
         },
         {
+            "PlayerId": 20,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -281,6 +299,7 @@ export const DataPlayers ={
             "status": ""
         },
         {
+            "PlayerId": 21,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -294,7 +313,8 @@ export const DataPlayers ={
             "birthDay": "2003-10-20",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 22,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -308,7 +328,8 @@ export const DataPlayers ={
             "birthDay": "1995-08-20",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 23,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -322,7 +343,8 @@ export const DataPlayers ={
             "birthDay": "1992-05-06",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 24,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -336,7 +358,8 @@ export const DataPlayers ={
             "birthDay": "1996-12-20",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 25,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -350,7 +373,8 @@ export const DataPlayers ={
             "birthDay": "2001-06-09",
             "status": ""
         },
-        {
+        {   
+            "PlayerId": 26,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -365,6 +389,7 @@ export const DataPlayers ={
             "status": ""
         },
         {
+            "PlayerId": 27,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -379,6 +404,7 @@ export const DataPlayers ={
             "status": ""
         },
         {
+            "PlayerId": 28,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",
@@ -393,6 +419,7 @@ export const DataPlayers ={
             "status": ""
         },
         {
+            "PlayerId": 29,
             "clubName": "LPBank Hoàng Anh Gia Lai",
             "seaSon": "2023-2024",
             "typePlayer": "National Player",

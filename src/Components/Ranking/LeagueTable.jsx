@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DataTable from './DataTable';
 import { Rankdata2023, Rankdata2022 } from './RankData';
-
+import { Link } from 'react-router-dom';
 class LeagueTable extends Component {
   constructor(props) {
     super(props);
@@ -52,10 +52,12 @@ class LeagueTable extends Component {
         Header: 'Team',
         accessor: 'teamname',
         Cell: ({ cell: { value }, row: { original } }) => (
-          <div>
-            <img src={original.image} alt={value} style={{ height: '30px', marginRight: '10px' }} />
-            {value}
-          </div>
+          <Link to={`/team/${original.idteam}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <img src={original.image} alt={value} style={{ height: '30px', marginRight: '10px' }} />
+              {value}
+            </div>
+          </Link>
         ),
       },
       {
