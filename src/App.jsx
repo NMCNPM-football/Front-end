@@ -16,13 +16,12 @@ function App() {
         {/* <FootballSchedule /> */}
         {/* <LeagueTable /> */}
         {/* <TeamGrid /> */}
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/league-table" element={<LeagueTable />} />
           <Route path="/club-info" element={<TeamGrid />} />
           <Route path="/match/:id" element={<MatchPage />} />
-        </Routes> */}
-        <TableTeam/>
+        </Routes>
         <Footer />
       </div>
     </Router>
