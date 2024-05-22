@@ -6,8 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {PATHS} from "const";
 import UserService from "services/user"
-import {showError, showInfo} from 'component/flash_message/flashMessageSlice';
-import TextInput from "component/text_input";
+import {showError, showInfo} from '../FlashMessage/flashMessageSlice';
+import TextInput from "../TextInput";
 
 export default function SignUp() {
   const methods = useForm();

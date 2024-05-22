@@ -5,12 +5,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {PATHS} from "const";
 import UserService from "services/user"
-import {showError} from 'component/flash_message/flashMessageSlice';
+import {showError} from 'Components/FlashMessage/flashMessageSlice';
 import {getProfile, setLoginSuccess} from "store/userSlice";
-import TextInput from "component/text_input";
+import TextInput from "component/TextInput";
 
 export default function SignIn() {
-  // const {t} = useTranslation();
+  // const{t} = useTranslation();
   const methods = useForm();
   const navigate = useNavigate()
   const isLogin = useSelector((state) => !!state.user.refreshToken)
