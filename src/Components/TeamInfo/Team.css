@@ -1,35 +1,28 @@
-/* Team.css */
-
-.InfoAround{
+.team-header-tab{
   display: flex;
   align-items: center;
 }
-
-.team-logo-TI {
-  height: 50px;
-  margin-right: 15px;
+.team-logo {
+  width: 80px;
+  height: 100px;
 }
-
-.InfoHLV {
-  text-align: right;
-  margin-right: 60px;
+.stacoach
+{
+  margin-left: 1000px;
+  font-size: 20px;
 }
-
-.team-table {
-  width: 85%;
+table {
+  width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
-.team-table th, .team-table td {
-  border: 1px solid #dee2e6;
+th, td {
+  border: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
+  text-align: center;
 }
 
-.team-table th {
-  background-color: #f1f1f1;
-  cursor: pointer;
+th {
+  background-color: #f2f2f2;
 }
-

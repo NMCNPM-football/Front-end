@@ -21,7 +21,7 @@ const Header = () => {
     { name: "Các đội bóng", path: "/club-info" },
     { name: "Điều lệ", path: "/dieu-le" },
     { name: "Bình chọn", path: "/binh-chon" },
-    { name: "Thư viện", path: "/thu-vien" },
+    { name: "Thư viện", path: "/table-team" },
     { name: "Download", path: "/match/0" }
   ];
 
@@ -31,7 +31,7 @@ const Header = () => {
     { name: "Thông báo", path: "/thong-bao" },
     { name: "Các đội bóng", path: "/club-info" },
     { name: "Điều lệ", path: "/dieu-le" },
-    { name: "Thư viện", path: "/thu-vien" },
+    { name: "Thư viện", path: "/table-team" },
     { name: "Download", path: "/match/0" }
   ];
 

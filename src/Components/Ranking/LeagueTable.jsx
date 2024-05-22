@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DataTable from './DataTable';
 import { Rankdata2023, Rankdata2022 } from './RankData';
 
@@ -12,11 +13,11 @@ class LeagueTable extends Component {
 
   getRankData(season) {
     switch (season) {
-      case '2022':
-        return Rankdata2022;
-      case '2023':
-      default:
-        return Rankdata2023;
+    case '2022':
+      return Rankdata2022;
+    case '2023':
+    default:
+      return Rankdata2023;
     }
   }
 
@@ -93,10 +94,14 @@ class LeagueTable extends Component {
 
     return (
       <div className="league-table">
-        <h1 className='TitleRank'>{seasonTitles[this.state.selectedSeason]}</h1>
+        <h1 className="TitleRank">{seasonTitles[this.state.selectedSeason]}</h1>
         <div className="season-selector">
           <label htmlFor="season">Mùa giải: </label>
-          <select id="season" value={this.state.selectedSeason} onChange={(e) => this.setState({ selectedSeason: e.target.value })}>
+          <select
+            id="season"
+            value={this.state.selectedSeason}
+            onChange={(e) => this.setState({ selectedSeason: e.target.value })}
+          >
             <option value="2023">2023-2024</option>
             <option value="2022">2022-2023</option>
           </select>
@@ -106,5 +111,16 @@ class LeagueTable extends Component {
     );
   }
 }
+
+LeagueTable.propTypes = {
+  cell: PropTypes.shape({
+    value: PropTypes.string,
+  }),
+  row: PropTypes.shape({
+    original: PropTypes.shape({
+      image: PropTypes.string,
+    }),
+  }),
+};
 
 export default LeagueTable;
