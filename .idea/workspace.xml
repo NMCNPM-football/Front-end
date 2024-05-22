@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86503c1a-504d-4893-97aa-2e418f0d147c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/FlashMessage/flashMessageSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/FlashMessage/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/FlashMessage/index.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/TextInput/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/TextInput/index.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/TextInput/input.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SignIn/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignIn/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SignUp/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SignUp/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/const /errorCodes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/const/errorCodes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/const /httpMethod.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/const/httpMethod.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/const /index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/const/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/const /paths.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/const/paths.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/const /timezones.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/const/timezones.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Header.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +76,7 @@
       <workItem from="1716275118554" duration="1364000" />
       <workItem from="1716278088237" duration="1396000" />
       <workItem from="1716293004952" duration="590000" />
-      <workItem from="1716341826858" duration="571000" />
+      <workItem from="1716341826858" duration="1243000" />
     </task>
     <servers />
   </component>
