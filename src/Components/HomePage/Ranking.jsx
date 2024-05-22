@@ -21,7 +21,7 @@ const Ranking = () => {
 
   return (
     <aside className="ranking">
-      <h2>VPF Bảng xếp hạng</h2>
+      <h2>Bảng xếp hạng</h2>
       <div className="ranking-header">
         <button className="ranking-button">V.League</button>
         <button className="ranking-button">Hạng nhất</button>
