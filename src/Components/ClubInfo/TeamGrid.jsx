@@ -1,9 +1,8 @@
-// src/Components/ClubInfo/TeamGrid.js
-
 import React, { useState, useEffect } from 'react';
 import { Clubdata2022, Clubdata2023 } from './Clubdata';
 import './TeamGrid.css';
 import SeasonSelector from './SeasonSelect';
+import { Link } from 'react-router-dom';
 
 const TeamGrid = () => {
   const [selectedSeason, setSelectedSeason] = useState("2023-2024");
@@ -28,10 +27,12 @@ const TeamGrid = () => {
       <SeasonSelector selectedSeason={selectedSeason} onSeasonChange={setSelectedSeason} />
       <div className="team-grid">
         {teams.map((team, index) => (
-          <div key={index} className="team-card">
-            <img src={team.image} alt={team.nameClub} />
-            <p>{team.nameClub}</p>
-          </div>
+            <Link key={index} to={`/team/${team.idteam}`} className="team-link">
+            <div className="team-card">
+              <img src={team.image} alt={team.clubName} />
+              <p>{team.clubName}</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
