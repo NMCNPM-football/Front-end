@@ -161,7 +161,9 @@ const Header = () => {
               <li className="menu-item">Cúp quốc gia</li>
               <li className="menu-item">Thư viện</li>
               <li className="menu-item">Nhà tài trợ</li>
-              <li className="menu-item">Đăng nhập</li>
+              <li className="menu-item" onClick={() => {window.location.href="http://localhost:5173/admin"}}>
+                Đăng nhập
+              </li>
             </ul>
           </div>
         </div>
