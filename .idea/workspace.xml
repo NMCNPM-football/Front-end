@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="86503c1a-504d-4893-97aa-2e418f0d147c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ClubInfo/TeamGrid.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ClubInfo/TeamGrid.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ClubInfo/TeamGrid.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ClubInfo/TeamGrid.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +82,8 @@
       <workItem from="1716341826858" duration="1243000" />
       <workItem from="1716363022875" duration="332000" />
       <workItem from="1716363372270" duration="191000" />
-      <workItem from="1716363571832" duration="408000" />
+      <workItem from="1716363571832" duration="906000" />
+      <workItem from="1716366652850" duration="569000" />
     </task>
     <servers />
   </component>
