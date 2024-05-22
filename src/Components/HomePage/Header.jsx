@@ -51,8 +51,8 @@ const Header = () => {
   const firstSetLogos = [
     "https://vpf.vn/wp-content/uploads/2018/10/binh-duong-2021.png",
     "https://vpf.vn/wp-content/uploads/2018/10/cong-an-ha-noi-fc-300x300.png",
-    "./assets/Dongathanhhoa.png",
-    "./assets/hanoi.png",
+    "https://vpf.vn/wp-content/uploads/2018/10/Logo-CLB-Dong-A-Thanh-Hoa_chuan-300x249.png",
+    "https://vpf.vn/wp-content/uploads/2018/10/HNFC-6-sao.png",
     "https://vpf.vn/wp-content/uploads/2018/10/haiphongfc-300x291.jpg",
     "https://vpf.vn/wp-content/uploads/2018/10/Logo-HAGL-300x300.jpg",
     "https://vpf.vn/wp-content/uploads/2018/10/Logo-Ha-Tinh-update.png",

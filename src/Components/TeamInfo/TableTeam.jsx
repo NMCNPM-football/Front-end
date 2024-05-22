@@ -87,7 +87,7 @@ const DataTeam = () => {
           {players.map((player, index) => (
             <tr key={index}>
               <td className='titletab'>
-                <Link to={`/player/${player.PlayerId}`}>{player.name}</Link>
+                <Link style={{textDecoration: 'none', color: 'black' }} to={`/player/${player.PlayerId}`}>{player.name}</Link>
               </td>
               <td className='titletab'>{player.kit}</td>
               <td className='titletab'>{player.position}</td>

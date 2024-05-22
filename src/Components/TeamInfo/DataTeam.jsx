@@ -18,7 +18,8 @@ export const teams = {
     "achievement": "",
     "name": "Huỳnh Tuấn Linh",
     "birthDay": "1991-04-12",
-    "status": ""
+    "status": "",
+    "PlayerId": "1"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -32,7 +33,8 @@ export const teams = {
     "achievement": "",
     "name": "Bruno Henrique",
     "birthDay": "1992-10-25",
-    "status": ""
+    "status": "",
+    "PlayerId": "2",
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -46,7 +48,8 @@ export const teams = {
     "achievement": "",
     "name": "Trần Trung Kiên",
     "birthDay": "2003-02-09",
-    "status": ""
+    "status": "",
+    "PlayerId": "3",
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -60,7 +63,8 @@ export const teams = {
     "achievement": "",
     "name": "Trần Minh Vương",
     "birthDay": "1995-03-28",
-    "status": ""
+    "status": "",
+    "PlayerId": "4",
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -74,7 +78,8 @@ export const teams = {
     "achievement": "",
     "name": "Nguyễn Phong Hồng Duy",
     "birthDay": "1996-06-13",
-    "status": ""
+    "status": "",
+    "PlayerId": "5",
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -88,7 +93,8 @@ export const teams = {
     "achievement": "",
     "name": "Lê Hữu Phước",
     "birthDay": "2001-05-07",
-    "status": ""
+    "status": "",
+    "PlayerId": "6",
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -102,7 +108,8 @@ export const teams = {
     "achievement": "",
     "name": "Barbosa Teixeira Mauricio",
     "birthDay": "1994-12-08",
-    "status": ""
+    "status": "",
+    "PlayerId": "7"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -116,7 +123,8 @@ export const teams = {
     "achievement": "",
     "name": "Nguyễn Văn Toàn",
     "birthDay": "1996-04-12",
-    "status": ""
+    "status": "",
+    "PlayerId": "8"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -130,7 +138,8 @@ export const teams = {
     "achievement": "",
     "name": "Nguyễn Văn Việt",
     "birthDay": "1989-01-17",
-    "status": ""
+    "status": "",
+    "PlayerId": "9",
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -144,7 +153,8 @@ export const teams = {
     "achievement": "",
     "name": "Nguyễn Công Phượng",
     "birthDay": "1995-01-21",
-    "status": ""
+    "status": "",
+    "PlayerId": "10"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -158,7 +168,8 @@ export const teams = {
     "achievement": "",
     "name": "Tiêu Ê Xal",
     "birthDay": "2000-08-14",
-    "status": ""
+    "status": "",
+    "PlayerId": "11"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -172,7 +183,8 @@ export const teams = {
     "achievement": "",
     "name": "Lương Xuân Trường",
     "birthDay": "1995-04-28",
-    "status": ""
+    "status": "",
+    "PlayerId": "12"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -186,7 +198,8 @@ export const teams = {
     "achievement": "",
     "name": "Nguyễn Thanh Nhân",
     "birthDay": "2000-10-25",
-    "status": ""
+    "status": "",
+    "PlayerId": "13"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -200,7 +213,8 @@ export const teams = {
     "achievement": "",
     "name": "Võ Đình Lâm",
     "birthDay": "2000-01-10",
-    "status": ""
+    "status": "",
+    "PlayerId": "14"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -214,7 +228,8 @@ export const teams = {
     "achievement": "",
     "name": "Nguyễn Văn Triệu",
     "birthDay": "2003-01-17",
-    "status": ""
+    "status": "",
+    "PlayerId": "15"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -228,7 +243,8 @@ export const teams = {
     "achievement": "",
     "name": "An Sae Hee",
     "birthDay": "1991-02-08",
-    "status": ""
+    "status": "",
+    "PlayerId": "16"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -242,7 +258,8 @@ export const teams = {
     "achievement": "",
     "name": "Trần Bảo Toàn",
     "birthDay": "2000-07-14",
-    "status": ""
+    "status": "",
+    "PlayerId": "17"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -256,7 +273,8 @@ export const teams = {
     "achievement": "",
     "name": "Washington Brandão Dos Santos",
     "birthDay": "1990-08-18",
-    "status": ""
+    "status": "",
+    "PlayerId": "18"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -270,7 +288,8 @@ export const teams = {
     "achievement": "",
     "name": "Nguyễn Đức Việt",
     "birthDay": "2004-01-01",
-    "status": ""
+    "status": "",
+    "PlayerId": "19"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -284,7 +303,8 @@ export const teams = {
     "achievement": "",
     "name": "Vũ Văn Thanh",
     "birthDay": "1996-04-14",
-    "status": ""
+    "status": "",
+    "PlayerId": "20"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -298,7 +318,8 @@ export const teams = {
     "achievement": "",
     "name": "Lê Huy Kiệt",
     "birthDay": "2003-10-20",
-    "status": ""
+    "status": "",
+    "PlayerId": "21"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -312,7 +333,8 @@ export const teams = {
     "achievement": "",
     "name": "Trần Hữu Đông Triều",
     "birthDay": "1995-08-20",
-    "status": ""
+    "status": "",
+    "PlayerId": "22"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -326,7 +348,8 @@ export const teams = {
     "achievement": "",
     "name": "Nguyễn Hữu Tuấn",
     "birthDay": "1992-05-06",
-    "status": ""
+    "status": "",
+    "PlayerId": "23"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -340,7 +363,8 @@ export const teams = {
     "achievement": "",
     "name": "Lê Văn Sơn",
     "birthDay": "1996-12-20",
-    "status": ""
+    "status": "",
+    "PlayerId": "24"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -354,7 +378,8 @@ export const teams = {
     "achievement": "",
     "name": "Cao Hoàng Tú",
     "birthDay": "2001-06-09",
-    "status": ""
+    "status": "",
+    "PlayerId": "25"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -368,7 +393,8 @@ export const teams = {
     "achievement": "",
     "name": "Nguyễn Tuấn Anh",
     "birthDay": "1995-05-16",
-    "status": ""
+    "status": "",
+    "PlayerId": "26"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -382,7 +408,8 @@ export const teams = {
     "achievement": "",
     "name": "A Hoàng",
     "birthDay": "1995-07-31",
-    "status": ""
+    "status": "",
+    "PlayerId": "27"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -396,7 +423,8 @@ export const teams = {
     "achievement": "",
     "name": "Dương Văn Lợi",
     "birthDay": "2000-12-02",
-    "status": ""
+    "status": "",
+    "PlayerId": "28"
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -410,7 +438,8 @@ export const teams = {
     "achievement": "",
     "name": "Nguyễn Nhĩ Khang",
     "birthDay": "2001-02-16",
-    "status": ""
+    "status": "",
+    "PlayerId": "29"
 }
 ]
     }
