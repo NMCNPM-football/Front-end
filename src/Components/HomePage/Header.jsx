@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   const menuItems = [
-    { name: "Lịch thi đấu và Kết quả", path: "/lich-thi-dau-va-ket-qua" },
+    { name: "Lịch thi đấu và Kết quả", path: "/schedule" },
     { name: "Bảng xếp hạng", path: "/league-table" },
     { name: "Thông báo", path: "/thong-bao" },
     { name: "Các đội bóng", path: "/team" },
@@ -39,7 +39,7 @@ const Header = () => {
   ];
 
   const firstDivisionMenuItems = [
-    { name: "Lịch thi đấu và Kết quả", path: "/lich-thi-dau-va-ket-qua" },
+    { name: "Lịch thi đấu và Kết quả", path: "/schedule" },
     { name: "Bảng xếp hạng", path: "/league-table" },
     { name: "Thông báo", path: "/thong-bao" },
     { name: "Các đội bóng", path: "/team" },
@@ -109,7 +109,11 @@ const Header = () => {
               </li>
               <li className="menu-item">VPF</li>
               <li className="menu-item">Highlights</li>
-              <li className="menu-item">Tin tức</li>
+              <li className="menu-item">
+                <Link to="/tin-tuc" className="menu-link">
+                  Tin tức
+                </Link>
+              </li>
               <li
                 onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
                 onMouseLeave={handleMouseLeave}
@@ -157,7 +161,9 @@ const Header = () => {
               <li className="menu-item">Cúp quốc gia</li>
               <li className="menu-item">Thư viện</li>
               <li className="menu-item">Nhà tài trợ</li>
-              <li className="menu-item">Đăng nhập</li>
+              <li className="menu-item" onClick={() => {window.location.href="http://localhost:5173/admin"}}>
+                Đăng nhập
+              </li>
             </ul>
           </div>
         </div>
