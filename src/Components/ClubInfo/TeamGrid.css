@@ -14,13 +14,14 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   width: 150px;
+  height: 120px; /* Đặt chiều cao cố định */
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .team-card img {
   width: 100px;
-  height: 100px;
+  height: 80px;
   object-fit: contain;
 }
 
@@ -28,7 +29,12 @@
   margin-top: 5px;
   font-size: 16px;
   font-weight: bold;
+  flex-grow: 1; /* Để đoạn văn bản chiếm hết không gian còn lại */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .season-selector-container {
   display: flex;
   justify-content: flex-start;
@@ -40,14 +46,16 @@
   font-size: 13px;
   margin-left: 1370px;
 }
-.title-teaminfo
-{
+
+.title-teaminfo {
   margin-left: 30px;
   font-size: 40px;
 }
+
 .team-card p:hover {
-  color: #007BFF; /* Change to desired hover color */
+  color: #007BFF; /* Thay đổi thành màu mong muốn khi hover */
 }
+
 .team-link {
   text-decoration: none;
 }

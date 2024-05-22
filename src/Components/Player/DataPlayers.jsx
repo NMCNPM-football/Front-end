@@ -13,8 +13,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Huỳnh Tuấn Linh",
             "birthDay": "1991-04-12",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2018/12/z4869696356921_ea0bfc2b3262bce4069609434458e0aa-310x413.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 2,
@@ -29,8 +28,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Bruno Henrique",
             "birthDay": "1992-10-25",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2020/01/HAGL-92-Bruno-Henrique-De-Sousa.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 3,
@@ -45,8 +43,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Trần Trung Kiên",
             "birthDay": "2003-02-09",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/HAGL_25_TranTrungKien_VN0000782.jpg"
+            "status": ""
         },
         {
             "PlayerId": 4,
@@ -61,8 +58,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Trần Minh Vương",
             "birthDay": "1995-03-28",
-            "status": "",
-            "PlayerImg":"https://vpf.vn/wp-content/uploads/2018/12/HAGL_10_TranMinhVuong_VN0001154.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 5,
@@ -77,8 +73,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Nguyễn Phong Hồng Duy",
             "birthDay": "1996-06-13",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2018/12/NDFC_VN0002244_NguyenPhongHongDuy_7-310x421.jpg"
+            "status": ""
         },
         {
             "PlayerId": 6,
@@ -93,8 +88,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Lê Hữu Phước",
             "birthDay": "2001-05-07",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2021/03/HAGL_18_LeHuuPhuoc_VN0001166-310x414.jpg"
+            "status": ""
         },
         {   "PlayerId": 7,
             "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -108,8 +102,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Barbosa Teixeira Mauricio",
             "birthDay": "1994-12-08",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/HAGL_BR0000466_BARBOSATEIXEIRAMAURICIO_94.jpg"
+            "status": ""
         },
         {   "PlayerId": 8,
             "clubName": "LPBank Hoàng Anh Gia Lai",
@@ -123,8 +116,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Nguyễn Văn Toàn",
             "birthDay": "1996-04-12",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2020/01/HPFC_26_NguyenVanToan_VN0000281-310x466.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 9,
@@ -139,8 +131,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Nguyễn Văn Việt",
             "birthDay": "1989-01-17",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/SLNA_14_NguyenVanViet_VN001829-310x466.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 10,
@@ -155,8 +146,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Nguyễn Công Phượng",
             "birthDay": "1995-01-21",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2018/12/VTFC_6_NguyenCongPhuong_VN001868-310x413.jpg"
+            "status": ""
         },
         {
             "PlayerId": 11,
@@ -171,8 +161,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Tiêu Ê Xal",
             "birthDay": "2000-08-14",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2020/02/BRVT_33_TieuEXal_VN0002261-310x413.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 12,    
@@ -187,8 +176,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Lương Xuân Trường",
             "birthDay": "1995-04-28",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2018/12/HPFC_VN0002248_LuongXuanTruong_8-310x467.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 13,
@@ -203,8 +191,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Nguyễn Thanh Nhân",
             "birthDay": "2000-10-25",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/03/PVFCA_11_NguyenThanhNhan_VN0000558-310x414.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 14,
@@ -219,8 +206,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Võ Đình Lâm",
             "birthDay": "2000-01-10",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2020/01/HAGL_60_VoDinhLam_VN0001157-310x414.jpg"
+            "status": ""
         },
         {
             "PlayerId": 15,
@@ -235,8 +221,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Nguyễn Văn Triệu",
             "birthDay": "2003-01-17",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/HAGL_21_NguyenVanTrieu_VN0001163-310x414.jpg"
+            "status": ""
         },
         {
             "PlayerId": 16,
@@ -251,8 +236,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "An Sae Hee",
             "birthDay": "1991-02-08",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/07/HAGL-40-An-Sae-Hee-310x413.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 17,
@@ -267,8 +251,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Trần Bảo Toàn",
             "birthDay": "2000-07-14",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2019/02/HAGL_20_TranBaoToan_VN0001159-310x414.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 18,
@@ -283,8 +266,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Washington Brandão Dos Santos",
             "birthDay": "1990-08-18",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/12.-BRANDAO-310x431.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 19,
@@ -299,8 +281,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Nguyễn Đức Việt",
             "birthDay": "2004-01-01",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/HAGL_24_NguyenDucViet_VN001697-310x551.jpg"
+            "status": ""
         },
         {
             "PlayerId": 20,
@@ -315,8 +296,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Vũ Văn Thanh",
             "birthDay": "1996-04-14",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2018/12/CAHN_17_VuVanThanh_VN001905-310x413.jpg"
+            "status": ""
         },
         {
             "PlayerId": 21,
@@ -331,8 +311,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Lê Huy Kiệt",
             "birthDay": "2003-10-20",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/HAGL_VN0000452_LEHUYKIET_21.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 22,
@@ -347,8 +326,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Trần Hữu Đông Triều",
             "birthDay": "1995-08-20",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/HAGL_5_TranHuuDongTrieu_VN0001160-310x414.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 23,
@@ -363,8 +341,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Nguyễn Hữu Tuấn",
             "birthDay": "1992-05-06",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2023/10/HUE_15_NguyenHuuTuan_VN001486.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 24,
@@ -379,8 +356,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Lê Văn Sơn",
             "birthDay": "1996-12-20",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/2.-LÊ-VĂN-SƠN-310x422.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 25,
@@ -395,8 +371,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Cao Hoàng Tú",
             "birthDay": "2001-06-09",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/DNFC_11_CaoHoangTu_VN001349-310x413.jpg"
+            "status": ""
         },
         {   
             "PlayerId": 26,
@@ -411,8 +386,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Nguyễn Tuấn Anh",
             "birthDay": "1995-05-16",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2020/01/HPFC_79_NguyenTuanAnh_VN001684-310x461.png"
+            "status": ""
         },
         {
             "PlayerId": 27,
@@ -427,8 +401,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "A Hoàng",
             "birthDay": "1995-07-31",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2018/12/HAGL_71_AHoang_VN0001168-310x414.jpg"
+            "status": ""
         },
         {
             "PlayerId": 28,
@@ -443,8 +416,7 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Dương Văn Lợi",
             "birthDay": "2000-12-02",
-            "status": "",
-            "PlayerImg": "https://vpf.vn/wp-content/uploads/2022/02/1.-DƯƠNG-VĂN-LỢI-310x420.jpg"
+            "status": ""
         },
         {
             "PlayerId": 29,
@@ -459,8 +431,8 @@ export const DataPlayers ={
             "achievement": "",
             "name": "Nguyễn Nhĩ Khang",
             "birthDay": "2001-02-16",
-            "status": "",
-            "PlayerImg":"https://vpf.vn/wp-content/uploads/2022/02/HAGL_VN0000453_NGUYENNHIKHANG_22.jpg"
+            "status": ""
         }
     ],
-}
+  };
+  

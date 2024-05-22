@@ -27,7 +27,7 @@ const TeamGrid = () => {
       <SeasonSelector selectedSeason={selectedSeason} onSeasonChange={setSelectedSeason} />
       <div className="team-grid">
         {teams.map((team, index) => (
-          <Link key={index} to={`/team/${team.idteam}`} className="team-link"> {/* Thay đổi đường dẫn */}
+            <Link key={index} to={`/team/${team.idteam}`} className="team-link">
             <div className="team-card">
               <img src={team.image} alt={team.clubName} />
               <p>{team.clubName}</p>
