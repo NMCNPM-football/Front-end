@@ -1,15 +1,17 @@
+import { teams } from './DataTeam'; // update with the actual path to your data file
+import './Team.css'
 import React, { useState } from 'react';
 import {dataHAGL, subdataHAGL} from './DataTeam';
 import './Team.css'; // Đảm bảo bạn tạo file CSS tương ứng
 
 const TitleTable = () => {
-  const teamInfo = subdataHAGL[0]; // Accessing the first (and only) element of the subdataHAGL array
+    const teamInfo = subdataHAGL[0]; // Accessing the first (and only) element of the subdataHAGL array
 
     return (
         <header className="Title-TI">
             <div className="InfoAround">
-             <img src={teamInfo.logo} alt="" className="team-logo-TI" />
-             <h1>{teamInfo.clubName}</h1>
+                <img src={teamInfo.logo} alt="" className="team-logo-TI" />
+                <h1>{teamInfo.clubName}</h1>
             </div>
             <div className="InfoHLV">
                 <p>Sân Nhà: {teamInfo.Stadium}</p>
@@ -55,53 +57,50 @@ const TeamTable = () => {
         return '';
     };
 
-    return (
-        <div>
-            <TitleTable />
-            <table className="team-table">
-                <thead>
-                    <tr>
-                        <th onClick={() => handleSort('name')} className={getClassName('name')}>
-                            Họ và Tên {getArrowIcon('name')}
-                        </th>
-                        <th style={{width : '60px' }} onClick={() => handleSort('position')} className={getClassName('position')}>
-                            Vị trí {getArrowIcon('position') }
-                        </th>
-                        <th onClick={() => handleSort('height')} className={getClassName('height')}>
-                            Cao (cm) {getArrowIcon('height')}
-                        </th>
-                        <th onClick={() => handleSort('weight')} className={getClassName('weight')}>
-                            Nặng (kg) {getArrowIcon('weight')}
-                        </th>
-                        <th onClick={() => handleSort('birthDay')} className={getClassName('birthDay')}>
-                            Năm sinh {getArrowIcon('birthDay')}
-                        </th>
-                        <th>Bản Thắng</th>
-                        <th>Penalty</th>
-                        <th style={{width : '50px' }}>OG</th>
-                        <th>Thẻ Vàng</th>
-                        <th>Thẻ Đỏ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedData.map((player, index) => (
-                        <tr key={index}>
-                            <td>{player.name}</td>
-                            <td>{player.position}</td>
-                            <td>{player.height}</td>
-                            <td>{player.weight}</td>
-                            <td>{new Date(player.birthDay).toLocaleDateString()}</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
+  return (
+    <div>
+      <div className="team-header-tab">
+        <img src={team.logo} alt={team.clubName} className="team-logo" />
+        <h1 className='clubnametab'>{team.clubName}</h1>
+      </div>
+      <div className='stacoach'>
+        <p className='stadiumtab'>Sân Nhà: {team.stadium}</p>
+        <p className='coachtab'>Huấn luyện viên: {team.coach}</p>
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th onClick={() => onSort('name')}>Họ và Tên {getArrow('name')}</th>
+            <th onClick={() => onSort('kit')}>Số áo {getArrow('kit')}</th>
+            <th onClick={() => onSort('position')}>Vị trí {getArrow('position')}</th>
+            <th onClick={() => onSort('height')}>Cao (cm) {getArrow('height')}</th>
+            <th onClick={() => onSort('weight')}>Nặng (kg) {getArrow('weight')}</th>
+            <th onClick={() => onSort('birthDay')}>Năm sinh {getArrow('birthDay')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {players.map((player, index) => (
+            <tr key={index}>
+              <td>{player.name}</td>
+              <td>{player.kit}</td>
+              <td>{player.position}</td>
+              <td>{player.height}</td>
+              <td>{player.weight}</td>
+              <td>{formatDate(player.birthDay)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
-export default TeamTable;
+
+
+const formatDate = (dateString) => {
+  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+  return new Date(dateString).toLocaleDateString('vi-VN', options);
+};
+
+export default DataTeam;

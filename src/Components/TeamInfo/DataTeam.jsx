@@ -1,4 +1,10 @@
-export const dataHAGL = [
+export const teams = {
+    "HoangAnhGiaLai": {
+        "clubName": "LPBank Hoàng Anh Gia Lai",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Logo_LPBank_Hoang_Anh_Gia_Lai.jpg",
+        "stadium": "SVD Bình Dương (Sức chứa: 15.000 người)",
+        "coach": "Trần Lê Anh Khoa",
+        "players": [ 
   {
     "clubName": "LPBank Hoàng Anh Gia Lai",
     "seaSon": "2023-2024",
@@ -405,13 +411,7 @@ export const dataHAGL = [
     "birthDay": "2001-02-16",
     "status": ""
 }
-];
-export const subdataHAGL=[
-{
+]
+    }
 
-  logo:'https://upload.wikimedia.org/wikipedia/commons/f/f0/Logo_LPBank_Hoang_Anh_Gia_Lai.jpg',
-  Stadium:'SVD Bình Dương (Sức chứa: 15.000 người',
-  HLV:'Trần Lê Anh Khoa',
-  clubName: "LPBank Hoàng Anh Gia Lai",
-},
-];
+};
