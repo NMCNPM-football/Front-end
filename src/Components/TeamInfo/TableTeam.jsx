@@ -1,11 +1,26 @@
-import { teams } from './DataTeam'; // update with the actual path to your data file
-import './Team.css'
-import React, { useState } from 'react';
-const DataTeam = () => {
-  const team = teams.HoangAnhGiaLai;
+import React, { useState, useEffect } from 'react';
+import { teams } from './DataTeam'; // Cập nhật đường dẫn thực tế đến tệp dữ liệu của bạn
+import './Team.css';
 
-  const [players, setPlayers] = useState(team.players);
+const DataTeam = () => {
+  const [players, setPlayers] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
+  const [team, setTeam] = useState(null);
+
+  // Hàm lấy thông tin đội dựa trên id
+  const getTeamById = (id) => {
+    return Object.values(teams).find(team => team.idteam === parseInt(id));
+  };
+
+  useEffect(() => {
+    // Lấy id từ đường dẫn URL
+    const teamId = window.location.pathname.split('/').pop();
+    const selectedTeam = getTeamById(teamId);
+    if (selectedTeam) {
+      setTeam(selectedTeam);
+      setPlayers(selectedTeam.players);
+    }
+  }, []);
 
   const onSort = (key) => {
     let direction = 'ascending';
@@ -36,6 +51,15 @@ const DataTeam = () => {
     }
     return '';
   };
+
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return new Date(dateString).toLocaleDateString('vi-VN', options);
+  };
+
+  if (!team) {
+    return <div>Không tìm thấy thông tin đội</div>;
+  }
 
   return (
     <div>
@@ -77,3 +101,4 @@ const DataTeam = () => {
 };
 
 export default DataTeam;
+
