@@ -19,7 +19,7 @@ export const teams = {
     "name": "Huỳnh Tuấn Linh",
     "birthDay": "1991-04-12",
     "status": "",
-    "PlayerId": "1"
+    "PlayerId": "1",
 },
 {
     "clubName": "LPBank Hoàng Anh Gia Lai",
