@@ -15,10 +15,9 @@ const Player = () => {
 
   const playerInfo = (
     <div className="player-info">
-      <img src="https://vpf.vn/wp-content/uploads/2018/12/BDFC_3_QueNgocHai_VN001612-310x386.jpg" alt="Player" />
+      <img src={player.PlayerImg} alt={player.name} />
       <div>
         <p>Họ và tên: {player.name}</p>
-        <p>Tên cuối: {player.name.split(' ').pop()}</p>
         <p>Cao (cm): {player.height}</p>
         <p>Nặng (kg): {player.weight}</p>
         <p>Vị trí: {player.position}</p>
@@ -56,16 +55,6 @@ const Player = () => {
           </tr>
         </tbody>
       </table>
-      <h3>Trận đấu</h3>
-      <ul className="matches-list">
-        <li><span>24-11-2023 18:00</span><div>Becamex Bình Dương <img src="path_to_logo.jpg" alt="Logo" /> 0 - 1 <img src="path_to_opponent_logo.jpg" alt="Opponent Logo" /> Hà Nội</div></li>
-        <li><span>03-12-2023 17:00</span><div>LPBank Hoàng Anh Gia Lai <img src="path_to_logo.jpg" alt="Logo" /> 1 - 1 <img src="path_to_opponent_logo.jpg" alt="Opponent Logo" /> Becamex Bình Dương</div></li>
-        <li><span>10-12-2023 18:00</span><div>Khánh Hòa <img src="path_to_logo.jpg" alt="Logo" /> 0 - 2 <img src="path_to_opponent_logo.jpg" alt="Opponent Logo" /> Becamex Bình Dương</div></li>
-        <li><span>17-02-2024 18:00</span><div>Becamex Bình Dương <img src="path_to_logo.jpg" alt="Logo" /> 1 - 1 <img src="path_to_opponent_logo.jpg" alt="Opponent Logo" /> Quảng Nam</div></li>
-        <li><span>31-03-2024 17:00</span><div>Hồng Lĩnh Hà Tĩnh <img src="path_to_logo.jpg" alt="Logo" /> 2 - 0 <img src="path_to_opponent_logo.jpg" alt="Opponent Logo" /> Becamex Bình Dương</div></li>
-        <li><span>04-04-2024 18:00</span><div>Becamex Bình Dương <img src="path_to_logo.jpg" alt="Logo" /> 0 - 0 <img src="path_to_opponent_logo.jpg" alt="Opponent Logo" /> Thể Công – Viettel</div></li>
-        {/* Add other matches similarly */}
-      </ul>
     </div>
   );
 
