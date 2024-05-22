@@ -1,5 +1,6 @@
 export const teams = {
     "HoangAnhGiaLai": {
+        "idteam":1,
         "clubName": "LPBank Hoàng Anh Gia Lai",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Logo_LPBank_Hoang_Anh_Gia_Lai.jpg",
         "stadium": "SVD Bình Dương (Sức chứa: 15.000 người)",

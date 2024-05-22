@@ -18,10 +18,10 @@ const Header = () => {
     { name: "Lịch thi đấu và Kết quả", path: "/lich-thi-dau-va-ket-qua" },
     { name: "Bảng xếp hạng", path: "/league-table" },
     { name: "Thông báo", path: "/thong-bao" },
-    { name: "Các đội bóng", path: "/club-info" },
+    { name: "Các đội bóng", path: "/team" },
     { name: "Điều lệ", path: "/dieu-le" },
     { name: "Bình chọn", path: "/binh-chon" },
-    { name: "Thư viện", path: "/table-team" },
+    { name: "Thư viện", path: "/team/1" },
     { name: "Download", path: "/match/0" }
   ];
 
@@ -29,7 +29,7 @@ const Header = () => {
     { name: "Lịch thi đấu và Kết quả", path: "/lich-thi-dau-va-ket-qua" },
     { name: "Bảng xếp hạng", path: "/league-table" },
     { name: "Thông báo", path: "/thong-bao" },
-    { name: "Các đội bóng", path: "/club-info" },
+    { name: "Các đội bóng", path: "/team" },
     { name: "Điều lệ", path: "/dieu-le" },
     { name: "Thư viện", path: "/table-team" },
     { name: "Download", path: "/match/0" }

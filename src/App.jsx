@@ -7,7 +7,6 @@ import Footer from './Components/HomePage/Footer.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Removed unused 'Navigate'
 import MatchPage from './Components/Progess_Goal/MatchPage.jsx';
 import TeamGrid from './Components/ClubInfo/TeamGrid.jsx';
-import TeamTable from './Components/TeamInfo/TableTeam.jsx'
 import TableTeam from './Components/TeamInfo/TableTeam.jsx';
 function App() {
   return (
@@ -17,13 +16,13 @@ function App() {
         {/* <FootballSchedule /> */}
         {/* <LeagueTable /> */}
         {/* <TeamGrid /> */}
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/league-table" element={<LeagueTable />} />
-          <Route path="/club-info" element={<TeamGrid />} />
+          <Route path="/team" element={<TeamGrid />} />
+          <Route path="/team/:id" element={<TableTeam />} />
           <Route path="/match/:id" element={<MatchPage />} />
-        </Routes> */}
-        <TableTeam/>
+        </Routes>
         <Footer />
       </div>
     </Router>
