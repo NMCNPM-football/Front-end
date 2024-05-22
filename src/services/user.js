@@ -75,23 +75,6 @@ export default {
     }
   },
 
-  // async getTokenInfo({ token }) {
-  //   const ep = {
-  //     baseURL: process.env.REACT_APP_API_ROOT,
-  //     url: `/project/member/invite/${token}`,
-  //     method: HttpMethod.GET
-  //   };
-  //   const payload = { token };
-  //
-  //   try {
-  //     const res = await processRequest(ep);
-  //     return processSuccessResponse(res);
-  //   } catch (e) {
-  //     processErrorResponse(e.response);
-  //     return false;
-  //   }
-  // },
-
   async refreshToken(token) {
     const ep = {
       baseURL: process.env.REACT_APP_API_ROOT,
