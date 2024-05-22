@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { teams } from './DataTeam'; // Cập nhật đường dẫn thực tế đến tệp dữ liệu của bạn
 import './Team.css';
+import { Link } from 'react-router-dom';
 
 const DataTeam = () => {
   const [players, setPlayers] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
   const [team, setTeam] = useState(null);
 
-  // Hàm lấy thông tin đội dựa trên id
   const getTeamById = (id) => {
     return Object.values(teams).find(team => team.idteam === parseInt(id));
   };
 
   useEffect(() => {
-    // Lấy id từ đường dẫn URL
     const teamId = window.location.pathname.split('/').pop();
     const selectedTeam = getTeamById(teamId);
     if (selectedTeam) {
@@ -75,7 +74,8 @@ const DataTeam = () => {
       <table>
         <thead>
           <tr>
-            <th className='titletab' onClick={() => onSort('name')}>Họ và Tên {getArrow('name')}</th>
+            <th className='titletab' onClick={() => onSort('name')}>Họ và Tên {getArrow('name')}
+            </th>
             <th className='titletab' onClick={() => onSort('kit')}>Số áo {getArrow('kit')}</th>
             <th className='titletab' onClick={() => onSort('position')}>Vị trí {getArrow('position')}</th>
             <th className='titletab' onClick={() => onSort('height')}>Cao (cm) {getArrow('height')}</th>
@@ -86,7 +86,9 @@ const DataTeam = () => {
         <tbody>
           {players.map((player, index) => (
             <tr key={index}>
-              <td className='titletab'>{player.name}</td>
+              <td className='titletab'>
+                <Link to={`/player/${player.PlayerId}`}>{player.name}</Link>
+              </td>
               <td className='titletab'>{player.kit}</td>
               <td className='titletab'>{player.position}</td>
               <td className='titletab'>{player.height}</td>
@@ -101,4 +103,3 @@ const DataTeam = () => {
 };
 
 export default DataTeam;
-
