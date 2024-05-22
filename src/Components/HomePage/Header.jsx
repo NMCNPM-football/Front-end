@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   const menuItems = [
-    { name: "Lịch thi đấu và Kết quả", path: "/lich-thi-dau-va-ket-qua" },
+    { name: "Lịch thi đấu và Kết quả", path: "/schedule" },
     { name: "Bảng xếp hạng", path: "/league-table" },
     { name: "Thông báo", path: "/thong-bao" },
     { name: "Các đội bóng", path: "/team" },
@@ -39,7 +39,7 @@ const Header = () => {
   ];
 
   const firstDivisionMenuItems = [
-    { name: "Lịch thi đấu và Kết quả", path: "/lich-thi-dau-va-ket-qua" },
+    { name: "Lịch thi đấu và Kết quả", path: "/schedule" },
     { name: "Bảng xếp hạng", path: "/league-table" },
     { name: "Thông báo", path: "/thong-bao" },
     { name: "Các đội bóng", path: "/team" },
