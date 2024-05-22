@@ -3,13 +3,13 @@ import {dataHAGL, subdataHAGL} from './DataTeam';
 import './Team.css'; // Đảm bảo bạn tạo file CSS tương ứng
 
 const TitleTable = () => {
-    const teamInfo = subdataHAGL[0]; // Accessing the first (and only) element of the subdataHAGL array
+  const teamInfo = subdataHAGL[0]; // Accessing the first (and only) element of the subdataHAGL array
 
     return (
         <header className="Title-TI">
             <div className="InfoAround">
-                <img src={teamInfo.logo} alt="" className="team-logo-TI" />
-                <h1>{teamInfo.clubName}</h1>
+             <img src={teamInfo.logo} alt="" className="team-logo-TI" />
+             <h1>{teamInfo.clubName}</h1>
             </div>
             <div className="InfoHLV">
                 <p>Sân Nhà: {teamInfo.Stadium}</p>

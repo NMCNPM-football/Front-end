@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Re
 import MatchPage from './Components/Progess_Goal/MatchPage.jsx';
 // Removed unused 'FootballSchedule' import
 import TeamGrid from './Components/ClubInfo/TeamGrid.jsx';
-
 function App() {
   return (
     <Router>
