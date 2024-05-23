@@ -28,7 +28,7 @@ function App() {
           <Route path="/team/:id" element={<TableTeam />} />
           <Route path="/match/:id" element={<MatchPage />} />
           <Route path="/player/:playerId" element={<Player />} />
-          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/match" element={<Schedule />} />
           <Route path="/tin-tuc" element={<Paper/>} />
           <Route path="/main-news" element={<MainNews/>} />
           <Route path="/first-news" element={<FirstNews/>} />

@@ -28,24 +28,24 @@ const Header = () => {
   };
 
   const menuItems = [
-    { name: "Lịch thi đấu và Kết quả", path: "/schedule" },
+    { name: "Lịch thi đấu và Kết quả", path: "/match" },
     { name: "Bảng xếp hạng", path: "/league-table" },
     { name: "Thông báo", path: "/thong-bao" },
     { name: "Các đội bóng", path: "/team" },
     { name: "Điều lệ", path: "/dieu-le" },
     { name: "Bình chọn", path: "/binh-chon" },
     { name: "Thư viện", path: "/thu-vien" },
-    { name: "Download", path: "/match/0" }
+    { name: "Download", path: "/download"}
   ];
 
   const firstDivisionMenuItems = [
-    { name: "Lịch thi đấu và Kết quả", path: "/schedule" },
+    { name: "Lịch thi đấu và Kết quả", path: "/match" },
     { name: "Bảng xếp hạng", path: "/league-table" },
     { name: "Thông báo", path: "/thong-bao" },
     { name: "Các đội bóng", path: "/team" },
     { name: "Điều lệ", path: "/dieu-le" },
     { name: "Thư viện", path: "/thu-vien" },
-    { name: "Download", path: "/match/0" }
+    { name: "Download", path: "/download" }
   ];
 
   const firstSetLogos = [

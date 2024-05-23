@@ -52,7 +52,7 @@
   font-size: 40px;
 }
 
-.team-card p:hover {
+.team-card-grid p:hover {
   color: #007BFF; /* Thay đổi thành màu mong muốn khi hover */
 }
 
