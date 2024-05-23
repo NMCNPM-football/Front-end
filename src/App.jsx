@@ -4,19 +4,30 @@ import HomePage from './Components/HomePage/HomePage.jsx';
 import LeagueTable from './Components/Ranking/LeagueTable.jsx';
 import Header from './Components/HomePage/Header.jsx';
 import Footer from './Components/HomePage/Footer.jsx';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import MatchPage from './Components/Progess_Goal/MatchPage.jsx';
 import TeamGrid from './Components/ClubInfo/TeamGrid.jsx';
 import TableTeam from './Components/TeamInfo/TableTeam.jsx';
-import Player from './Components/Player/Players.jsx'; // Import Player component
-import Paper from './Components/Paper/Paper.jsx'; // Import Paper component
+import Player from './Components/Player/Players.jsx';
+import Paper from './Components/Paper/Paper.jsx';
 import MainNews from './Components/Paper/MainNews.jsx';
 import FirstNews from './Components/Paper/FirstNews.jsx';
-import SecondNews from './Components/Paper/SecondNews.jsx'; 
+import SecondNews from './Components/Paper/SecondNews.jsx';
 import ThirdNews from './Components/Paper/ThirdNews.jsx';
 import Sumarize from './Components/Paper/Sumarize.jsx';
 import Schedule from './Components/MatchSchedule/Schedule.jsx';
-function App() {
+import LoginPage from './Components/Auth/Sign-in/LoginPage';
+import AdminDashboard from './Components/Auth/AdminDashboard';
+import UserDashboard from './Components/Auth/UserDashBoard';
+
+const PrivateRoute = ({ children, role, requiredRole }) => {
+  return role === requiredRole ? children : <Navigate to="/login" />;
+};
+
+const App = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const role = user ? user.role : null;
+
   return (
     <Router>
       <div>
@@ -29,18 +40,34 @@ function App() {
           <Route path="/match/:id" element={<MatchPage />} />
           <Route path="/player/:playerId" element={<Player />} />
           <Route path="/match" element={<Schedule />} />
-          <Route path="/tin-tuc" element={<Paper/>} />
-          <Route path="/main-news" element={<MainNews/>} />
-          <Route path="/first-news" element={<FirstNews/>} />
-          <Route path="/second-news" element={<SecondNews/>} />
-          <Route path="/third-news" element={<ThirdNews/>} />
-          <Route path="/sumarize" element={<Sumarize/>} />
+          <Route path="/tin-tuc" element={<Paper />} />
+          <Route path="/main-news" element={<MainNews />} />
+          <Route path="/first-news" element={<FirstNews />} />
+          <Route path="/second-news" element={<SecondNews />} />
+          <Route path="/third-news" element={<ThirdNews />} />
+          <Route path="/sumarize" element={<Sumarize />} />
+          <Route path="/Sign-in" element={<LoginPage />} />
+          <Route
+            path="/admin-dashboard"
+            element={
+              <PrivateRoute role={role} requiredRole="admin">
+                <AdminDashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/user-dashboard"
+            element={
+              <PrivateRoute role={role} requiredRole="user">
+                <UserDashboard />
+              </PrivateRoute>
+            }
+          />
         </Routes>
         <Footer />
       </div>
     </Router>
   );
-}
+};
 
 export default App;
-
