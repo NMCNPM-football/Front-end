@@ -1,3 +1,4 @@
+// MatchInfo.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -6,24 +7,25 @@ const MatchInfo = ({ match }) => {
 
   return (
     <div className="match-info">
-      <h1 className="titlematch">{match.teamOne.name} vs {match.teamTwo.name}</h1>
+      <h1 className="titlematch">{match.homeTeam.name} vs {match.awayTeam.name}</h1>
       <div className="timewhere">
-        <div>{match.date}</div>
-        <div>{match.venue}</div>
+        <div>{match.time}</div>
+        <div>{match.stadium}</div>
+        <div>{match.capacity}</div>
       </div>
       <div className="scoreboard">
         <div className="team-info">
-          <img src={match.teamOne.logo} alt={match.teamOne.name} className="team-logo" />
-          <div className="team-name">{match.teamOne.name}</div>
+          <img src={match.homeTeam.logo} alt={match.homeTeam.name} className="team-logo" />
+          <div className="team-name">{match.homeTeam.name}</div>
         </div>
         <div className="scoreteam">
-          <span>{match.teamOne.goals}</span>
+          <span>{match.homeTeam.goals}</span>
           <span>-</span>
-          <span>{match.teamTwo.goals}</span>
+          <span>{match.awayTeam.goals}</span>
         </div>
         <div className="team-info">
-          <img src={match.teamTwo.logo} alt={match.teamTwo.name} className="team-logo" />
-          <div className="team-name">{match.teamTwo.name}</div>
+          <img src={match.awayTeam.logo} alt={match.awayTeam.name} className="team-logo" />
+          <div className="team-name">{match.awayTeam.name}</div>
         </div>
       </div>
     </div>
@@ -32,18 +34,19 @@ const MatchInfo = ({ match }) => {
 
 MatchInfo.propTypes = {
   match: PropTypes.shape({
-    teamOne: PropTypes.shape({
+    homeTeam: PropTypes.shape({
       name: PropTypes.string.isRequired,
       logo: PropTypes.string.isRequired,
       goals: PropTypes.number.isRequired
     }).isRequired,
-    teamTwo: PropTypes.shape({
+    awayTeam: PropTypes.shape({
       name: PropTypes.string.isRequired,
       logo: PropTypes.string.isRequired,
       goals: PropTypes.number.isRequired
     }).isRequired,
-    date: PropTypes.string.isRequired,
-    venue: PropTypes.string.isRequired
+    time: PropTypes.string.isRequired,
+    stadium: PropTypes.string.isRequired,
+    capacity: PropTypes.string.isRequired
   }).isRequired
 };
 
