@@ -1,6 +1,7 @@
 .team-header-tab{
   display: flex;
   align-items: center;
+  margin: 20px 0 0 20px;
 }
 .team-logo-tab {
   width: 80px;

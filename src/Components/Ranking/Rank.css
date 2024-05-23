@@ -1,8 +1,7 @@
 /* src/app.scss */
 .season-selector {
-  margin: 20px 0;
   text-align: center;
-  margin-left: 1200px;
+  margin: 20px 0 20px 1200px;
 }
 
 .season-selector label {
@@ -11,7 +10,7 @@
 }
 
 table {
-  width: 65%; 
+  width: 65%;
   border-collapse: collapse;
   margin: 20px 300px;
   font-size: 1em;

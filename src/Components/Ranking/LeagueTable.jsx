@@ -38,7 +38,7 @@ const LeagueTable = () => {
       Header: 'Team',
       accessor: 'clubName',
       Cell: ({ cell: { value }, row: { original } }) => (
-        <Link to={`/team/${original.clubId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link to={`/team/${original.clubId}?season=${selectedSeason}`} style={{ textDecoration: 'none', color: 'inherit' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <img src={original.logoLink} alt={value} style={{ height: '30px', marginRight: '10px' }} />
             {value}

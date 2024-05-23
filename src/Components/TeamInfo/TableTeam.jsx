@@ -82,7 +82,7 @@ const DataTeam = () => {
         <h1 className='clubnametab'>{team.clubName}</h1>
       </div>
       <div className='stacoach'>
-        <p className='stadiumtab'>Sân Nhà: {team.stadium}</p>
+        <p className='stadiumtab'>Sân Nhà: {'SVD ' + team.nameStadium}</p>
         <p className='coachtab'>Huấn luyện viên: {team.coach}</p>
       </div>
       

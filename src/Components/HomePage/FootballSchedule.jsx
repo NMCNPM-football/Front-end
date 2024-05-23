@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FootballSchedule.css';
 
 const FootballSchedule = () => {
   const [activeLeague, setActiveLeague] = useState('night-wolf');
   const [startIndex, setStartIndex] = useState(0);
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:8888/match/result_score/1`)
+      .then(response => response.json())
+      .then(data => setMatches(data.data))
+      .catch(error => console.error(`Error: ${error}`));
+  }, []);
 
   const handleLeagueClick = (league) => {
     setActiveLeague(league);
@@ -17,8 +25,8 @@ const FootballSchedule = () => {
         dateTime: '17/05 18:00',
         venue: 'SVĐ Bình Dương',
         teams: [
-          { name: 'BDFC', logo: 'https://vpf.vn/wp-content/uploads/2018/10/binh-duong-2021-150x150.png' },
-          { name: 'CAHN', logo: 'https://vpf.vn/wp-content/uploads/2018/10/cong-an-ha-noi-fc-150x150.png' },
+          { name: 'BDFC', logo: './assets/becamexbinhduong.png' },
+          { name: 'CAHN', logo: './assets/hanoi.png' },
         ],
         score: '4 - 1',
         broadcast: 'VTV5, FPT Play, TV360',
@@ -28,8 +36,8 @@ const FootballSchedule = () => {
         dateTime: '17/05 18:00',
         venue: 'SVĐ Thanh Hóa',
         teams: [
-          { name: 'THFC', logo: 'https://vpf.vn/wp-content/uploads/2018/10/Logo-CLB-Dong-A-Thanh-Hoa_chuan-150x150.png' },
-          { name: 'QNFC', logo: 'https://vpf.vn/wp-content/uploads/2018/10/Quang-Nam-150x150.jpg' },
+          { name: 'THFC', logo: './assets/Dongathanhhoa.png' },
+          { name: 'QNFC', logo: './assets/quangnam.png' },
         ],
         score: '3 - 1',
         broadcast: 'FPT Play, TV360',
@@ -39,8 +47,8 @@ const FootballSchedule = () => {
         dateTime: '17/05 18:00',
         venue: 'SVĐ Hà Tĩnh',
         teams: [
-          { name: 'HLHT', logo: 'https://vpf.vn/wp-content/uploads/2018/10/Logo-Ha-Tinh-update-150x150.png' },
-          { name: 'HCMC', logo: 'https://vpf.vn/wp-content/uploads/2018/10/HCM-FC-2023-150x150.png' },
+          { name: 'HLHT', logo: './assets/honglinhhatinh.png' },
+          { name: 'HCMC', logo: './assets/tphcm.png' },
         ],
         score: '2 - 1',
         broadcast: 'HTV Thể thao, FPT Play, TV360',
@@ -50,8 +58,8 @@ const FootballSchedule = () => {
         dateTime: '17/05 19:15',
         venue: 'SVĐ Hàng Đẫy',
         teams: [
-          { name: 'HNFC', logo: 'https://vpf.vn/wp-content/uploads/2018/10/HNFC-6-sao-150x150.png' },
-          { name: 'LPBHA', logo: 'https://vpf.vn/wp-content/uploads/2018/10/Logo-HAGL-150x150.jpg' },
+          { name: 'HNFC', logo: 'HNFC.png' },
+          { name: 'LPBHA', logo: 'LPBHA.png' },
         ],
         score: '1 - 0',
         broadcast: 'HTV1, FPT Play, TV360',
@@ -61,19 +69,8 @@ const FootballSchedule = () => {
         dateTime: '18/05 17:00',
         venue: 'SVĐ Vinh',
         teams: [
-          { name: 'QNFC', logo: 'https://vpf.vn/wp-content/uploads/2018/10/Quang-Nam-150x150.jpg' },
-          { name: 'LPBHA', logo: 'https://vpf.vn/wp-content/uploads/2018/10/Logo-HAGL-150x150.jpg' },
-        ],
-        score: '1 - 0',
-        broadcast: 'HTV1, FPT Play, TV360',
-      },
-      {
-        round: 'Vòng 19',
-        dateTime: '18/05 17:00',
-        venue: 'SVĐ Vinh',
-        teams: [
-          { name: 'QNFC', logo: 'https://vpf.vn/wp-content/uploads/2018/10/slna-150x150.png' },
-          { name: 'HNFC', logo: 'https://vpf.vn/wp-content/uploads/2018/10/HNFC-6-sao-150x150.png' },
+          { name: 'SLNA', logo: 'SLNA.png' },
+          { name: 'LPBHA', logo: 'LPBHA.png' },
         ],
         score: '1 - 0',
         broadcast: 'HTV1, FPT Play, TV360',
@@ -110,14 +107,13 @@ const FootballSchedule = () => {
   };
 
   const handlePrevClick = () => {
-    setStartIndex((prevIndex) => (prevIndex === 0 ? matches[activeLeague].length - 3 : prevIndex - 1));
+    setStartIndex((prevIndex) => (prevIndex === 0 ? matches.length - 3 : prevIndex - 1));
   };
 
   const handleNextClick = () => {
-    setStartIndex((prevIndex) => (prevIndex + 3 >= matches[activeLeague].length ? 0 : prevIndex + 1));
+    setStartIndex((prevIndex) => (prevIndex + 3 >= matches.length ? 0 : prevIndex + 1));
   };
-
-  const displayedMatches = matches[activeLeague].slice(startIndex, startIndex + 3);
+  const displayedMatches = matches.slice(startIndex, startIndex + 3);
 
   return (
     <div className="schedule-container">
@@ -126,7 +122,7 @@ const FootballSchedule = () => {
           className={`header night-wolf ${activeLeague === 'night-wolf' ? 'active' : ''}`}
           onClick={() => handleLeagueClick('night-wolf')}
         >
-          <img src="./assets/Logo_Vleague1_2023.svg.png" alt="icon" />
+          <img src="./assets/Logo_Vleague1_2023.svg.png" alt="icon"/>
           <div className="title">VÔ ĐỊCH QUỐC GIA NIGHT WOLF 2023/24</div>
           {activeLeague === 'night-wolf' && <div className="triangle"></div>}
         </div>
@@ -134,7 +130,7 @@ const FootballSchedule = () => {
           className={`header sao-vang ${activeLeague === 'sao-vang' ? 'active' : ''}`}
           onClick={() => handleLeagueClick('sao-vang')}
         >
-          <img src="./assets/Logo_V.League_2_2023.svg.png" alt="icon" />
+          <img src="./assets/Logo_V.League_2_2023.svg.png" alt="icon"/>
           <div className="title">HẠNG NHẤT QUỐC GIA BIA SAO VÀNG 2023/24</div>
           {activeLeague === 'sao-vang' && <div className="triangle"></div>}
         </div>
@@ -142,7 +138,7 @@ const FootballSchedule = () => {
           className={`header casper ${activeLeague === 'casper' ? 'active' : ''}`}
           onClick={() => handleLeagueClick('casper')}
         >
-          <img src="./assets/cup-quoc-gia-casper.png" alt="icon" />
+          <img src="./assets/cup-quoc-gia-casper.png" alt="icon"/>
           <div className="title">CÚP QUỐC GIA CASPER 2023/24</div>
           {activeLeague === 'casper' && <div className="triangle"></div>}
         </div>
@@ -152,21 +148,21 @@ const FootballSchedule = () => {
         <button className="arrow left-arrow" onClick={handlePrevClick}>‹</button>
         {displayedMatches.map((match, index) => (
           <div key={index} className="match">
-            <div className="round">{match.round}</div>
-            <div className="date-time">{match.dateTime}</div>
-            <div className="venue">{match.venue}</div>
+            <div className="round">{'Vòng ' + match.matchRound}</div>
+            <div className="date-time">{match.time}</div>
+            <div className="venue">{'SVD ' + match.stadium}</div>
             <div className="teams">
               <div className="team">
-                <div className="team-name">{match.teams[0].name}</div>
-                <img src={match.teams[0].logo} alt={match.teams[0].name} className="team-logo" />
+                <div className="team-name">{match.homeTeamName}</div>
+                <img src={match.homeLogo} alt={match.homeTeamName} className="team-logo"/>
               </div>
               <div className="score">{match.score}</div>
               <div className="team">
-                <div className="team-name">{match.teams[1].name}</div>
-                <img src={match.teams[1].logo} alt={match.teams[1].name} className="team-logo" />
+              <div className="team-name">{match.awayTeamName}</div>
+                <img src={match.awayLogo} alt={match.awayTeamName} className="team-logo"/>
               </div>
             </div>
-            <div className="broadcast">{match.broadcast}</div>
+            {/*<div className="broadcast">{match.broadcast}</div>*/}
           </div>
         ))}
         <button className="arrow right-arrow" onClick={handleNextClick}>›</button>
