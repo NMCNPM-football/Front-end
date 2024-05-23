@@ -30,7 +30,7 @@ const TeamGrid = () => {
           console.log(team); // Step 3
           return (
             <Link key={index} to={`/team/${team.id}`} className="team-link">
-              <div className="team-card">
+              <div className="team-card-grid">
                 <img src={team.logo} alt={team.nameClub}/>
                 <p className='Team-name-grid'>{team.nameClub}</p>
               </div>
