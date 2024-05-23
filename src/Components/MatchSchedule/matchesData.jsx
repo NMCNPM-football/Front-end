@@ -10,6 +10,8 @@ export const matchesData = [
     scoreteam2: '1',
     attendance: '15000 người',
     turn: '1',
+    id:1,
+    season: '2023',
   },
   {
     logo1: 'https://upload.wikimedia.org/wikipedia/commons/f/f0/Logo_LPBank_Hoang_Anh_Gia_Lai.jpg',
@@ -21,6 +23,8 @@ export const matchesData = [
     scoreteam1: '2',
     scoreteam2: '2',
     attendance: '8000 người',
-    turn:'1'
+    turn:'2',
+    id:2,
+    season: '2023',
   }
 ];

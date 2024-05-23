@@ -14,8 +14,8 @@ import MainNews from './Components/Paper/MainNews.jsx';
 import FirstNews from './Components/Paper/FirstNews.jsx';
 import SecondNews from './Components/Paper/SecondNews.jsx'; 
 import ThirdNews from './Components/Paper/ThirdNews.jsx';
-import Summarize from './Components/Paper/Sumarize.jsx';
-
+import Sumarize from './Components/Paper/Sumarize.jsx';
+import Schedule from './Components/MatchSchedule/Schedule.jsx';
 function App() {
   return (
     <Router>
@@ -27,13 +27,14 @@ function App() {
           <Route path="/team" element={<TeamGrid />} />
           <Route path="/team/:id" element={<TableTeam />} />
           <Route path="/match/:id" element={<MatchPage />} />
-          <Route path="/player/:playerId" element={<Player />} /> {/* New route for player details */}
+          <Route path="/player/:playerId" element={<Player />} />
+          <Route path="/match" element={<Schedule />} />
           <Route path="/tin-tuc" element={<Paper/>} />
           <Route path="/main-news" element={<MainNews/>} />
           <Route path="/first-news" element={<FirstNews/>} />
           <Route path="/second-news" element={<SecondNews/>} />
           <Route path="/third-news" element={<ThirdNews/>} />
-          <Route path="/sumarize" element={<Summarize/>} />
+          <Route path="/sumarize" element={<Sumarize/>} />
         </Routes>
         <Footer />
       </div>
