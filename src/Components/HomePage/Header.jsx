@@ -1,18 +1,19 @@
-
-import React, { useState, useEffect } from 'react';
-import './Header.css';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./Header.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [hoveredMenu, setHoveredMenu] = useState(null);
   const [isFirstSet, setIsFirstSet] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIsFadingOut(true);
       setTimeout(() => {
-        setIsFirstSet(prevIsFirstSet => !prevIsFirstSet);
+        setIsFirstSet((prevIsFirstSet) => !prevIsFirstSet);
         setIsFadingOut(false);
       }, 1000); // Duration of fade-out animation
     }, 7000);
@@ -35,7 +36,7 @@ const Header = () => {
     { name: "Điều lệ", path: "/dieu-le" },
     { name: "Bình chọn", path: "/binh-chon" },
     { name: "Thư viện", path: "/thu-vien" },
-    { name: "Download", path: "/download"}
+    { name: "Download", path: "/download" },
   ];
 
   const firstDivisionMenuItems = [
@@ -45,7 +46,7 @@ const Header = () => {
     { name: "Các đội bóng", path: "/team" },
     { name: "Điều lệ", path: "/dieu-le" },
     { name: "Thư viện", path: "/thu-vien" },
-    { name: "Download", path: "/download" }
+    { name: "Download", path: "/download" },
   ];
 
   const firstSetLogos = [
@@ -61,7 +62,7 @@ const Header = () => {
     "https://vpf.vn/wp-content/uploads/2018/10/slna-233x300.png",
     "https://vpf.vn/wp-content/uploads/2018/10/Nam-Dinh.jpg",
     "https://vpf.vn/wp-content/uploads/2018/10/HCM-FC-2023.png",
-    "https://vpf.vn/wp-content/uploads/2018/10/Logo-The-Cong-Viettel.jpg"
+    "https://vpf.vn/wp-content/uploads/2018/10/Logo-The-Cong-Viettel.jpg",
   ];
 
   const secondSetLogos = [
@@ -75,19 +76,25 @@ const Header = () => {
     "https://vpf.vn/wp-content/uploads/2021/02/Phu-Tho.png",
     "https://vpf.vn/wp-content/uploads/2019/01/PVF-CAND.png",
     "https://vpf.vn/wp-content/uploads/2018/10/shb-da-nang-2021.png",
-    "https://vpf.vn/wp-content/uploads/2018/10/LOGO-TRuong-Tuoi-Binh-Phuoc_update.png"
+    "https://vpf.vn/wp-content/uploads/2018/10/LOGO-TRuong-Tuoi-Binh-Phuoc_update.png",
   ];
 
   return (
     <div className="container">
       <header className="header">
         <div className="team-logos">
-          <ul className={isFadingOut ? 'fade-out' : ''}>
-            {isFirstSet ? firstSetLogos.map((src, index) => (
-              <li key={index}><img src={src} alt={`Team ${index + 1}`} /></li>
-            )) : secondSetLogos.map((src, index) => (
-              <li key={index}><img src={src} alt={`Team ${index + 14}`} /></li>
-            ))}
+          <ul className={isFadingOut ? "fade-out" : ""}>
+            {isFirstSet
+              ? firstSetLogos.map((src, index) => (
+                  <li key={index}>
+                    <img src={src} alt={`Team ${index + 1}`} />
+                  </li>
+                ))
+              : secondSetLogos.map((src, index) => (
+                  <li key={index}>
+                    <img src={src} alt={`Team ${index + 14}`} />
+                  </li>
+                ))}
           </ul>
         </div>
       </header>
@@ -115,15 +122,15 @@ const Header = () => {
                 </Link>
               </li>
               <li
-                onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
+                onMouseEnter={() => handleMouseEnter("vô địch quốc gia")}
                 onMouseLeave={handleMouseLeave}
                 className="dropdown-trigger menu-item"
               >
                 Vô địch quốc gia
-                {hoveredMenu === 'vô địch quốc gia' && (
+                {hoveredMenu === "vô địch quốc gia" && (
                   <ul
                     className="dropdown-menu"
-                    onMouseEnter={() => handleMouseEnter('vô địch quốc gia')}
+                    onMouseEnter={() => handleMouseEnter("vô địch quốc gia")}
                     onMouseLeave={handleMouseLeave}
                   >
                     {menuItems.map((item, index) => (
@@ -137,15 +144,15 @@ const Header = () => {
                 )}
               </li>
               <li
-                onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}
+                onMouseEnter={() => handleMouseEnter("hạng nhất quốc gia")}
                 onMouseLeave={handleMouseLeave}
                 className="dropdown-trigger menu-item"
               >
                 Hạng nhất quốc gia
-                {hoveredMenu === 'hạng nhất quốc gia' && (
+                {hoveredMenu === "hạng nhất quốc gia" && (
                   <ul
                     className="dropdown-menu"
-                    onMouseEnter={() => handleMouseEnter('hạng nhất quốc gia')}
+                    onMouseEnter={() => handleMouseEnter("hạng nhất quốc gia")}
                     onMouseLeave={handleMouseLeave}
                   >
                     {firstDivisionMenuItems.map((item, index) => (
@@ -161,7 +168,7 @@ const Header = () => {
               <li className="menu-item">Cúp quốc gia</li>
               <li className="menu-item">Thư viện</li>
               <li className="menu-item">Nhà tài trợ</li>
-              <li className="menu-item" onClick={() => {window.location.href="http://localhost:5173/admin"}}>
+              <li className="menu-item" onClick={() => navigate("/Sign-in")}>
                 Đăng nhập
               </li>
             </ul>
