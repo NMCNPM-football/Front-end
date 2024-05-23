@@ -14,7 +14,7 @@ import MainNews from './Components/Paper/MainNews.jsx';
 import FirstNews from './Components/Paper/FirstNews.jsx';
 import SecondNews from './Components/Paper/SecondNews.jsx'; 
 import ThirdNews from './Components/Paper/ThirdNews.jsx';
-import Sumarize from './Components/Paper/Sumarize.jsx';
+import Summarize from './Components/Paper/Sumarize.jsx';
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
           <Route path="/first-news" element={<FirstNews/>} />
           <Route path="/second-news" element={<SecondNews/>} />
           <Route path="/third-news" element={<ThirdNews/>} />
-          <Route path="/sumarize" element={<Sumarize/>} />
+          <Route path="/sumarize" element={<Summarize/>} />
         </Routes>
         <Footer />
       </div>

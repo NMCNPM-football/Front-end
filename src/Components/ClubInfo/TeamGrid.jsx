@@ -29,7 +29,7 @@ const TeamGrid = () => {
         {teams.map((team, index) => {
           console.log(team); // Step 3
           return (
-            <Link key={index} to={`/team/${team.id}`} className="team-link">
+            <Link key={index} to={`/team/${team.id}?season=${selectedSeason}`} className="team-link">
               <div className="team-card">
                 <img src={team.logo} alt={team.nameClub}/>
                 <p className='Team-name-grid'>{team.nameClub}</p>

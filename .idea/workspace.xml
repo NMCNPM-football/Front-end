@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="86503c1a-504d-4893-97aa-2e418f0d147c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ClubInfo/TeamGrid.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ClubInfo/TeamGrid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ClubInfo/TeamGrid.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ClubInfo/TeamGrid.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Ranking/LeagueTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Ranking/LeagueTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Ranking/RankData.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/TeamInfo/DataTeam.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/TeamInfo/PhatTableTeam.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/TeamInfo/TableTeam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TeamInfo/TableTeam.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +89,8 @@
       <workItem from="1716363372270" duration="191000" />
       <workItem from="1716363571832" duration="906000" />
       <workItem from="1716366652850" duration="569000" />
-      <workItem from="1716400319301" duration="102000" />
+      <workItem from="1716400319301" duration="5689000" />
+      <workItem from="1716443207123" duration="18000" />
     </task>
     <servers />
   </component>

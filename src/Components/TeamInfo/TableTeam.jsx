@@ -1,24 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { teams } from './DataTeam'; // Cập nhật đường dẫn thực tế đến tệp dữ liệu của bạn
 import './Team.css';
-import { Link } from 'react-router-dom';
+import { Link ,useLocation} from 'react-router-dom';
+
 
 const DataTeam = () => {
   const [players, setPlayers] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
   const [team, setTeam] = useState(null);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const selectedSeason = searchParams.get('season');
 
-  const getTeamById = (id) => {
-    return Object.values(teams).find(team => team.idteam === parseInt(id));
-  };
 
   useEffect(() => {
     const teamId = window.location.pathname.split('/').pop();
-    const selectedTeam = getTeamById(teamId);
-    if (selectedTeam) {
-      setTeam(selectedTeam);
-      setPlayers(selectedTeam.players);
-    }
+
+    console.log(selectedSeason); // Add this line
+
+    // Fetch team data
+    fetch(`http://localhost:8888/club-list/${selectedSeason}`)
+      .then(response => response.json())
+      .then(data => {
+        const teamData = data.data.find(team => team.id === teamId);
+        if (teamData) {
+          setTeam(teamData);
+          // Fetch players data
+          fetch(`http://localhost:8888/player-profile/${teamId}`)
+            .then(response => response.json())
+            .then(data => {
+              setPlayers(data.data);
+            })
+            .catch(error => console.error(`Error: ${error}`));
+        }
+      })
+      .catch(error => console.error(`Error: ${error}`));
   }, []);
 
   const onSort = (key) => {
