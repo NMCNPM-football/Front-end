@@ -10,9 +10,9 @@
 }
 
 table {
-  width: 65%;
+  /*width: 55%;*/
   border-collapse: collapse;
-  margin: 20px 300px;
+  margin: 20px;
   font-size: 1em;
   text-align: left;
   background-color: #ffffff;

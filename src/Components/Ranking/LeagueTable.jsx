@@ -15,8 +15,8 @@ const LeagueTable = () => {
   }, [selectedSeason]);
 
   const seasonTitles = {
-    '2023': 'Vô địch Quốc gia Night Wolf 2023/24',
-    '2022': 'Vô địch Quốc gia Night Wolf 2022/23',
+    '2023-2024': 'Vô địch Quốc gia Night Wolf 2023/24',
+    '2022-2023': 'Vô địch Quốc gia Night Wolf 2022/23',
   };
 
   const sortedData = data

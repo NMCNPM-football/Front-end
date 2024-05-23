@@ -1,23 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Ranking.css';
+import {Link} from "react-router-dom";
 
 const Ranking = () => {
-  const rankings = [
-    { position: 1, team: 'TXND', logo: 'https://vpf.vn/wp-content/uploads/2018/10/Nam-Dinh-150x150.jpg', matches: 19, hs: 14, points: 39 },
-    { position: 2, team: 'BDFC', logo:'https://vpf.vn/wp-content/uploads/2018/10/binh-duong-2021-150x150.png', matches: 20, hs: 4, points: 33 },
-    { position: 3, team: 'MQBD', logo:'https://vpf.vn/wp-content/uploads/2018/10/Binh-Dinh-150x150.png', matches: 19, hs: 10, points: 31 },
-    { position: 4, team: 'CAHN', logo:'https://vpf.vn/wp-content/uploads/2018/10/cong-an-ha-noi-fc-150x150.png', matches: 20, hs: 6, points: 31 },
-    { position: 5, team: 'THFC', logo:'https://vpf.vn/wp-content/uploads/2018/10/HNFC-6-sao-150x150.png', matches: 20, hs: 3, points: 30 },
-    { position: 6, team: 'HNFC', logo:'https://vpf.vn/wp-content/uploads/2018/10/Logo-CLB-Dong-A-Thanh-Hoa_chuan-150x150.png', matches: 20, hs: 1, points: 28 },
-    { position: 7, team: 'HPFC', logo:'https://vpf.vn/wp-content/uploads/2018/10/haiphongfc-150x150.jpg', matches: 19, hs: 5, points: 26 },
-    { position: 8, team: 'QNFC', logo:'https://vpf.vn/wp-content/uploads/2018/10/Quang-Nam-150x150.jpg', matches: 20, hs: 0, points: 26 },
-    { position: 9, team: 'HCMC', logo:'https://vpf.vn/wp-content/uploads/2018/10/HCM-FC-2023-150x150.png', matches: 20, hs: -2, points: 26 },
-    { position: 10, team: 'LPBHA', logo:'https://vpf.vn/wp-content/uploads/2018/10/Logo-HAGL-150x150.jpg', matches: 20, hs: -5, points: 25 },
-    { position: 11, team: 'TCVT', logo:'https://vpf.vn/wp-content/uploads/2018/10/Logo-The-Cong-Viettel-150x150.jpg', matches: 20, hs: -6, points: 24 },
-    { position: 12, team: 'HLHT', logo:'https://vpf.vn/wp-content/uploads/2018/10/Logo-Ha-Tinh-update-150x150.png', matches: 20, hs: -6, points: 24 },
-    { position: 13, team: 'SLNA', logo:'https://vpf.vn/wp-content/uploads/2018/10/slna-150x150.png', matches: 19, hs: -6, points: 19 },
-    { position: 14, team: 'KHFC', logo:'https://vpf.vn/wp-content/uploads/2018/12/Khanh-Hoa-FC-150x150.png', matches: 19, hs: -18, points: 10 },
-  ];
+  const [selectedSeason, setSelectedSeason] = useState('2023-2024');
+  const [rankings, setRankings] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:8888/summary/${selectedSeason}`)
+      .then(response => response.json())
+      .then(data => {
+        const sortedData = data.data
+          .slice()
+          .sort((a, b) => {
+            if (b.points === a.points) {
+              return b.goal_difference - a.goal_difference;
+            }
+            return b.points - a.points;
+          })
+          .map((team, index) => ({ ...team, stt: index + 1 }));
+        setRankings(sortedData);
+      })
+      .catch(error => console.error(`Error: ${error}`));
+  }, [selectedSeason]);
 
   return (
     <aside className="ranking">
@@ -35,19 +40,19 @@ const Ranking = () => {
           <span>Điểm</span>
         </div>
         {rankings.map((team) => (
-          <div key={team.position} className="ranking-row">
-            <span>{team.position}</span>
+          <div key={team.stt} className="ranking-row">
+            <span>{team.stt}</span>
             <div className="team-info">
-              <img src={team.logo} alt={team.team} className="team-logo" />
-              <span>{team.team}</span>
+              <img src={team.logoLink} alt={team.shorthand} className="team-logo" />
+              <span>{team.shorthand}</span>
             </div>
-            <span>{team.matches}</span>
-            <span>{team.hs}</span>
+            <span>{team.matchPlayed}</span>
+            <span>{team.goalDifference}</span>
             <span>{team.points}</span>
           </div>
         ))}
       </div>
-      <button className="view-more">Xem chi tiết ➔</button>
+      <Link to="/league-table" className="view-more">Xem chi tiết ➔</Link>
     </aside>
   );
 };

@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Match from './Match';
-import { matchesData } from './matchesData'; // Import the data from matchesData.js
-import TurnSelection from './TurnSelect'; // Import TurnSelection component
-import SeasonSelection from './SeasonSelection'; // Import SeasonSelection component
-import './Match.css'; // Import the CSS file
+import TurnSelection from './TurnSelect';
+import SeasonSelection from './SeasonSelection';
+import './Match.css';
 
 const Schedule = () => {
-  const [selectedSeason, setSelectedSeason] = useState(matchesData[0].season);
+  const [selectedSeason, setSelectedSeason] = useState('2023-2024');
   const [selectedTurn, setSelectedTurn] = useState('all');
+  const [matchesData, setMatchesData] = useState([]);
 
-  // Extract unique seasons and turns from matchesData
-  const seasons = [...new Set(matchesData.map(match => match.season))];
-  const turns = [...new Set(matchesData.filter(match => match.season === selectedSeason).map(match => match.turn))];
+  useEffect(() => {
+    fetch('http://localhost:8888/match_result/all')
+      .then(response => response.json())
+      .then(data => setMatchesData(data.data))
+      .catch(error => console.error(`Error: ${error}`));
+  }, []);
 
-  // Filter matches based on selected season and turn
-  const filteredMatches = matchesData.filter(match => 
-    match.season === selectedSeason && (selectedTurn === 'all' || match.turn === selectedTurn)
+  const seasons = [...new Set(matchesData.map(match => match.seaSon))];
+  const turns = [...new Set(matchesData.filter(match => match.seaSon === selectedSeason).map(match => match.matchRound))];
+
+  const filteredMatches = matchesData.filter(match =>
+    match.seaSon === selectedSeason && (selectedTurn === 'all' || match.matchRound === selectedTurn)
   );
 
   return (
@@ -34,20 +39,20 @@ const Schedule = () => {
         />
       </div>
       {filteredMatches.map((match, index) => (
-        <Match
-          key={index}
-          logo1={match.logo1}
-          logo2={match.logo2}
-          datetime={match.datetime}
-          stadium={match.stadium}
-          homeTeam={match.homeTeam}
-          awayTeam={match.awayTeam}
-          scoreteam1={match.scoreteam1}
-          scoreteam2={match.scoreteam2}
-          attendance={match.attendance}
-          id={match.id}
-        />
-      ))}
+  <Match
+    key={index}
+    homeLogo={match.homeLogo}
+    awayLogo={match.awayLogo}
+    time={match.time}
+    stadium={'SVD ' + match.stadium}
+    homeTeam={match.homeTeam}
+    awayTeam={match.awayTeam}
+    homeTeamGoal={match.homeTeamGoal.toString()} // Convert to string
+    awayTeamGoal={match.awayTeamGoal.toString()} // Convert to string
+    capacity={match.capacity}
+    matchId={match.matchId} // Already a string
+  />
+))}
     </div>
   );
 };
