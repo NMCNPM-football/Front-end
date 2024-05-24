@@ -9,14 +9,14 @@
   font-size: 1.2em;
 }
 
-table {
+.table-rank-league {
   border-collapse: collapse;
   font-size: 1em;
   text-align: center;
   background-color: #ffffff;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   max-width: 90%;
-  margin-left: -300px;
+  margin-left: 70px;
 }
 
 .table-header-cell, .table-cell {

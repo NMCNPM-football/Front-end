@@ -19,7 +19,7 @@ const DataTable = ({ columns, data }) => {
   );
 
   return (
-    <table {...getTableProps()} className="table">
+    <table {...getTableProps()} className="table-rank-league">
       <thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()} className="table-header">
