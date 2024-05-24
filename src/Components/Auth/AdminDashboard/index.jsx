@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TeamOutlined, CalendarOutlined, SettingOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-
+import MatchManagement from './MatchManagement'; // Import MatchManagement component
+import PlayerManagement from './MatchManagement';
 const { Header, Content, Sider } = Layout;
 
 const items1 = ['1'].map((key) => ({
@@ -10,6 +11,7 @@ const items1 = ['1'].map((key) => ({
 }));
 
 const items2 = [
+  // Existing menu items
   {
     key: 'sub1',
     icon: <TeamOutlined />,
@@ -18,6 +20,11 @@ const items2 = [
       {
         key: '1',
         label: 'Thông tin đội bóng',
+      },
+      // Add new menu item for MatchManagement
+      {
+        key: '5',
+        label: 'Ghi nhận kết quả',
       },
       {
         key: '2',
@@ -39,10 +46,6 @@ const items2 = [
     label: 'Quản lý trận đấu',
     children: [
       {
-        key: '5',
-        label: 'Ghi nhận kết quả',
-      },
-      {
         key: '6',
         label: 'Lập lịch thi đấu',
       },
@@ -60,6 +63,31 @@ const AdminDashboard = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const [selectedMenuKey, setSelectedMenuKey] = useState(items2[0].children[0].key);
+
+  const handleMenuClick = ({ key }) => {
+    setSelectedMenuKey(key);
+  };
+
+  const renderContent = () => {
+    switch (selectedMenuKey) {
+      case '1':
+        return <div>Content for Thông tin đội bóng</div>;
+      case '2':
+        return <PlayerManagement/>;
+      case '3':
+        return <div>Content for Huấn luyện viên</div>;
+      case '4':
+        return <div>Content for Xếp đội hình</div>;
+      case '5':
+        return <MatchManagement />; // Render MatchManagement component
+      case '6':
+        return <div>Content for Lập lịch thi đấu</div>;
+      default:
+        return null;
+    }
+  };
 
   return (
     <Layout>
@@ -81,6 +109,7 @@ const AdminDashboard = () => {
             defaultOpenKeys={['sub1']}
             style={{ height: '100%', borderRight: 0 }}
             items={items2}
+            onClick={handleMenuClick}
           />
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
@@ -97,7 +126,7 @@ const AdminDashboard = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            Content here
+            {renderContent()}
           </Content>
         </Layout>
       </Layout>
