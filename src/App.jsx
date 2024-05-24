@@ -19,9 +19,6 @@ import Schedule from './Components/MatchSchedule/Schedule.jsx';
 import LoginPage from './Components/Auth/Sign-in/LoginPage';
 import AdminDashboard from './Components/Auth/AdminDashboard';
 import UserDashboard from './Components/Auth/UserDashBoard';
-import {Provider, useSelector} from "react-redux";
-import { store } from './store/index';
-import SignUp from "./Components/Auth/Sign-up/SignupPage"; // import your Redux store
 
 const PrivateRoute = ({ children }) => {
   const isLogin = useSelector((state) => !!state.user.accessToken);
