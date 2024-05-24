@@ -34,7 +34,7 @@ const DataTeam = () => {
         }
       })
       .catch(error => console.error(`Error: ${error}`));
-  }, []);
+  },  [selectedSeason]);
 
   const onSort = (key) => {
     let direction = 'ascending';

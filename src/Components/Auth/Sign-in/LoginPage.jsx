@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect} from "react";
 import PATHS from "../../../const/paths";
 import {showError, showInfo} from '../../FlashMessage/flashMessageSlice';
-import {getProfile, logout, setLoginSuccess} from '../../../store/userSlice';
+import {getProfile, setLoginSuccess} from '../../../store/userSlice';
 import TextInput from "../../../Components/TextInput";
 
 export default function SignIn() {

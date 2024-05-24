@@ -18,7 +18,10 @@ import Summarize from './Components/Paper/Sumarize.jsx';
 import Schedule from './Components/MatchSchedule/Schedule.jsx';
 import LoginPage from './Components/Auth/Sign-in/LoginPage';
 import AdminDashboard from './Components/Auth/AdminDashboard';
-import UserDashboard from './Components/Auth/UserDashBoard';
+import {Provider, useSelector} from "react-redux";
+import ManagerDashboard from "./Components/Auth/ManagerDashboard";
+import SignupPage from './Components/Auth/Sign-up/SignupPage.jsx'
+import {store} from './store';
 
 const PrivateRoute = ({ children }) => {
   const isLogin = useSelector((state) => !!state.user.accessToken);
@@ -31,6 +34,7 @@ const App = () => {
   return (
     <Router>
       <div>
+
         <Provider store={store}> {/* Wrap your Router with the Provider */}
           <Header />
           <Routes>
@@ -47,7 +51,7 @@ const App = () => {
             <Route path="/second-news" element={<SecondNews />} />
             <Route path="/third-news" element={<ThirdNews />} />
             <Route path="/sumarize" element={<Summarize />} />
-            <Route path="/sign-up" element={<SignUp/>} />
+            <Route path="/sign-up" element={<SignupPage/>} />
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/admin-dashboard"
@@ -61,7 +65,7 @@ const App = () => {
               path="/user-dashboard"
               element={
                 <PrivateRoute >
-                  <UserDashboard />
+                  <ManagerDashboard />
                 </PrivateRoute>
               }
             />

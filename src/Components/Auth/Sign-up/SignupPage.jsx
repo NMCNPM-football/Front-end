@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect} from "react";
 import PATHS from "../../../const/paths";
-import UserService from "../../../../src/services/user"
+// import UserService from "../../../../src/services/user"
 import {showError, showInfo} from '../../FlashMessage/flashMessageSlice';
 import TextInput from "../../../Components/TextInput";
 
@@ -25,6 +25,9 @@ export default function SignUp() {
         throw new Error("Passwords do not match")
       }
 
+      // Get the season value from the form
+      data.season = methods.getValues('season');
+      console.log('season:', data.season);
       // Make a POST request to the register endpoint
       const response = await fetch('http://localhost:8888/register', {
         method: 'POST',
@@ -38,9 +41,6 @@ export default function SignUp() {
       if (!response.ok) {
         throw new Error('Registration failed');
       }
-
-      // Get the result from the response
-      const result = await response.json();
 
       dispatch(showInfo({message: "Register successfully"}))
       navigate(PATHS.SIGN_IN)
@@ -84,7 +84,20 @@ export default function SignUp() {
                     />
                   </div>
                 </div>
-
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
+                    Name
+                  </label>
+                  <div className="mt-2">
+                    <TextInput
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
                 <div>
                   <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                     Password
@@ -108,6 +121,37 @@ export default function SignUp() {
                         id="passwordConfirm"
                         name="passwordConfirm"
                         type="password"
+                        autoComplete="current-password"
+                        required
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                  {/*<div>*/}
+                  {/*  <label htmlFor="season" className="block text-sm font-medium leading-6 text-gray-900">*/}
+                  {/*    Season*/}
+                  {/*  </label>*/}
+                  {/*  <div className="mt-2">*/}
+                  {/*    <select*/}
+                  {/*      id="season"*/}
+                  {/*      name="season" // change this to match the key expected by the backend*/}
+                  {/*      required*/}
+                  {/*      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"*/}
+                  {/*    >*/}
+                  {/*      <option value="2022-2023">2022-2023</option>*/}
+                  {/*      <option value="2023-2024">2023-2024</option>*/}
+                  {/*    </select>*/}
+                  {/*  </div>*/}
+                  {/*</div>*/}
+                  <div>
+                    <label htmlFor="season" className="block text-sm font-medium leading-6 text-gray-900">
+                      SeaSon
+                    </label>
+                    <div className="mt-2">
+                      <TextInput
+                        id="season"
+                        name="season"
+                        type="text"
                         autoComplete="current-password"
                         required
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
