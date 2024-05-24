@@ -7,9 +7,8 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import MatchManagement from "./MatchManagement";
 import PlayerManagement from "./PlayerManagement";
-import MatchScheduler from "./MatchScheduler";
+import MatchScheduler from "../AdminDashboard/MatchScheduler";
 import TeamFormation from "./TeamFomation";
-import RuleFormat from "./RuleFormat";
 
 const { Header, Content, Sider } = Layout;
 
@@ -24,7 +23,6 @@ const items2 = [
     icon: <TeamOutlined />,
     label: "Quản lý đội bóng",
     children: [
-      { key: "1", label: "Thông tin đội bóng" },
       { key: "5", label: "Ghi nhận kết quả" },
       { key: "2", label: "Cầu thủ" },
       { key: "3", label: "Huấn luyện viên" },
@@ -37,12 +35,7 @@ const items2 = [
     label: "Quản lý trận đấu",
     children: [{ key: "6", label: "Lập lịch thi đấu" }],
   },
-  {
-    key: "sub3",
-    icon: <SettingOutlined />,
-    label: "Thay đổi quy định",
-    children: [{ key: "7", label: "Thay đổi quy định cầu thủ" }],
-  },
+
 ];
 
 const AdminDashboard = () => {
@@ -60,8 +53,6 @@ const AdminDashboard = () => {
 
   const renderContent = () => {
     switch (selectedMenuKey) {
-      case "1":
-        return <div>Content for Thông tin đội bóng</div>;
       case "2":
         return <PlayerManagement />;
       case "3":
@@ -72,8 +63,6 @@ const AdminDashboard = () => {
         return <MatchManagement />;
       case "6":
         return <MatchScheduler />;
-      case "7":
-        return <RuleFormat />;
       default:
         return null;
     }
