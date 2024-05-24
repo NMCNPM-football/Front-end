@@ -10,27 +10,23 @@
 }
 
 table {
-  width: 65%;
   border-collapse: collapse;
-  margin: 20px 300px;
   font-size: 1em;
-  text-align: left;
+  text-align: center;
   background-color: #ffffff;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  margin-left: -300px;
 }
 
-th, td {
+.table-header-cell, .table-cell {
   padding: 12px 15px;
   border: 1px solid #dddddd;
 }
 
-th {
+.table-header-cell {
   background-color: #f4f4f4;
   cursor: pointer;
-}
-
-th span {
-  margin-left: 10px;
 }
 
 tr:nth-child(even) {

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 const TurnSelection = ({ turns, selectedTurn, onTurnChange }) => (
   <div className="turn-selection">
-    {turns.map((turn, index) => (
+    {turns.map((matchRound, index) => (
       <button
         key={index}
-        className={`turn-button ${selectedTurn === turn ? 'selected' : ''}`}
-        onClick={() => onTurnChange(turn)}
+        className={`turn-button ${selectedTurn === matchRound ? 'selected' : ''}`}
+        onClick={() => onTurnChange(matchRound)}
       >
-        Turn {turn}
+        Turn {matchRound}
       </button>
     ))}
     <button

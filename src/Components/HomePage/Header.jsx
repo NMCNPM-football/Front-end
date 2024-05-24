@@ -101,7 +101,7 @@ const Header = () => {
       <nav className="nav">
         <div className="left-section">
           <div className="logo">
-            <img src="./assets/logo_vpf.png" alt="VPF Logo" />
+            <img src="https://vpf.vn/wp-content/uploads/2018/11/logo-vpf.png" alt="VPF Logo" />
           </div>
           <div className="title-menu">
             <div className="title-header">
