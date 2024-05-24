@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import {
   TeamOutlined,
   CalendarOutlined,
-  SettingOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
-import MatchManagement from "./MatchManagement";
 import PlayerManagement from "./PlayerManagement";
 import MatchScheduler from "../AdminDashboard/MatchScheduler";
 import TeamFormation from "./TeamFomation";
@@ -23,7 +21,6 @@ const items2 = [
     icon: <TeamOutlined />,
     label: "Quản lý đội bóng",
     children: [
-      { key: "5", label: "Ghi nhận kết quả" },
       { key: "2", label: "Cầu thủ" },
       { key: "3", label: "Huấn luyện viên" },
       { key: "4", label: "Xếp đội hình" },
@@ -38,7 +35,7 @@ const items2 = [
 
 ];
 
-const AdminDashboard = () => {
+const ManagerDashboard = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -59,8 +56,6 @@ const AdminDashboard = () => {
         return <div>Content for Huấn luyện viên</div>;
       case "4":
         return <TeamFormation />;
-      case "5":
-        return <MatchManagement />;
       case "6":
         return <MatchScheduler />;
       default:
@@ -113,4 +108,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default ManagerDashboard;
