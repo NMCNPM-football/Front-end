@@ -9,10 +9,9 @@ const goalTypes = {
 };
 
 const cardTypes = {
-    LBT01: 'Thẻ vàng',
-    LBT02: 'Thẻ đỏ'
+  LT01: 'Thẻ vàng',
+  LT02: 'Thẻ đỏ'
 };
-
 
 const PlayerStats = ({ match }) => {
   if (!match) return null;
@@ -24,8 +23,19 @@ const PlayerStats = ({ match }) => {
         <ul>
           {match.homeTeam.players.map((player, index) => (
             <li key={index}>
-              <div className="goal-time1">{player.timeInMatchGoal}&apos;</div>
-              <div className="goal-type1">{goalTypes[player.goalType]}</div>
+              <div className="player-name">{player.playerNameGoal || player.playerNameCard}</div>
+              {player.goalType && (
+                <>
+                  <div className="goal-time1">{player.timeInMatchGoal}&apos;</div>
+                  <div className="goal-type1">{goalTypes[player.goalType]}</div>
+                </>
+              )}
+              {player.cardType && (
+                <>
+                  <div className="card-time1">{player.timeInMatchCard}&apos;</div>
+                  <div className="card-type1">{cardTypes[player.cardType]}</div>
+                </>
+              )}
             </li>
           ))}
         </ul>
@@ -35,8 +45,19 @@ const PlayerStats = ({ match }) => {
         <ul>
           {match.awayTeam.players.map((player, index) => (
             <li key={index}>
-              <div className="goal-time2">{player.timeInMatchGoal}&apos;</div>
-              <div className="goal-type2">{goalTypes[player.goalType]}</div>
+              <div className="player-name">{player.playerNameGoal || player.playerNameCard}</div>
+              {player.goalType && (
+                <>
+                  <div className="goal-time2">{player.timeInMatchGoal}&apos;</div>
+                  <div className="goal-type2">{goalTypes[player.goalType]}</div>
+                </>
+              )}
+              {player.cardType && (
+                <>
+                  <div className="card-time2">{player.timeInMatchCard}&apos;</div>
+                  <div className="card-type2">{cardTypes[player.cardType]}</div>
+                </>
+              )}
             </li>
           ))}
         </ul>
@@ -51,8 +72,12 @@ PlayerStats.propTypes = {
       name: PropTypes.string.isRequired,
       players: PropTypes.arrayOf(
         PropTypes.shape({
+          playerNameGoal: PropTypes.string,
           timeInMatchGoal: PropTypes.string,
-          goalType: PropTypes.oneOf(Object.keys(goalTypes))
+          goalType: PropTypes.oneOf(Object.keys(goalTypes)),
+          playerNameCard: PropTypes.string,
+          timeInMatchCard: PropTypes.string,
+          cardType: PropTypes.oneOf(Object.keys(cardTypes))
         })
       ).isRequired
     }).isRequired,
@@ -60,8 +85,12 @@ PlayerStats.propTypes = {
       name: PropTypes.string.isRequired,
       players: PropTypes.arrayOf(
         PropTypes.shape({
+          playerNameGoal: PropTypes.string,
           timeInMatchGoal: PropTypes.string,
-          goalType: PropTypes.oneOf(Object.keys(goalTypes))
+          goalType: PropTypes.oneOf(Object.keys(goalTypes)),
+          playerNameCard: PropTypes.string,
+          timeInMatchCard: PropTypes.string,
+          cardType: PropTypes.oneOf(Object.keys(cardTypes))
         })
       ).isRequired
     }).isRequired
