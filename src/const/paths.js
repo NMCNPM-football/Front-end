@@ -1,4 +1,4 @@
-export default {
+const PATHS = {
     HOMEPAGE: '/',
     SIGN_IN: '/sign-in',
     SIGN_UP: '/sign-up',
@@ -6,3 +6,5 @@ export default {
     NOT_FOUND: '/*',
     MOCK: '/mock',
 }
+
+export default PATHS;

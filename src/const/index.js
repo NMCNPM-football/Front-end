@@ -1,7 +1,7 @@
 export { default as ERROR_CODES } from './errorCodes';
 export { default as PATHS } from './paths';
 export { default as TIME_ZONES } from './timezones';
-export { default as CHART_CONFIG } from './chartConfig';
+
 
 export const FLASH_TYPES = {
   INFO: 'info',

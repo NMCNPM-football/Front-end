@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { FLASH_TYPES as TYPES, FLASH_TIMEOUT } from '../../const';
+import { FLASH_TYPES as TYPES, FLASH_TIMEOUT } from '../../../src/const';
 
 let activeTimeout;
 

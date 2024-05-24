@@ -5,18 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86503c1a-504d-4893-97aa-2e418f0d147c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Auth/Sign-up/SignupPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_colors.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_fonts.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Progess_Goal/MatchInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Progess_Goal/MatchInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/Sign-in/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/Sign-in/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/FlashMessage/flashMessageSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/FlashMessage/flashMessageSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/const/httpMethod.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/const/httpMethod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/const/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/const/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/const/paths.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/const/paths.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/sign_in/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/sign_up/index.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSX File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="daichi" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,6 +74,7 @@
       <recent name="$PROJECT_DIR$/src/Components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/view" />
     </key>
   </component>
@@ -89,6 +111,7 @@
       <workItem from="1716466013948" duration="45000" />
       <workItem from="1716466604663" duration="16667000" />
       <workItem from="1716514349779" duration="1464000" />
+      <workItem from="1716520345045" duration="4025000" />
     </task>
     <servers />
   </component>

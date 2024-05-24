@@ -19,6 +19,9 @@ import Schedule from './Components/MatchSchedule/Schedule.jsx';
 import LoginPage from './Components/Auth/Sign-in/LoginPage';
 import AdminDashboard from './Components/Auth/AdminDashboard';
 import UserDashboard from './Components/Auth/UserDashBoard';
+import {Provider} from "react-redux";
+import { store } from './store/index';
+import SignUp from "./Components/Auth/Sign-up/SignupPage"; // import your Redux store
 
 const PrivateRoute = ({ children, role, requiredRole }) => {
   return role === requiredRole ? children : <Navigate to="/login" />;
@@ -31,40 +34,43 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/league-table" element={<LeagueTable />} />
-          <Route path="/team" element={<TeamGrid />} />
-          <Route path="/team/:id" element={<TableTeam />} />
-          <Route path="/match/:id" element={<MatchPage />} />
-          <Route path="/player/:playerId" element={<Player />} />
-          <Route path="/match" element={<Schedule />} />
-          <Route path="/tin-tuc" element={<Paper />} />
-          <Route path="/main-news" element={<MainNews />} />
-          <Route path="/first-news" element={<FirstNews />} />
-          <Route path="/second-news" element={<SecondNews />} />
-          <Route path="/third-news" element={<ThirdNews />} />
-          <Route path="/sumarize" element={<Sumarize />} />
-          <Route path="/Sign-in" element={<LoginPage />} />
-          <Route
-            path="/admin-dashboard"
-            element={
-              <PrivateRoute role={role} requiredRole="admin">
-                <AdminDashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/user-dashboard"
-            element={
-              <PrivateRoute role={role} requiredRole="user">
-                <UserDashboard />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
-        <Footer />
+        <Provider store={store}> {/* Wrap your Router with the Provider */}
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/league-table" element={<LeagueTable />} />
+            <Route path="/team" element={<TeamGrid />} />
+            <Route path="/team/:id" element={<TableTeam />} />
+            <Route path="/match/:id" element={<MatchPage />} />
+            <Route path="/player/:playerId" element={<Player />} />
+            <Route path="/match" element={<Schedule />} />
+            <Route path="/tin-tuc" element={<Paper />} />
+            <Route path="/main-news" element={<MainNews />} />
+            <Route path="/first-news" element={<FirstNews />} />
+            <Route path="/second-news" element={<SecondNews />} />
+            <Route path="/third-news" element={<ThirdNews />} />
+            <Route path="/sumarize" element={<Sumarize />} />
+            <Route path="/sign-up" element={<SignUp/>} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/admin-dashboard"
+              element={
+                <PrivateRoute role={role} requiredRole="admin">
+                  <AdminDashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/user-dashboard"
+              element={
+                <PrivateRoute role={role} requiredRole="user">
+                  <UserDashboard />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+          <Footer />
+        </Provider>
       </div>
     </Router>
   );

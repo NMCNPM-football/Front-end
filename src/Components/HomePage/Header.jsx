@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import {useSelector} from "react-redux";
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/userSlice';
 
 const Header = () => {
   const [hoveredMenu, setHoveredMenu] = useState(null);
@@ -78,6 +81,16 @@ const Header = () => {
     "https://vpf.vn/wp-content/uploads/2018/10/shb-da-nang-2021.png",
     "https://vpf.vn/wp-content/uploads/2018/10/LOGO-TRuong-Tuoi-Binh-Phuoc_update.png",
   ];
+
+  let isLogin = useSelector((state) => state.user.accessToken !== "");
+
+
+  const dispatch = useDispatch();
+
+
+  const handleLogout = () => {
+    dispatch(logout());
+  }
 
   return (
     <div className="container">
@@ -168,9 +181,16 @@ const Header = () => {
               <li className="menu-item">Cúp quốc gia</li>
               <li className="menu-item">Thư viện</li>
               <li className="menu-item">Nhà tài trợ</li>
-              <li className="menu-item" onClick={() => navigate("/Sign-in")}>
-                Đăng nhập
-              </li>
+              {!isLogin && (
+                <li className="menu-item" onClick={() => navigate("/login")}>
+                  Đăng nhập
+                </li>
+              )}
+              {isLogin && (
+                <li className="menu-item" onClick={handleLogout}>
+                  Logout
+                </li>
+              )}
             </ul>
           </div>
         </div>
