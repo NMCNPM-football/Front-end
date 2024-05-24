@@ -90,7 +90,8 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-  }
+    navigate("/"); // navigate to home page after logout
+  };
 
   return (
     <div className="container">

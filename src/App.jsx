@@ -14,22 +14,22 @@ import MainNews from './Components/Paper/MainNews.jsx';
 import FirstNews from './Components/Paper/FirstNews.jsx';
 import SecondNews from './Components/Paper/SecondNews.jsx';
 import ThirdNews from './Components/Paper/ThirdNews.jsx';
-import Sumarize from './Components/Paper/Sumarize.jsx';
+import Summarize from './Components/Paper/Sumarize.jsx';
 import Schedule from './Components/MatchSchedule/Schedule.jsx';
 import LoginPage from './Components/Auth/Sign-in/LoginPage';
 import AdminDashboard from './Components/Auth/AdminDashboard';
 import UserDashboard from './Components/Auth/UserDashBoard';
-import {Provider} from "react-redux";
+import {Provider, useSelector} from "react-redux";
 import { store } from './store/index';
 import SignUp from "./Components/Auth/Sign-up/SignupPage"; // import your Redux store
 
-const PrivateRoute = ({ children, role, requiredRole }) => {
-  return role === requiredRole ? children : <Navigate to="/login" />;
+const PrivateRoute = ({ children }) => {
+  const isLogin = useSelector((state) => !!state.user.accessToken);
+  return isLogin ? children : <Navigate to="/login" />;
 };
 
 const App = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  const role = user ? user.role : null;
+
 
   return (
     <Router>
@@ -49,13 +49,13 @@ const App = () => {
             <Route path="/first-news" element={<FirstNews />} />
             <Route path="/second-news" element={<SecondNews />} />
             <Route path="/third-news" element={<ThirdNews />} />
-            <Route path="/sumarize" element={<Sumarize />} />
+            <Route path="/sumarize" element={<Summarize />} />
             <Route path="/sign-up" element={<SignUp/>} />
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/admin-dashboard"
               element={
-                <PrivateRoute role={role} requiredRole="admin">
+                <PrivateRoute>
                   <AdminDashboard />
                 </PrivateRoute>
               }
@@ -63,7 +63,7 @@ const App = () => {
             <Route
               path="/user-dashboard"
               element={
-                <PrivateRoute role={role} requiredRole="user">
+                <PrivateRoute >
                   <UserDashboard />
                 </PrivateRoute>
               }

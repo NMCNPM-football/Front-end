@@ -3,7 +3,6 @@ import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect} from "react";
 import PATHS from "../../../const/paths";
-import UserService from "../../../../src/services/user"
 import {showError, showInfo} from '../../FlashMessage/flashMessageSlice';
 import {getProfile, logout, setLoginSuccess} from '../../../store/userSlice';
 import TextInput from "../../../Components/TextInput";
@@ -44,24 +43,33 @@ export default function SignIn() {
       dispatch(setLoginSuccess({ accessToken: result.data.accessToken, refreshToken: result.data.refreshToken }))
       dispatch(getProfile())
       dispatch(showInfo({message: "Login successfully"}))
+
+      // Fetch the profile data
+      const profileResponse = await fetch('http://localhost:8888/profile', {
+        headers: {
+          'Authorization': `Bearer ${result.data.accessToken}`
+        }
+      });
+
+      if (!profileResponse.ok) {
+        throw new Error('Failed to fetch profile');
+      }
+
+      const profileData = await profileResponse.json();
+
+      // Check the position and navigate to the appropriate dashboard
+      if (profileData.data.position === 'Admin') {
+        localStorage.setItem('user', JSON.stringify({ email: profileData.data.email, role: 'admin' }));
+        navigate('/admin-dashboard');
+      } else {
+        localStorage.setItem('user', JSON.stringify({ email: profileData.data.email, role: 'user' }));
+        navigate('/user-dashboard');
+      }
+
     } catch (error) {
       const {message} = error
       dispatch(showError({message}))
     }
-    const handleLogout = () => {
-      dispatch(logout());
-    }
-    return (
-      <>
-        {/* ... */}
-        {isLogin && (
-          <button onClick={handleLogout}>
-            Logout
-          </button>
-        )}
-        {/* ... */}
-      </>
-    )
   }
 
   return (
