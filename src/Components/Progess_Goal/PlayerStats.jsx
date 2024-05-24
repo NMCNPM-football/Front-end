@@ -1,6 +1,7 @@
 // PlayerStats.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
+import './PlayerStats.css';
 
 const goalTypes = {
   LBT01: 'Ghi bàn trực tiếp',

@@ -1,24 +1,26 @@
 // MatchInfo.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
+import './MatchInfo.css';
+
 
 const MatchInfo = ({ match }) => {
   if (!match) return null;
 
   return (
-    <div className="match-info">
-      <h1 className="titlematch">{match.homeTeam.name} vs {match.awayTeam.name}</h1>
-      <div className="timewhere">
+      <div className="info-match">
+      <h1 className="title_match">{match.homeTeam.name} vs {match.awayTeam.name}</h1>
+      <div className="time_text">
         <div>{'Thời gian: '+match.time}</div>
         <div>{'SVĐ ' + match.stadium}</div>
-        <div>{'Khán giả: ' +match.capacity}</div>
+        <div>{'Khán giả: ' +match.capacity +' người'}</div>
       </div>
       <div className="scoreboard">
         <div className="team-info">
           <img src={match.homeTeam.logo} alt={match.homeTeam.name} className="team-logo" />
           <div className="team-name">{match.homeTeam.name}</div>
         </div>
-        <div className="scoreteam">
+        <div className="score_team">
           <span>{match.homeTeam.goals}</span>
           <span>-</span>
           <span>{match.awayTeam.goals}</span>

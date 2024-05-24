@@ -2,7 +2,7 @@
 .match-page {
   padding: 20px;
 }
-.titlematch{
+.title_match{
   font-size: 30px;
 }
 .match-info {
@@ -10,7 +10,7 @@
   margin-bottom: 20px;
 }
 
-.match-info .timewhere {
+.match-info .time_where {
   display: flex;
   justify-content: space-between;
   font-size: 18px;
@@ -48,21 +48,21 @@
   text-overflow: ellipsis;
 }
 
-.match-info .scoreteam {
+.match-info .score_team {
   display: flex;
   align-items: center;
   font-size: 36px;
   font-weight: bold;
 }
 
-.match-info .scoreteam span {
+.match-info .score_team span {
   margin: 0 10px;
 }
 
 /* Player stats */
 .player-stats {
   display: flex;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   margin-top: 10px;
 }
 
