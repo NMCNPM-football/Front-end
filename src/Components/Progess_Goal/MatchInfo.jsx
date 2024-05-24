@@ -9,9 +9,9 @@ const MatchInfo = ({ match }) => {
     <div className="match-info">
       <h1 className="titlematch">{match.homeTeam.name} vs {match.awayTeam.name}</h1>
       <div className="timewhere">
-        <div>{match.time}</div>
-        <div>{match.stadium}</div>
-        <div>{match.capacity}</div>
+        <div>{'Thời gian: '+match.time}</div>
+        <div>{'SVĐ ' + match.stadium}</div>
+        <div>{'Khán giả: ' +match.capacity}</div>
       </div>
       <div className="scoreboard">
         <div className="team-info">
