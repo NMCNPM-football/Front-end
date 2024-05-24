@@ -25,7 +25,7 @@ const Schedule = () => {
 
   return (
     <div className="schedule">
-      <h1 className='titlesche'>Vô địch Quốc gia Night Wolf {selectedSeason === '2023' ? '2023-2024' : '2022-2023'}</h1>
+      <h1 className='titlesche'>Vô địch Quốc gia Night Wolf {selectedSeason === '2023-2024' ? '2023-2024' : '2022-2023'}</h1>
       <div className="selections-container">
         <TurnSelection
           turns={turns}
