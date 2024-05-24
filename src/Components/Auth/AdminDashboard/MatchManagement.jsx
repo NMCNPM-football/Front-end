@@ -6,13 +6,19 @@ const { Content } = Layout;
 const MatchManagement = () => {
   const [visible, setVisible] = useState(false);
   const [form] = Form.useForm();
-
-  const dataSource = [
-    // Dữ liệu trận đấu
-  ];
+  const [dataSource, setDataSource] = useState([]);
 
   const columns = [
-    // Các cột dữ liệu trận đấu
+    { title: 'Đội nhà', dataIndex: 'homeTeam', key: 'homeTeam' },
+    { title: 'Đội khách', dataIndex: 'awayTeam', key: 'awayTeam' },
+    { title: 'Kết quả', dataIndex: 'result', key: 'result' },
+    {
+      title: 'Hành động',
+      dataIndex: 'operation',
+      render: (_, record) => (
+        <Button onClick={() => handleEdit(record.key)}>Chỉnh sửa</Button>
+      ),
+    },
   ];
 
   const handleAddMatch = () => {
@@ -24,7 +30,21 @@ const MatchManagement = () => {
   };
 
   const handleSave = () => {
-    // Xử lý lưu thông tin trận đấu
+    form.validateFields().then((values) => {
+      const newData = {
+        key: Math.random(), // Sử dụng key ngẫu nhiên
+        ...values,
+      };
+      setDataSource([...dataSource, newData]);
+      setVisible(false);
+      form.resetFields();
+    });
+  };
+
+  const handleEdit = (key) => {
+    // Logic để chỉnh sửa kết quả trận đấu
+    // Có thể hiển thị một modal hoặc giao diện chỉnh sửa khác
+    console.log('Edit match with key:', key);
   };
 
   return (
@@ -43,7 +63,15 @@ const MatchManagement = () => {
         onOk={handleSave}
       >
         <Form form={form} layout="vertical">
-          {/* Thêm các trường thông tin của trận đấu */}
+          <Form.Item name="homeTeam" label="Đội nhà" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="awayTeam" label="Đội khách" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="result" label="Kết quả" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
         </Form>
       </Modal>
     </Layout>

@@ -1,30 +1,106 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
-import { Route, Routes } from 'react-router-dom';
-import PlayerManagement from './PlayerManagement'; // Chỉnh sửa tại đây
-import MatchManagement from './MatchManagement'; // Chỉnh sửa tại đây
+import { TeamOutlined, CalendarOutlined, SettingOutlined } from '@ant-design/icons';
+import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content, Sider } = Layout;
+
+const items1 = ['1'].map((key) => ({
+  key,
+  label: `Quản trị ${key}`,
+}));
+
+const items2 = [
+  {
+    key: 'sub1',
+    icon: <TeamOutlined />,
+    label: 'Quản lý đội bóng',
+    children: [
+      {
+        key: '1',
+        label: 'Thông tin đội bóng',
+      },
+      {
+        key: '2',
+        label: 'Cầu thủ',
+      },
+      {
+        key: '3',
+        label: 'Huấn luyện viên',
+      },
+      {
+        key: '4',
+        label: 'Xếp đội hình',
+      },
+    ],
+  },
+  {
+    key: 'sub2',
+    icon: <CalendarOutlined />,
+    label: 'Quản lý trận đấu',
+    children: [
+      {
+        key: '5',
+        label: 'Ghi nhận kết quả',
+      },
+      {
+        key: '6',
+        label: 'Lập lịch thi đấu',
+      },
+    ],
+  },
+  {
+    key: 'sub3',
+    icon: <SettingOutlined />,
+    label: 'Thay đổi quy định',
+    children: [],
+  },
+];
 
 const AdminDashboard = () => {
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
+
   return (
     <Layout>
-      <Header>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1">Quản lý cầu thủ</Menu.Item>
-          <Menu.Item key="2">Quản lý trận đấu</Menu.Item>
-        </Menu>
+      <Header style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="demo-logo" />
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={['1']}
+          items={items1}
+          style={{ flex: 1, minWidth: 0 }}
+        />
       </Header>
-      <Content style={{ padding: '0 50px', marginTop: 64 }}>
-        <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
-          <Routes>
-            <Route path="/" element={<PlayerManagement />} />
-            <Route path="/player" element={<PlayerManagement />} />
-            <Route path="/match" element={<MatchManagement />} />
-          </Routes>
-        </div>
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>Admin Dashboard</Footer>
+      <Layout>
+        <Sider width={200} style={{ background: colorBgContainer }}>
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
+            style={{ height: '100%', borderRight: 0 }}
+            items={items2}
+          />
+        </Sider>
+        <Layout style={{ padding: '0 24px 24px' }}>
+          <Breadcrumb style={{ margin: '16px 0' }}>
+            <Breadcrumb.Item>Admin</Breadcrumb.Item>
+            <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+          </Breadcrumb>
+          <Content
+            style={{
+              padding: 24,
+              margin: 0,
+              minHeight: 280,
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
+            }}
+          >
+            Content here
+          </Content>
+        </Layout>
+      </Layout>
     </Layout>
   );
 };
