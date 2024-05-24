@@ -1,28 +1,26 @@
-import {FormProvider, useForm} from 'react-hook-form';
-import {Link, useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import React, {useEffect} from "react";
+import { FormProvider, useForm } from 'react-hook-form';
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
 import PATHS from "../../../const/paths";
-import {showError, showInfo} from '../../FlashMessage/flashMessageSlice';
-import {getProfile, setLoginSuccess} from '../../../store/userSlice';
+import { showError, showInfo } from '../../FlashMessage/flashMessageSlice';
+import { getProfile, setLoginSuccess } from '../../../store/userSlice';
 import TextInput from "../../../Components/TextInput";
 
 export default function SignIn() {
-  // const {t} = useTranslation();
   const methods = useForm();
-  const navigate = useNavigate()
-  const isLogin = useSelector((state) => !!state.user.refreshToken)
+  const navigate = useNavigate();
+  const isLogin = useSelector((state) => !!state.user.refreshToken);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (isLogin) {
-      navigate(PATHS.HOMEPAGE)
+      navigate(PATHS.HOMEPAGE);
     }
-  }, [isLogin, navigate])
+  }, [isLogin, navigate]);
 
   const onSubmit = async (data) => {
     try {
-      // Make a POST request to the login endpoint
       const response = await fetch('http://localhost:8888/login', {
         method: 'POST',
         headers: {
@@ -31,20 +29,15 @@ export default function SignIn() {
         body: JSON.stringify(data)
       });
 
-      // Check if the request was successful
       if (!response.ok) {
         throw new Error('Login failed');
       }
 
-      // Get the result from the response
       const result = await response.json();
+      dispatch(setLoginSuccess({ accessToken: result.data.accessToken, refreshToken: result.data.refreshToken }));
+      dispatch(getProfile());
+      dispatch(showInfo({ message: "Login successfully" }));
 
-      // Dispatch the setLoginSuccess action with the accessToken
-      dispatch(setLoginSuccess({ accessToken: result.data.accessToken, refreshToken: result.data.refreshToken }))
-      dispatch(getProfile())
-      dispatch(showInfo({message: "Login successfully"}))
-
-      // Fetch the profile data
       const profileResponse = await fetch('http://localhost:8888/profile', {
         headers: {
           'Authorization': `Bearer ${result.data.accessToken}`
@@ -57,7 +50,6 @@ export default function SignIn() {
 
       const profileData = await profileResponse.json();
 
-      // Check the position and navigate to the appropriate dashboard
       if (profileData.data.position === 'Admin') {
         localStorage.setItem('user', JSON.stringify({ email: profileData.data.email, role: 'admin' }));
         navigate('/admin-dashboard');
@@ -67,81 +59,96 @@ export default function SignIn() {
       }
 
     } catch (error) {
-      const {message} = error
-      dispatch(showError({message}))
+      const { message } = error;
+      dispatch(showError({ message }));
     }
-  }
+  };
 
   return (
-    <>
-      <div className="flex min-h-full flex-1 items-center justify-center px-4 py-12 sm:px-6 lg:px-8 ">
-        <div className="w-full max-w-sm space-y-10">
+    <div className="flex min-h-full items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl w-full space-y-8 bg-white p-10 rounded-lg shadow-lg flex">
+        <div className="w-full max-w-md space-y-8">
           <div>
             <img
-              className="mx-auto h-10 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              className="mx-auto h-22 w-auto"
+              src="/assets/logo_vpf.png"
               alt="Your Company"
             />
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
               Sign in to your account
             </h2>
+            <p className="mt-2 text-center text-sm text-gray-600">
+              Or{' '}
+              <Link to={PATHS.SIGN_UP} className="font-medium text-indigo-600 hover:text-indigo-500">
+                start your 14-day free trial
+              </Link>
+            </p>
           </div>
           <FormProvider {...methods}>
-            <form className="space-y-6" onSubmit={methods.handleSubmit(onSubmit)}>
-              <div className="relative -space-y-px rounded-md shadow-sm">
-                <div
-                  className="pointer-events-none absolute inset-0 z-10 rounded-md ring-1 ring-inset ring-gray-300"/>
+            <form className="mt-8 space-y-6" onSubmit={methods.handleSubmit(onSubmit)}>
+              <input type="hidden" name="remember" value="true" />
+              <div className="rounded-md shadow-sm -space-y-px">
                 <div>
-                  <label htmlFor="email-address" className="sr-only">
-                    Email address
-                  </label>
+                  <label htmlFor="email-address" className="sr-only">Email address</label>
                   <TextInput
-
                     id="email-address"
                     name="email"
                     type="email"
                     autoComplete="email"
                     required
-                    className="relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     placeholder="Email address"
                   />
                 </div>
                 <div>
-                  <label htmlFor="password" className="sr-only">
-                    Password
-                  </label>
+                  <label htmlFor="password" className="sr-only">Password</label>
                   <TextInput
                     id="password"
                     name="password"
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     placeholder="Password"
                   />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <input
+                    id="remember-me"
+                    name="remember-me"
+                    type="checkbox"
+                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                  />
+                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                    Remember me
+                  </label>
+                </div>
+
+                <div className="text-sm">
+                  <Link to="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                    Forgot your password?
+                  </Link>
                 </div>
               </div>
 
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Sign in
                 </button>
               </div>
             </form>
           </FormProvider>
-          <p className="text-center text-sm leading-6 text-gray-500">
-            Not a member?{' '}
-            <button className="your-button-classes">
-              <Link to={PATHS.SIGN_UP} className="font-semibold text-indigo-600 hover:text-indigo-500">
-                Sign up
-              </Link>
-            </button>
-          </p>
+        </div>
+        <div className="hidden md:block md:w-1/2 items-center justify-center">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAkCV9vyJzbQILBOr-Nv1jr__bTs7lJS-BO4xf7HND2A&s" alt="Login Illustration" className="max-w-full h-full" />
         </div>
       </div>
-    </>
-  )
+    </div>
+  );
 }
