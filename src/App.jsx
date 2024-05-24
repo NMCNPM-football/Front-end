@@ -62,7 +62,7 @@ const App = () => {
               }
             />
             <Route
-              path="/user-dashboard"
+              path="/manager-dashboard"
               element={
                 <PrivateRoute >
                   <ManagerDashboard />

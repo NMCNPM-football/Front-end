@@ -46,7 +46,7 @@ const items2 = [
   },
 ];
 
-const AdminDashboard = () => {
+const ManagerDashboard = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -125,4 +125,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default ManagerDashboard;

@@ -42,7 +42,7 @@ const Ranking = () => {
         {rankings.map((team) => (
           <div key={team.stt} className="ranking-row">
             <span>{team.stt}</span>
-            <div className="team-info">
+            <div className="team-info-rank">
               <img src={team.logoLink} alt={team.shorthand} className="team-logo-mini" />
               <span>{team.shorthand}</span>
             </div>

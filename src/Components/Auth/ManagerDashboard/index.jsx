@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   TeamOutlined,
   CalendarOutlined,
-  SettingOutlined,
+
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import MatchManagement from "./MatchManagement";
@@ -94,7 +94,6 @@ const AdminDashboard = () => {
         <Layout style={{ padding: "0 24px 24px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>Manager</Breadcrumb.Item>
-            <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
           </Breadcrumb>
           <Content
             style={{

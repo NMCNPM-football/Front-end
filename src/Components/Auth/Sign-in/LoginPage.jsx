@@ -49,13 +49,15 @@ export default function SignIn() {
       }
 
       const profileData = await profileResponse.json();
-
       if (profileData.data.position === 'Admin') {
-        localStorage.setItem('user', JSON.stringify({ email: profileData.data.email, role: 'admin' }));
+        localStorage.setItem('admin', JSON.stringify({ email: profileData.data.email, role: 'admin' }));
         navigate('/admin-dashboard');
-      } else {
-        localStorage.setItem('user', JSON.stringify({ email: profileData.data.email, role: 'user' }));
-        navigate('/user-dashboard');
+      } else if (profileData.data.position === 'Member' || profileData.data.position === 'Owner') {
+        localStorage.setItem('manager', JSON.stringify({ email: profileData.data.email, role: 'manager' }));
+        navigate('/manager-dashboard');
+      }
+      else {
+        navigate(PATHS.HOMEPAGE);
       }
 
     } catch (error) {
