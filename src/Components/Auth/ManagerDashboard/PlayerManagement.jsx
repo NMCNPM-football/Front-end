@@ -36,7 +36,6 @@ const PlayerManagement = () => {
     { title: 'Quốc tịch', dataIndex: 'nationality', key: 'nationality', editable: true },
     { title: 'Club Name', dataIndex: 'clubName', key: 'clubName', editable: true },
     { title: 'Season', dataIndex: 'season', key: 'season', editable: true },
-    { title: 'Type', dataIndex: 'typeName', key: 'typeName', editable: true },
     {
       title: 'Hành động',
       dataIndex: 'operation',

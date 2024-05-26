@@ -3,7 +3,7 @@ import './Ranking.css';
 import {Link} from "react-router-dom";
 
 const Ranking = () => {
-  const [selectedSeason] = useState('2023-2024');
+  const [selectedSeason, setSelectedSeason] = useState('2023-2024');
   const [rankings, setRankings] = useState([]);
 
   useEffect(() => {
