@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { UserSwitchOutlined } from "@ant-design/icons";
+
 import {
   TeamOutlined,
   CalendarOutlined,
@@ -7,10 +9,12 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import MatchManagement from "./MatchManagement";
 import RuleFormat from "./Rule/RuleFormat";
-import ClubAdd from "./Club/ClubAdd"
+import ClubAdd from "./Club/ClubAdd";
 import PlayerManagement from "../ManagerDashboard/PlayerManagement";
 import MatchScheduler from "./MatchScheduler";
 import TeamGrid from "../../ClubInfo/TeamGrid";
+import UserAuth from "./UserAuth";
+import Lineup from "./LineUp";
 
 const { Header, Content, Sider } = Layout;
 
@@ -27,16 +31,18 @@ const items2 = [
     children: [
       { key: "1", label: "Thêm đội bóng" },
       { key: "2", label: "Thông tin đội bóng" },
+      { key: "8", label: "Xếp đội hình" },
     ],
   },
   {
     key: "sub2",
     icon: <CalendarOutlined />,
     label: "Quản lý trận đấu",
-    children: [{ key: "3", label: "Lập lịch thi đấu" },
-    { key: "4", label: "Tạo diễn biến trận đấu" },
-    { key: "5", label: "Tạo bảng xếp hạng" },
-    { key: "6", label: "Bảng xếp hạng" }
+    children: [
+      { key: "3", label: "Lập lịch thi đấu" },
+      { key: "4", label: "Tạo diễn biến trận đấu" },
+      { key: "5", label: "Tạo bảng xếp hạng" },
+      { key: "6", label: "Bảng xếp hạng" },
     ],
   },
   {
@@ -44,6 +50,11 @@ const items2 = [
     icon: <SettingOutlined />,
     label: "Quy định giải đấu",
     children: [{ key: "7", label: "Thay đổi quy định cầu thủ" }],
+  },
+  {
+    key: "sub4",
+    icon: <UserSwitchOutlined />,
+    label: "Phân quyền người dùng",
   },
 ];
 
@@ -60,25 +71,28 @@ const AdminDashboard = () => {
     setSelectedMenuKey(key);
   };
 
-
   const renderContent = () => {
     switch (selectedMenuKey) {
       case "5":
         return <PlayerManagement />;
-      case "3":
-        return <div>Content for Huấn luyện viên</div>;
-      case "4": <MatchManagement />
-        return ;
+      
+      case "4":
+        <MatchManagement />;
+        return;
       case "1":
         return <ClubAdd />;
       case "2":
         return <TeamGrid />;
-      case "6":
+      case "3":
         return <MatchScheduler />;
       case "7":
         return <RuleFormat />;
+      case "6":
+        return <div>Content for Xếp hạng</div>;
+      case "sub4":
+        return <UserAuth />;
       case "8":
-          return <div>Content for Xếp hạng</div>;
+        return <Lineup/>;
       default:
         return null;
     }
