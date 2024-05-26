@@ -5,18 +5,14 @@ import { Link ,useLocation} from 'react-router-dom';
 
 const DataTeam = () => {
   const [players, setPlayers] = useState([]);
-  const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
   const [team, setTeam] = useState(null);
+  const [sortConfig, setSortConfig] = useState({ key: '', direction: '' }); // Declare sortConfig as a state variable
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const selectedSeason = searchParams.get('season');
 
-
+  const teamId = window.location.pathname.split('/').pop();
   useEffect(() => {
-    const teamId = window.location.pathname.split('/').pop();
-
-    console.log(selectedSeason); // Add this line
-
     // Fetch team data
     fetch(`http://localhost:8888/club-list/${selectedSeason}`)
       .then(response => response.json())
@@ -24,17 +20,22 @@ const DataTeam = () => {
         const teamData = data.data.find(team => team.id === teamId);
         if (teamData) {
           setTeam(teamData);
-          // Fetch players data
-          fetch(`http://localhost:8888/player-profile/${teamId}`)
-            .then(response => response.json())
-            .then(data => {
-              setPlayers(data.data);
-            })
-            .catch(error => console.error(`Error: ${error}`));
         }
       })
       .catch(error => console.error(`Error: ${error}`));
-  },  [selectedSeason]);
+  },  [selectedSeason, teamId]);
+
+  useEffect(() => {
+    if (team) {
+      // Fetch club profile data
+      fetch(`http://localhost:8888/club-profile/${teamId}`)
+        .then(response => response.json())
+        .then(data => {
+          setPlayers(data.data);
+        })
+        .catch(error => console.error(`Error: ${error}`));
+    }
+  }, [teamId, team]);
 
   const onSort = (key) => {
     let direction = 'ascending';

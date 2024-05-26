@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux'; // Import useSelector
 import './ClubAdd.css';
 
 const ClubAdd = () => {
   const [formData, setFormData] = useState({
     nameClub: '',
-    nameCoach: '',
-    shorthand: '',
-    nameStadium: '',
+    short_hand: '',
     season: '',
   });
 
-  const [entries, setEntries] = useState([]);
-  const [isEditing, setIsEditing] = useState(null);
+  const accessToken = useSelector((state) => state.user.accessToken); // Get the accessToken from the Redux store
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,46 +19,37 @@ const ClubAdd = () => {
     });
   };
 
-  const handleConfirm = () => {
-    if (formData.nameClub && formData.nameCoach && formData.shorthand && formData.nameStadium && formData.season) {
-      setEntries([...entries, { ...formData, id: Date.now() }]);
-      console.log({
-        ...formData,
-        achievement: '',
-        updateBy: '',
-        ownerBy: '',
-        updateAt: '',
+  const submitForm = async () => {
+    if (formData.nameClub && formData.short_hand && formData.season) {
+      const response = await fetch('http://localhost:8888/club', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
+        },
+        body: JSON.stringify({
+          name_club: formData.nameClub,
+          short_hand: formData.short_hand,
+          sea_son: formData.season,
+          logo : formData.logo,
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
       setFormData({
         nameClub: '',
-        shorthand: '',
+        short_hand: '',
         season: '',
+        logo:'',
       });
     } else {
       alert("Please fill in all fields");
     }
-  };
-
-  const handleEdit = (id) => {
-    setIsEditing(id);
-  };
-
-  const handleSave = (id) => {
-    setIsEditing(null);
-    const updatedEntry = entries.find(entry => entry.id === id);
-    console.log(updatedEntry);
-  };
-
-  const handleDelete = (id) => {
-    setEntries(entries.filter(entry => entry.id !== id));
-  };
-
-  const handleEntryChange = (e, id) => {
-    const { name, value } = e.target;
-    const updatedEntries = entries.map((entry) =>
-      entry.id === id ? { ...entry, [name]: value } : entry
-    );
-    setEntries(updatedEntries);
   };
 
   return (
@@ -79,9 +68,19 @@ const ClubAdd = () => {
         <label>Tên viết tắt đội bóng:</label>
         <input
           type="text"
-          name="shorthand"
+          name="short_hand"
           placeholder="Nhập tên viết tắt đội bóng"
-          value={formData.shorthand}
+          value={formData.short_hand}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="form-group">
+        <label>LogoLink:</label>
+        <input
+          type="text"
+          name="logo"
+          placeholder="Nhập tên viết tắt đội bóng"
+          value={formData.logo}
           onChange={handleChange}
         />
       </div>
@@ -95,79 +94,8 @@ const ClubAdd = () => {
         </select>
       </div>
       <div className="buttons">
-        <button onClick={handleConfirm}>Xác nhận</button>
+        <button onClick={submitForm}>Xác nhận</button>
       </div>
-
-      {entries.length > 0 && (
-        <table className="entries-table">
-          <thead>
-          <tr>
-            <th>Tên đội</th>
-            <th>Tên viết tắt</th>
-            <th>Mùa giải</th>
-          </tr>
-          </thead>
-          <tbody>
-          {entries.map((entry, index) => (
-            <tr key={entry.id}>
-              <td>
-                {isEditing === entry.id ? (
-                  <input
-                    type="text"
-                    name="nameClub"
-                    value={entry.nameClub}
-                    onChange={(e) => handleEntryChange(e, entry.id)}
-                  />
-                ) : (
-                  entry.nameClub
-                )}
-              </td>
-              <td>
-                {isEditing === entry.id ? (
-                  <input
-                    type="text"
-                    name="shorthand"
-                    value={entry.shorthand}
-                    onChange={(e) => handleEntryChange(e, entry.id)}
-                  />
-                ) : (
-                  entry.shorthand
-                )}
-              </td>
-              <td>
-                {isEditing === entry.id ? (
-                  <select
-                    name="season"
-                    value={entry.season}
-                    onChange={(e) => handleEntryChange(e, entry.id)}
-                  >
-                    <option value="">Chọn mùa giải</option>
-                    <option value="2022-2023">2022-2023</option>
-                    <option value="2023-2024">2023-2024</option>
-                    <option value="2024-2025">2024-2025</option>
-                  </select>
-                ) : (
-                  entry.season
-                )}
-              </td>
-              <td>
-                {isEditing === entry.id ? (
-                  <>
-                    <button className="save-button" onClick={() => handleSave(entry.id)}>Lưu</button>
-                    <button className="cancel-button" onClick={() => setIsEditing(null)}>Hủy</button>
-                  </>
-                ) : (
-                  <>
-                    <button className="edit-button" onClick={() => handleEdit(entry.id)}>Sửa</button>
-                    <button className="delete-button" onClick={() => handleDelete(entry.id)}>Xóa</button>
-                  </>
-                )}
-              </td>
-            </tr>
-          ))}
-          </tbody>
-        </table>
-      )}
     </div>
   );
 };
