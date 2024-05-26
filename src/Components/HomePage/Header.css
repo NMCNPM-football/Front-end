@@ -16,8 +16,7 @@
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin: 10px 0;
-  margin-left: 250px ;
+  margin: 10px 0 10px 250px;
 }
 
 .team-logos li {
@@ -154,6 +153,11 @@
   text-decoration: none;
   color: inherit;
 }
+
+.menu-item:focus {
+  outline: none;
+}
+
 
 .menu-item a:hover {
   color: inherit;

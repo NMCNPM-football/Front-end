@@ -39,7 +39,11 @@ const ManagerDashboard = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const [ageLimit, setAgeLimit] = useState(20); // Giá trị mặc định của giới hạn tuổi là 20
 
+  const handleAgeLimitChange = (newAgeLimit) => {
+    setAgeLimit(newAgeLimit);
+  };
   const [selectedMenuKey, setSelectedMenuKey] = useState(
     items2[0].children[0].key
   );

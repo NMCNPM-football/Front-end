@@ -188,9 +188,14 @@ const Header = () => {
                 </li>
               )}
               {isLogin && (
-                <li className="menu-item" onClick={handleLogout}>
-                  Logout
-                </li>
+                <>
+                  <li className="menu-item" onClick={() => navigate("/admin-dashboard")}>
+                    Admin Dashboard
+                  </li>
+                  <li className="menu-item" onClick={handleLogout}>
+                    Logout
+                  </li>
+                </>
               )}
             </ul>
           </div>

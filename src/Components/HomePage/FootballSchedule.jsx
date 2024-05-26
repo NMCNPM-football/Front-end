@@ -19,13 +19,19 @@ const FootballSchedule = () => {
   };
 
   const handlePrevClick = () => {
-    setStartIndex((prevIndex) => (prevIndex === 0 ? matches.length - 3 : prevIndex - 1));
+    if (matches && matches.length > 0) {
+      setStartIndex((prevIndex) => (prevIndex === 0 ? matches.length - 3 : prevIndex - 1));
+    }
   };
 
   const handleNextClick = () => {
-    setStartIndex((prevIndex) => (prevIndex + 3 >= matches.length ? 0 : prevIndex + 1));
+    if (matches && matches.length > 0) {
+      setStartIndex((prevIndex) => (prevIndex + 3 >= matches.length ? 0 : prevIndex + 1));
+    }
   };
-  const displayedMatches = matches.slice(startIndex, startIndex + 3);
+
+  // Check if matches is not empty before calling slice and accessing length
+  const displayedMatches = matches && matches.length > 0 ? matches.slice(startIndex, startIndex + 3) : [];
 
   return (
     <div className="schedule-container">
@@ -58,7 +64,7 @@ const FootballSchedule = () => {
 
       <div className="matches">
         <button className="arrow left-arrow" onClick={handlePrevClick}>‹</button>
-        {displayedMatches.map((match, index) => (
+        {displayedMatches && displayedMatches.map((match, index) => ( // Check if displayedMatches is not undefined before calling map
           <div key={index} className="match">
             <div className="round">{'Vòng ' + match.matchRound}</div>
             <div className="date-time">{match.time}</div>

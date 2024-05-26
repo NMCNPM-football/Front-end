@@ -6,10 +6,11 @@ import {
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import MatchManagement from "./MatchManagement";
-import RuleFormat from "./RuleFormat";
-import ClubAdd from "./ClubAdd"
+import RuleFormat from "./Rule/RuleFormat";
+import ClubAdd from "./Club/ClubAdd"
 import PlayerManagement from "../ManagerDashboard/PlayerManagement";
 import MatchScheduler from "./MatchScheduler";
+import TeamGrid from "../../ClubInfo/TeamGrid";
 
 const { Header, Content, Sider } = Layout;
 
@@ -24,24 +25,24 @@ const items2 = [
     icon: <TeamOutlined />,
     label: "Quản lý đội bóng",
     children: [
-      { key: "5", label: "Thông tin đội bóng" },
-      { key: "2", label: "Cầu thủ" },
-      { key: "3", label: "Huấn luyện viên" },
+      { key: "1", label: "Thêm đội bóng" },
+      { key: "2", label: "Thông tin đội bóng" },
     ],
   },
   {
     key: "sub2",
     icon: <CalendarOutlined />,
     label: "Quản lý trận đấu",
-    children: [{ key: "6", label: "Lập lịch thi đấu" },
-    { key: "4", label: "Diễn biến trận đấu" },
-    { key: "8", label: "Xếp hạng" }
+    children: [{ key: "3", label: "Lập lịch thi đấu" },
+    { key: "4", label: "Tạo diễn biến trận đấu" },
+    { key: "5", label: "Tạo bảng xếp hạng" },
+    { key: "6", label: "Bảng xếp hạng" }
     ],
   },
   {
     key: "sub3",
     icon: <SettingOutlined />,
-    label: "Thay đổi quy định",
+    label: "Quy định giải đấu",
     children: [{ key: "7", label: "Thay đổi quy định cầu thủ" }],
   },
 ];
@@ -59,16 +60,19 @@ const AdminDashboard = () => {
     setSelectedMenuKey(key);
   };
 
+
   const renderContent = () => {
     switch (selectedMenuKey) {
-      case "2":
+      case "5":
         return <PlayerManagement />;
       case "3":
         return <div>Content for Huấn luyện viên</div>;
       case "4": <MatchManagement />
         return ;
-      case "5":
+      case "1":
         return <ClubAdd />;
+      case "2":
+        return <TeamGrid />;
       case "6":
         return <MatchScheduler />;
       case "7":

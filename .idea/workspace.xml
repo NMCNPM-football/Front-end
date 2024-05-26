@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86503c1a-504d-4893-97aa-2e418f0d147c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Rule/RuleFormat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Player/PlayerAdd.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Ranking.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Ranking.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/ClubAdd.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Club/ClubAdd.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/ClubAdd.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Club/ClubAdd.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/RuleFormat.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Rule/RuleFormat.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/FootballSchedule.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/FootballSchedule.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Ranking.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Ranking.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/MatchSchedule/Schedule.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MatchSchedule/Schedule.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Ranking/DataTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Ranking/DataTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Ranking/LeagueTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Ranking/LeagueTable.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +77,8 @@
       <recent name="$PROJECT_DIR$/src/Components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Rule" />
+      <recent name="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Club" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/view" />
     </key>
@@ -70,7 +86,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
       </set>
     </attachedChunks>
   </component>
@@ -101,6 +117,7 @@
       <workItem from="1716466604663" duration="16667000" />
       <workItem from="1716514349779" duration="1464000" />
       <workItem from="1716520345045" duration="17214000" />
+      <workItem from="1716728713395" duration="5220000" />
     </task>
     <servers />
   </component>

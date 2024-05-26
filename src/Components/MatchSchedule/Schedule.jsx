@@ -16,12 +16,15 @@ const Schedule = () => {
       .catch(error => console.error(`Error: ${error}`));
   }, []);
 
-  const seasons = [...new Set(matchesData.map(match => match.seaSon))];
-  const turns = [...new Set(matchesData.filter(match => match.seaSon === selectedSeason).map(match => match.matchRound))];
+  const seasons = matchesData && matchesData.length > 0 ? [...new Set(matchesData.map(match => match.seaSon))] : [];
+  const turns = matchesData && matchesData.length > 0 ? [...new Set(matchesData.filter(match => match.seaSon === selectedSeason).map(match => match.matchRound))] : [];
 
-  const filteredMatches = matchesData.filter(match =>
-    match.seaSon === selectedSeason && (selectedTurn === 'all' || match.matchRound === selectedTurn)
-  );
+  const filteredMatches = matchesData && matchesData.length > 0
+    ? matchesData
+      .filter(match => match.seaSon === selectedSeason && (selectedTurn === 'all' || match.matchRound === selectedTurn))
+      .sort((a, b) => Number(a.matchRound) - Number(b.matchRound))
+    : [];
+
 
   return (
     <div className="schedule">
