@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86503c1a-504d-4893-97aa-2e418f0d147c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/login.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/Sign-in/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/Sign-in/LoginPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/Sign-up/SignupPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/Sign-up/SignupPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Club/ClubAdd.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Club/ClubAdd.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/TeamInfo/TableTeam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TeamInfo/TableTeam.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +53,7 @@
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/snap/webstorm/373/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "/snap/webstorm/377/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -64,6 +63,8 @@
       <recent name="$PROJECT_DIR$/src/Components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Rule" />
+      <recent name="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Club" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/view" />
     </key>
@@ -71,7 +72,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17011.90" />
       </set>
     </attachedChunks>
   </component>
@@ -102,6 +103,7 @@
       <workItem from="1716466604663" duration="16667000" />
       <workItem from="1716514349779" duration="1464000" />
       <workItem from="1716520345045" duration="17214000" />
+      <workItem from="1716728713395" duration="9415000" />
     </task>
     <servers />
   </component>

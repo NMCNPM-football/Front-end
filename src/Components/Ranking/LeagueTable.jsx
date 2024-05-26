@@ -46,47 +46,47 @@ const LeagueTable = () => {
         </Link>
       ),
     },
-      {
-        Header: 'Played',
-        accessor: 'matchPlayed',
-      },
-      {
-        Header: 'Won',
-        accessor: 'matchWon',
-      },
-      {
-        Header: 'Drawn',
-        accessor: 'matchDraw',
-      },
-      {
-        Header: 'Lost',
-        accessor: 'matchLost',
-      },
-      {
-        Header: 'GF',
-        accessor: 'goalScored',
-      },
-      {
-        Header: 'GA',
-        accessor: 'goalConceded',
-      },
-      {
-        Header: 'GD',
-        accessor: 'goalDifference',
-      },
-      {
-        Header: 'Yellow Card',
-        accessor: 'yellowCard',
-      },
-      {
-        Header: 'Red Card',
-        accessor: 'redCard',
-      },
-      {
-        Header: 'Points',
-        accessor: 'points',
-      },
-    ];
+    {
+      Header: 'Played',
+      accessor: 'matchPlayed',
+    },
+    {
+      Header: 'Won',
+      accessor: 'matchWon',
+    },
+    {
+      Header: 'Drawn',
+      accessor: 'matchDraw',
+    },
+    {
+      Header: 'Lost',
+      accessor: 'matchLost',
+    },
+    {
+      Header: 'GF',
+      accessor: 'goalScored',
+    },
+    {
+      Header: 'GA',
+      accessor: 'goalConceded',
+    },
+    {
+      Header: 'GD',
+      accessor: 'goalDifference',
+    },
+    {
+      Header: 'Yellow Card',
+      accessor: 'yellowCard',
+    },
+    {
+      Header: 'Red Card',
+      accessor: 'redCard',
+    },
+    {
+      Header: 'Points',
+      accessor: 'points',
+    },
+  ];
 
   return (
     <div className="league-table">
