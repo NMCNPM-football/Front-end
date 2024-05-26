@@ -22,6 +22,7 @@ import {Provider, useSelector} from "react-redux";
 import ManagerDashboard from "./Components/Auth/ManagerDashboard";
 import SignupPage from './Components/Auth/Sign-up/SignupPage.jsx'
 import {store} from './store';
+import ProfilePage from "./Components/Auth/Sign-in/ProfilePage";
 
 const PrivateRoute = ({ children }) => {
   const isLogin = useSelector((state) => !!state.user.accessToken);
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/sumarize" element={<Summarize />} />
             <Route path="/sign-up" element={<SignupPage/>} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route
               path="/admin-dashboard"
               element={
