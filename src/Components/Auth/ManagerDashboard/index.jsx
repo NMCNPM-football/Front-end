@@ -82,7 +82,6 @@ const ManagerDashboard = () => {
         <Layout style={{ padding: "0 24px 24px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>Manager</Breadcrumb.Item>
-            <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
           </Breadcrumb>
           <Content
             style={{
