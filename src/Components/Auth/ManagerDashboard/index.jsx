@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { TeamOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import PlayerAdd from "./Player/PlayerAdd";
+<<<<<<< Updated upstream
 import CoachAdd from "./Coach/CoachAdd";
 import Lineup from "./LineUp/LineUp";
 import DataTeamAdmin from "./Player/DataTeamAdmin";
+=======
+import Lineup from "./LineUp/LineUp";
+>>>>>>> Stashed changes
 
 const { Header, Content, Sider } = Layout;
 
