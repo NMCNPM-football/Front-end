@@ -65,10 +65,7 @@ const FootballEventPage = () => {
 
   useEffect(() => {
     if (selectedRound) {
-      axios.get(`http://localhost:8888/match/result_score/${selectedRound}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
+      axios.get(`http://localhost:8888/match_calendar/all/${selectedRound}`, {
       })
         .then(response => {
           setMatches(response.data.data);
@@ -77,15 +74,15 @@ const FootballEventPage = () => {
           setError('Error fetching matches. Please try again later.');
         });
     }
-  }, [selectedRound, selectedSeason, accessToken]);
+  }, [selectedRound]);
 
   useEffect(() => {
     if (selectedMatch) {
       const match = matches.find(match => match.matchId === selectedMatch);
       if (match) {
-        setHomeTeam(match.homeTeamFullName);
-        setAwayTeam(match.awayTeamFullName);
-        setSelectedTeam(match.homeTeamFullName);
+        setHomeTeam(match.clubOneName);
+        setAwayTeam(match.clubTwoName);
+        setSelectedTeam(match.clubOneName);
         fetchEvents();
       }
     }
@@ -340,7 +337,7 @@ const FootballEventPage = () => {
           <option value="">Chọn trận đấu</option>
           {matches.map((match, index) => (
             <option key={index} value={match.matchId}>
-              {match.homeTeamFullName} vs {match.awayTeamFullName}
+              {match.clubOneName} vs {match.clubTwoName}
             </option>
           ))}
         </select>
@@ -459,4 +456,3 @@ const FootballEventPage = () => {
 };
 
 export default FootballEventPage;
-

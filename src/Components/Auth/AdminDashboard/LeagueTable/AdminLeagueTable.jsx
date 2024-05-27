@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DataTable from '../../../Ranking/DataTable';
 import { Link } from 'react-router-dom';
+import {useSelector} from "react-redux";
 
 const AdminLeagueTable = () => {
   const [selectedSeason, setSelectedSeason] = useState('2023-2024');
   const [data, setData] = useState([]);
-
+  const accessToken = useSelector((state) => state.user.accessToken);
   useEffect(() => {
     fetch(`http://localhost:8888/summary/${selectedSeason}`)
       .then(response => response.json())
@@ -87,12 +88,25 @@ const AdminLeagueTable = () => {
       accessor: 'points',
     },
   ];
-  const fetchLeagueSummary = () => {
-    fetch(`http://localhost:8888/summary/${selectedSeason}`)
-      .then(response => response.json())
-      .then(data => setData(data.data))
-      .catch(error => console.error(`Error: ${error}`));
-  };
+const fetchLeagueSummary = () => {
+  fetch(`http://localhost:8888/summary/${selectedSeason}`, {
+    method: 'POST', // Specify the method as POST
+    headers: {
+      'Authorization': `Bearer ${accessToken}`, // Use the accessToken from the Redux store
+      'Content-Type': 'application/json' // Specify the content type as JSON
+    },
+    body: JSON.stringify({}) // Send an empty body
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (Array.isArray(data.data)) {
+        setData(data.data);
+      } else {
+        console.error('Error: data is not an array');
+      }
+    })
+    .catch(error => console.error(`Error: ${error}`));
+};
 
   useEffect(fetchLeagueSummary, [selectedSeason]);
 

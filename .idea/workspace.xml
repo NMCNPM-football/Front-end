@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86503c1a-504d-4893-97aa-2e418f0d147c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Player/Modal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Player/Modal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Input_Progress/FootballEventPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Input_Progress/FootballEventPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/LeagueTable/AdminLeagueTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/LeagueTable/AdminLeagueTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Rule/RuleFormat.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Rule/RuleFormat.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Player/DataTeamAdmin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Player/DataTeamAdmin.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,24 +45,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Node.js.DataTeamAdmin.jsx.executor": "Run",
-    "Node.js.index.jsx.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dev",
-    "last_opened_file_path": "/home/phan/WebstormProjects/Front-end/src/Components/Auth/AdminDashboard/LeagueTable",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/snap/webstorm/377/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.DataTeamAdmin.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.index.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/phan/WebstormProjects/Front-end/src/Components/Auth/AdminDashboard/LeagueTable&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/377/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/LeagueTable" />
@@ -110,7 +115,8 @@
       <workItem from="1716770626469" duration="6479000" />
       <workItem from="1716781506746" duration="5980000" />
       <workItem from="1716788785382" duration="8201000" />
-      <workItem from="1716811489197" duration="7832000" />
+      <workItem from="1716811489197" duration="11900000" />
+      <workItem from="1716823406885" duration="262000" />
     </task>
     <servers />
   </component>
