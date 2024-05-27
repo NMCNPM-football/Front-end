@@ -79,7 +79,7 @@ const ClubAdd = () => {
         <input
           type="text"
           name="logo"
-          placeholder="Nhập tên viết tắt đội bóng"
+          placeholder="Nhập logo đội bóng"
           value={formData.logo}
           onChange={handleChange}
         />

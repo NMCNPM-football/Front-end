@@ -10,10 +10,9 @@ import { Breadcrumb, Layout, Menu, theme } from "antd";
 import RuleFormat from "./Rule/RuleFormat";
 import ClubAdd from "./Club/ClubAdd";
 import TeamGrid from "../../ClubInfo/TeamGrid";
-import MatchManagement from "./MatchManagement";
-import MatchScheduler from "./MatchScheduler";
 import UserAuth from "./UserAuth";
-import Lineup from "./LineUp";
+import FootballEventPage  from "./Input_Progress/FootballEventPage";
+import AdminLeagueTable from "./LeagueTable/AdminLeagueTable";
 
 const { Header, Content, Sider } = Layout;
 
@@ -30,7 +29,6 @@ const items2 = [
     children: [
       { key: "1", label: "Thêm đội bóng" },
       { key: "2", label: "Thông tin đội bóng" },
-      { key: "8", label: "Xếp đội hình" },
     ],
   },
   {
@@ -40,7 +38,6 @@ const items2 = [
     children: [
       { key: "3", label: "Lập lịch thi đấu" },
       { key: "4", label: "Tạo diễn biến trận đấu" },
-      { key: "5", label: "Tạo bảng xếp hạng" },
       { key: "6", label: "Bảng xếp hạng" },
     ],
   },
@@ -74,22 +71,20 @@ const AdminDashboard = () => {
     switch (selectedMenuKey) {
       case "3":
         return <div>Content for Huấn luyện viên</div>;
-      case "4": <MatchManagement />
-        return ;
+      case "4":
+        return <FootballEventPage /> ;
       case "1":
         return <ClubAdd />;
       case "2":
         return <TeamGrid />;
       case "6":
-        return <MatchScheduler />;
+        return <AdminLeagueTable />;
       case "7":
         return <RuleFormat />;
       case "9":
         return <div>Content for Xếp hạng</div>;
       case "sub4":
         return <UserAuth />;
-      case "8":
-        return <Lineup/>;
       default:
         return null;
     }

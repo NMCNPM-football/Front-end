@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
-import './RuleFormat.css';  // Import the CSS file
+import React, {useEffect, useState} from 'react';
+import './RuleFormat.css';
+import {useSelector} from "react-redux";
 
 const RuleFormat = () => {
+
+  const accessToken = useSelector((state) => state.user.accessToken); // Get the accessToken from the Redux store
+
   const [rules, setRules] = useState({
-    maxAge: 22,
-    maxForeignPlayers: 3,
-    winPoints: 3,
-    drawPoints: 1,
-    losePoints: 0,
+    maxAge: '',
+    maxForeignPlayers: '',
+    winPoints: '',
+    drawPoints: '',
+    losePoints: '',
+    maxPlayer:'',
   });
 
   const [newValues, setNewValues] = useState({
@@ -16,7 +21,33 @@ const RuleFormat = () => {
     winPoints: '',
     drawPoints: '',
     losePoints: '',
+    maxPlayer:'',
   });
+
+  const ruleKeyMap = {
+    maxAge: 'age-limit',
+    maxForeignPlayers: 'foreign-player',
+    winPoints: 'win-score',
+    drawPoints: 'draw-score',
+    losePoints: 'lose-score',
+    maxPlayer:'max-player',
+  };
+  useEffect(() => {
+    fetch('http://localhost:8888/league-rule', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        const newRules = {};
+        data.data.forEach(item => {
+          const key = Object.keys(ruleKeyMap).find(key => ruleKeyMap[key] === item.key);
+          newRules[key] = item.value;
+        });
+        setRules(newRules);
+      });
+  }, [accessToken]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,17 +58,42 @@ const RuleFormat = () => {
   };
 
   const handleConfirm = (rule) => {
-    const newValue = newValues[rule] !== '' ? parseInt(newValues[rule], 10) : rules[rule];
+    const newValue = newValues[rule] !== '' ? newValues[rule] : rules[rule].toString();
     console.log(`Quy định mới cho ${rule}: ${newValue}`);
-    setRules({
-      ...rules,
-      [rule]: newValue,
-    });
-    setNewValues({
-      ...newValues,
-      [rule]: '',
-    });
 
+    const backendKey = ruleKeyMap[rule];
+
+    fetch('http://localhost:8888/league-rule/update', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
+      },
+      body: JSON.stringify({
+        key: backendKey,
+        value: newValue,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        setRules({
+          ...rules,
+          [rule]: newValue,
+        });
+        setNewValues({
+          ...newValues,
+          [rule]: '',
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   };
 
   return (
@@ -132,6 +188,25 @@ const RuleFormat = () => {
           </button>
         </div>
       </div>
+      <div className="rule-item">
+        <label>Thay đổi số cầu thủ trong đội tối đa</label>
+        <div className="rule-row">
+          <span>Quy định hiện hành: {rules.maxPlayer}</span>
+          <span className="arrow">→</span>
+          <input
+            type="text"
+            placeholder="Nhập quy định mới"
+            name="maxPlayer"
+            value={newValues.maxPlayer}
+            onChange={handleChange}
+            className="p-2 flex-1 border border-gray-300 rounded"
+          />
+          <button onClick={() => handleConfirm('maxPlayer')} className="confirm-btn">
+            Xác nhận
+          </button>
+        </div>
+      </div>
+
     </div>
   );
 };

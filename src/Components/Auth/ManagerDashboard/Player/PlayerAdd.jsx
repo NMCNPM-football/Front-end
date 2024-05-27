@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import './PlayerAdd.css';
 
-const PlayerAdd = ({ ageLimit }) => {
+const PlayerAdd = () => {
   const [formData, setFormData] = useState({
     height: '',
     weight: '',
@@ -18,9 +18,27 @@ const PlayerAdd = ({ ageLimit }) => {
   const [entries, setEntries] = useState([]);
   const [isEditing, setIsEditing] = useState(null);
   const [error, setError] = useState('');
+  const [ageLimit, setAgeLimit] = useState(null);
+  const [foreignPlayerCount, setForeignPlayerCount] = useState(null);
+  const [foreignLimit, setForeignLimit] = useState(null); // Add this line
+  const [PlayerCount, setPlayerCount] = useState(null);
+  const [playerLimit, setplayerLimit] = useState(null);
 
   const accessToken = useSelector((state) => state.user.accessToken); // Get the accessToken from the Redux store
-
+  useEffect(() => {
+    fetch('http://localhost:8888/league-rule', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        const ageLimitRule = data.data.find(item => item.key === 'age-limit');
+        if (ageLimitRule) {
+          setAgeLimit(parseInt(ageLimitRule.value));
+        }
+      });
+  }, [accessToken]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -39,11 +57,71 @@ const PlayerAdd = ({ ageLimit }) => {
     }
     return age;
   };
+  useEffect(() => {
+    fetch('http://localhost:8888/club/player-all', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        setForeignPlayerCount(parseInt(data.foreignPlayer));
+      });
+  }, [accessToken]);
+  useEffect(() => {
+    fetch('http://localhost:8888/club/player-all', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        setPlayerCount(parseInt(data.player));
+      });
+  }, [accessToken]);
 
+  useEffect(() => {
+    fetch('http://localhost:8888/league-rule', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        const foreignLimitRule = data.data.find(item => item.key === 'foreign-player');
+        if (foreignLimitRule) {
+          setForeignLimit(parseInt(foreignLimitRule.value));
+        }
+      });
+  }, [accessToken]);
+  useEffect(() => {
+    fetch('http://localhost:8888/league-rule', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        const playerLimitRule = data.data.find(item => item.key === 'max-player');
+        if (playerLimitRule) {
+          setplayerLimit(parseInt(playerLimitRule.value));
+        }
+      });
+  }, [accessToken]);
   const handleConfirm = () => {
     const age = calculateAge(formData.birth_day);
     if (age < ageLimit) {
       setError(`Độ tuổi giới hạn là ${ageLimit} tuổi.`);
+      return;
+    }
+    if (formData.type_player === 'Naturalization Player' && foreignPlayerCount >= foreignLimit) {
+      setError(`Số lượng cầu thủ nước ngoài tối đa là ${foreignLimit}.`);
+      alert(`There are already ${foreignPlayerCount} foreign players in your club.`);
+      return;
+    }
+    if (PlayerCount >= playerLimit) {
+      setError(`Số lượng cầu thủ tối đa là ${playerLimit}.`);
+      alert(`There are already ${PlayerCount} players in your club.`);
       return;
     }
 
@@ -116,13 +194,14 @@ const PlayerAdd = ({ ageLimit }) => {
     <div className="player-add">
       <div className="form-group">
         <label>Loại cầu thủ:</label>
-        <input
-          type="text"
+        <select
           name="type_player"
-          placeholder="Nhập loại cầu thủ"
           value={formData.type_player}
           onChange={handleChange}
-        />
+        >
+          <option value="National Player">Cầu thủ trong nước</option>
+          <option value="Naturalization Player">Cầu thủ nước ngoài</option>
+        </select>
       </div>
       <div className="form-group">
         <label>Chiều cao (cm):</label>
@@ -196,7 +275,6 @@ const PlayerAdd = ({ ageLimit }) => {
       <div className="form-group">
         <label>Trạng thái:</label>
         <select name="status" value={formData.status} onChange={handleChange}>
-          <option value="">Chọn trạng thái</option>
           <option value="Đang thi đấu">Đang thi đấu</option>
           <option value="Chấn thương">Chấn thương</option>
           <option value="Đã giải nghệ">Đã giải nghệ</option>
