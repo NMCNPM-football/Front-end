@@ -6,18 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="86503c1a-504d-4893-97aa-2e418f0d147c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Rule/RuleFormat.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Rule/RuleFormat.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/MatchManagement.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Player/PlayerAdd.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Player/PlayerAdd.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/PlayerManagement.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/TeamInfo/TableTeam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TeamInfo/TableTeam.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/TeamInfo/Team.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/TeamInfo/Team.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +104,7 @@
       <workItem from="1716514349779" duration="1464000" />
       <workItem from="1716520345045" duration="17214000" />
       <workItem from="1716728713395" duration="16619000" />
-      <workItem from="1716770626469" duration="5441000" />
+      <workItem from="1716770626469" duration="6479000" />
     </task>
     <servers />
   </component>

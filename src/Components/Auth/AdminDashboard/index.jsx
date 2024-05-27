@@ -9,8 +9,11 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import RuleFormat from "./Rule/RuleFormat";
 import ClubAdd from "./Club/ClubAdd";
-import PlayerManagement from "../ManagerDashboard/PlayerManagement";
 import TeamGrid from "../../ClubInfo/TeamGrid";
+import MatchManagement from "./MatchManagement";
+import MatchScheduler from "./MatchScheduler";
+import UserAuth from "./UserAuth";
+import Lineup from "./LineUp";
 
 const { Header, Content, Sider } = Layout;
 
@@ -69,8 +72,6 @@ const AdminDashboard = () => {
 
   const renderContent = () => {
     switch (selectedMenuKey) {
-      case "5":
-        return <PlayerManagement />;
       case "3":
         return <div>Content for Huấn luyện viên</div>;
       case "4": <MatchManagement />
@@ -83,7 +84,7 @@ const AdminDashboard = () => {
         return <MatchScheduler />;
       case "7":
         return <RuleFormat />;
-      case "6":
+      case "9":
         return <div>Content for Xếp hạng</div>;
       case "sub4":
         return <UserAuth />;
