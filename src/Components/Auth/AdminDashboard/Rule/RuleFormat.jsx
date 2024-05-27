@@ -13,6 +13,8 @@ const RuleFormat = () => {
     drawPoints: '',
     losePoints: '',
     maxPlayer:'',
+    minPlayer:'',
+    minAge:'',
   });
 
   const [newValues, setNewValues] = useState({
@@ -22,15 +24,19 @@ const RuleFormat = () => {
     drawPoints: '',
     losePoints: '',
     maxPlayer:'',
+    minPlayer:'',
+    minAge:'',
   });
 
   const ruleKeyMap = {
-    maxAge: 'age-limit',
+    maxAge: 'age-max',
+    minAge: 'age-min',
     maxForeignPlayers: 'foreign-player',
     winPoints: 'win-score',
     drawPoints: 'draw-score',
     losePoints: 'lose-score',
     maxPlayer:'max-player',
+    minPlayer:'min-player',
   };
   useEffect(() => {
     fetch('http://localhost:8888/league-rule', {
@@ -112,6 +118,24 @@ const RuleFormat = () => {
             className="p-2 flex-1 border border-gray-300 rounded"
           />
           <button onClick={() => handleConfirm('maxAge')} className="confirm-btn">
+            Xác nhận
+          </button>
+        </div>
+      </div>
+      <div className="rule-item">
+        <label>Thay đổi tuổi tối thiểu của cầu thủ</label>
+        <div className="rule-row">
+          <span>Quy định hiện hành: {rules.minAge}</span>
+          <span className="arrow">→</span>
+          <input
+            type="text"
+            placeholder="Nhập quy định mới"
+            name="minAge"
+            value={newValues.minAge}
+            onChange={handleChange}
+            className="p-2 flex-1 border border-gray-300 rounded"
+          />
+          <button onClick={() => handleConfirm('minAge')} className="confirm-btn">
             Xác nhận
           </button>
         </div>
@@ -206,7 +230,24 @@ const RuleFormat = () => {
           </button>
         </div>
       </div>
-
+      <div className="rule-item">
+        <label>Thay đổi số cầu thủ trong đội tối thiểu</label>
+        <div className="rule-row">
+          <span>Quy định hiện hành: {rules.minPlayer}</span>
+          <span className="arrow">→</span>
+          <input
+            type="text"
+            placeholder="Nhập quy định mới"
+            name="minPlayer"
+            value={newValues.minPlayer}
+            onChange={handleChange}
+            className="p-2 flex-1 border border-gray-300 rounded"
+          />
+          <button onClick={() => handleConfirm('minPlayer')} className="confirm-btn">
+            Xác nhận
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

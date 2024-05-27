@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSoccerBall, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from "react-redux";
+import Modal from './Modal';
 
 const DataTeamAdmin = () => {
   const [players, setPlayers] = useState([]);
@@ -13,42 +14,48 @@ const DataTeamAdmin = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const selectedSeason = searchParams.get('season');
-  const accessToken = useSelector((state) => state.user.accessToken); // Get the accessToken from the Redux store
-  const [clubId, setClubId] = useState(null); // Add this line to your state variables
+  const accessToken = useSelector((state) => state.user.accessToken);
+  const [clubId, setClubId] = useState(null);
   const [editingPlayer, setEditingPlayer] = useState(null);
-  useEffect(() => {
-    // Fetch profile data
-    fetch(`http://localhost:8888/club-profile`, {
-      headers: {
-        'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
-      },
-    })
-      .then(response => response.json())
-      .then(data => {
-        setClubId(data.data.clubId); // Set clubId state variable
-        setTeam(data.data);
 
-        // Fetch players data
-        fetch(`http://localhost:8888/player-profile/${data.data.clubId}`)
-          .then(response => response.json())
-          .then(data => {
-            setPlayers(data.data);
-          })
-          .catch(error => console.error(`Error: ${error}`));
-      })
-      .catch(error => console.error(`Error: ${error}`));
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const profileResponse = await fetch(`http://localhost:8888/club-profile`, {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          },
+        });
+        const profileData = await profileResponse.json();
+        setClubId(profileData.data.clubId);
+        setTeam(profileData.data);
+
+        const playersResponse = await fetch(`http://localhost:8888/player-profile/${profileData.data.clubId}`);
+        const playersData = await playersResponse.json();
+        setPlayers(playersData.data);
+      } catch (error) {
+        console.error(`Error: ${error}`);
+      }
+    };
+
+    fetchData();
   }, [selectedSeason, accessToken]);
 
   useEffect(() => {
-    if (team && clubId) { // Check if clubId is not null
-      fetch(`http://localhost:8888/club/coach/${clubId}`)
-        .then(response => response.json())
-        .then(data => {
-          setCoach(data.data);
-        })
-        .catch(error => console.error(`Error: ${error}`));
-    }
-  }, [team, clubId]); // Add clubId to the dependency array
+    const fetchCoach = async () => {
+      if (team && clubId) {
+        try {
+          const coachResponse = await fetch(`http://localhost:8888/club/coach/${clubId}`);
+          const coachData = await coachResponse.json();
+          setCoach(coachData.data);
+        } catch (error) {
+          console.error(`Error: ${error}`);
+        }
+      }
+    };
+
+    fetchCoach();
+  }, [team, clubId]);
 
   const onSort = (key) => {
     let direction = 'ascending';
@@ -114,22 +121,23 @@ const DataTeamAdmin = () => {
       .catch(error => console.error(`Error: ${error}`));
   };
 
-  const handleDelete = (playerId) => {
-    // Make a DELETE request to the server
-    fetch(`http://localhost:8888/delete/player/${playerId}`, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
-      },
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        // Remove the player from the local state
-        setPlayers(players.filter(player => player.id !== playerId));
-      })
-      .catch(error => console.error(`Error: ${error}`));
+  const handleDelete = async (playerId) => {
+    try {
+      const response = await fetch(`http://localhost:8888/delete/player/${playerId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      setPlayers(players.filter(player => player.id !== playerId));
+    } catch (error) {
+      console.error(`Error: ${error}`);
+    }
   };
 
   if (!team || !coach) {
@@ -176,50 +184,70 @@ const DataTeamAdmin = () => {
             <td className='title_tab'>{player.weight}</td>
             <td className='title_tab'>{formatDate(player.birthDay)}</td>
             <td className='title_tab'>
-              <button style={{marginRight : '10px'}} onClick={() => handleEdit(player.id)}>Edit</button>
-              <button  style={{marginLeft : '10px'}} onClick={() => handleDelete(player.id)}>Delete</button>
+              <button style={{ marginRight: '10px' }} onClick={() => handleEdit(player.id)}>Edit</button>
+              <button style={{ marginLeft: '10px' }} onClick={() => handleDelete(player.id)}>Delete</button>
             </td>
           </tr>
         ))}
         </tbody>
       </table>
-      {editingPlayer && (
-        <form onSubmit={handleEditSubmit}>
-          <label>
-            Name:
-            <input type="text" value={editingPlayer.name} onChange={event => setEditingPlayer({...editingPlayer, name: event.target.value})} />
-          </label>
-          <label>
-            Kit:
-            <input type="text" value={editingPlayer.kit} onChange={event => setEditingPlayer({...editingPlayer, kit: event.target.value})} />
-          </label>
-          <label>
-            Weight:
-            <input type="text" value={editingPlayer.weight} onChange={event => setEditingPlayer({...editingPlayer, weight: event.target.value})} />
-          </label>
-          <label>
-            Position:
-            <input type="text" value={editingPlayer.position} onChange={event => setEditingPlayer({...editingPlayer, position: event.target.value})} />
-          </label>
-          <label>
-            Height:
-            <input type="text" value={editingPlayer.height} onChange={event => setEditingPlayer({...editingPlayer, height: event.target.value})} />
-          </label>
-          <label>
-            Birthday:
-            <input type="text" value={editingPlayer.birthday} onChange={event => setEditingPlayer({...editingPlayer, birthday: event.target.value})} />
-          </label>
-          <label>
-            Achievement:
-            <input type="text" value={editingPlayer.achievement} onChange={event => setEditingPlayer({...editingPlayer, achievement: event.target.value})} />
-          </label>
-          <label>
-            Status:
-            <input type="text" value={editingPlayer.status} onChange={event => setEditingPlayer({...editingPlayer, status: event.target.value})} />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
-      )}
+      <Modal isOpen={!!editingPlayer} onClose={() => setEditingPlayer(null)}>
+        {editingPlayer && (
+          <form onSubmit={handleEditSubmit}>
+            <div className="modal-form-label">
+              <label>
+                Name:
+                <input type="text" value={editingPlayer.name} onChange={event => setEditingPlayer({ ...editingPlayer, name: event.target.value })} />
+              </label>
+            </div>
+            <div className="modal-form-label">
+              <label>
+                Kit:
+                <input type="text" value={editingPlayer.kit} onChange={event => setEditingPlayer({ ...editingPlayer, kit: event.target.value })} />
+              </label>
+            </div>
+            <div className="modal-form-label">
+              <label>
+                Weight:
+                <input type="text" value={editingPlayer.weight} onChange={event => setEditingPlayer({ ...editingPlayer, weight: event.target.value })} />
+              </label>
+            </div>
+            <div className="modal-form-label">
+              <label>
+                Position:
+                <input type="text" value={editingPlayer.position} onChange={event => setEditingPlayer({ ...editingPlayer, position: event.target.value })} />
+              </label>
+            </div>
+            <div className="modal-form-label">
+              <label>
+                Height:
+                <input type="text" value={editingPlayer.height} onChange={event => setEditingPlayer({ ...editingPlayer, height: event.target.value })} />
+              </label>
+            </div>
+            <div className="modal-form-label">
+              <label>
+                Birthday:
+                <input type="text" value={editingPlayer.birthday} onChange={event => setEditingPlayer({ ...editingPlayer, birthday: event.target.value })} />
+              </label>
+            </div>
+            <div className="modal-form-label">
+              <label>
+                Achievement:
+                <input type="text" value={editingPlayer.achievement} onChange={event => setEditingPlayer({ ...editingPlayer, achievement: event.target.value })} />
+              </label>
+            </div>
+            <div className="modal-form-label">
+              <label>
+                Status:
+                <input type="text" value={editingPlayer.status} onChange={event => setEditingPlayer({ ...editingPlayer, status: event.target.value })} />
+              </label>
+            </div>
+            <div className="modal-form-label">
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        )}
+      </Modal>
     </div>
   );
 };

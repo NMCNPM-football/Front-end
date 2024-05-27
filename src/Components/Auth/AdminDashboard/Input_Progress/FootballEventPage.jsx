@@ -456,4 +456,3 @@ const FootballEventPage = () => {
 };
 
 export default FootballEventPage;
-
