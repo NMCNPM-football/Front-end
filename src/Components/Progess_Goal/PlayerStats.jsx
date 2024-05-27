@@ -1,22 +1,41 @@
-// PlayerStats.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './PlayerStats.css';
-
-const goalTypes = {
-  LBT01: 'Ghi bàn trực tiếp',
-  LBT02: 'Đá phạt',
-  LBT03: 'Phản lưới'
-};
-
-const cardTypes = {
-  LT01: 'Thẻ vàng',
-  LT02: 'Thẻ đỏ'
-};
+import axios from 'axios';
 
 const PlayerStats = ({ match }) => {
-  if (!match) return null;
+  const [goalTypes, setGoalTypes] = useState({});
+  const [cardTypes, setCardTypes] = useState({});
 
+  useEffect(() => {
+    // Gọi API để lấy danh sách loại bàn thắng
+    axios.get('http://localhost:8888/match_event/goal_type')
+      .then(response => {
+        const goalTypesData = response.data.data.reduce((acc, type) => {
+          acc[type.goalTypeId] = type.goalTypeName;
+          return acc;
+        }, {});
+        setGoalTypes(goalTypesData);
+      })
+      .catch(error => {
+        console.error('Error fetching goal types:', error);
+      });
+
+    // Gọi API để lấy danh sách loại thẻ
+    axios.get('http://localhost:8888/match_event/card_type')
+      .then(response => {
+        const cardTypesData = response.data.data.reduce((acc, type) => {
+          acc[type.cardTypeId] = type.cardTypeName;
+          return acc;
+        }, {});
+        setCardTypes(cardTypesData);
+      })
+      .catch(error => {
+        console.error('Error fetching card types:', error);
+      });
+  }, []);
+
+  if (!match) return null;
   return (
     <div className="player-stats">
       <div className="team-stats">
@@ -75,10 +94,10 @@ PlayerStats.propTypes = {
         PropTypes.shape({
           playerNameGoal: PropTypes.string,
           timeInMatchGoal: PropTypes.string,
-          goalType: PropTypes.oneOf(Object.keys(goalTypes)),
+          goalType: PropTypes.string, // Change PropTypes to string instead of oneOf
           playerNameCard: PropTypes.string,
           timeInMatchCard: PropTypes.string,
-          cardType: PropTypes.oneOf(Object.keys(cardTypes))
+          cardType: PropTypes.string, // Change PropTypes to string instead of oneOf
         })
       ).isRequired
     }).isRequired,
@@ -88,10 +107,10 @@ PlayerStats.propTypes = {
         PropTypes.shape({
           playerNameGoal: PropTypes.string,
           timeInMatchGoal: PropTypes.string,
-          goalType: PropTypes.oneOf(Object.keys(goalTypes)),
+          goalType: PropTypes.string, // Change PropTypes to string instead of oneOf
           playerNameCard: PropTypes.string,
           timeInMatchCard: PropTypes.string,
-          cardType: PropTypes.oneOf(Object.keys(cardTypes))
+          cardType: PropTypes.string, // Change PropTypes to string instead of oneOf
         })
       ).isRequired
     }).isRequired
