@@ -9,8 +9,13 @@ const Lineup = () => {
   const [lineup, setLineup] = useState(Array(11).fill(null));
 
   useEffect(() => {
-    fetch('http://localhost:8888/teams')
-      .then((res) => res.json())
+    fetch('http://localhost:8888/club/player-all/')
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
         if (Array.isArray(data)) {
           setTeams(data);
@@ -27,8 +32,13 @@ const Lineup = () => {
 
   useEffect(() => {
     if (selectedTeam) {
-      fetch(`http://localhost:8888/teams/${selectedTeam}`)
-        .then((res) => res.json())
+      fetch(`http://localhost:8888/club/player-all/${selectedTeam}`)
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+          return res.json();
+        })
         .then((data) => {
           if (Array.isArray(data)) {
             setPlayers(data);
@@ -53,17 +63,21 @@ const Lineup = () => {
   };
 
   const handleSubmit = async () => {
-    const response = await fetch('http://localhost:8888/lineup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ teamName: selectedTeam, lineup }),
-    });
-    if (response.ok) {
-      alert('Lineup saved successfully!');
-    } else {
-      alert('Error saving lineup');
+    try {
+      const response = await fetch('http://localhost:8888/lineup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ teamName: selectedTeam, lineup }),
+      });
+      if (response.ok) {
+        alert('Lineup saved successfully!');
+      } else {
+        alert(`Error saving lineup: ${response.statusText}`);
+      }
+    } catch (error) {
+      alert(`Error saving lineup: ${error.message}`);
     }
   };
 
@@ -85,7 +99,7 @@ const Lineup = () => {
           ) : (
             <option disabled>No teams available</option>
           )}
-        </select>
+</select>
       </div>
 
       <div className="flex">

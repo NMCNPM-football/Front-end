@@ -4,7 +4,7 @@ import { Breadcrumb, Layout, Menu, theme } from "antd";
 import PlayerAdd from "./Player/PlayerAdd";
 import CoachAdd from "./Coach/CoachAdd";
 import Lineup from "./LineUp/LineUp";
-import DataTeamAdmin from "./Player/DataTeamAdmin";
+import DataTeamAdmin from "./Player/DataTeamAdmin"
 
 const { Header, Content, Sider } = Layout;
 
@@ -34,6 +34,12 @@ const items2 = [
             {key: "3.2", label: "Sửa huấn luyện viên"}
         ]
       },
+      { key: "4", label: "Trận đấu",
+        children :[
+            {key: "4.1", label: "Xếp đội hình"},
+           
+        ]
+      },
     ],
   },
 
@@ -60,7 +66,7 @@ const ManagerDashboard = () => {
         return <DataTeamAdmin />;
       case "3.1":
         return <CoachAdd />;
-      case "4":
+      case "4.1":
         return <Lineup />;
       default:
         return null;
@@ -110,5 +116,4 @@ const ManagerDashboard = () => {
     </Layout>
   );
 };
-
 export default ManagerDashboard;

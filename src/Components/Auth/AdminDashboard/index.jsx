@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { UserSwitchOutlined } from "@ant-design/icons";
-
 import {
   TeamOutlined,
   CalendarOutlined,
@@ -11,8 +10,13 @@ import RuleFormat from "./Rule/RuleFormat";
 import ClubAdd from "./Club/ClubAdd";
 import TeamGrid from "../../ClubInfo/TeamGrid";
 import UserAuth from "./UserAuth";
+<<<<<<< Updated upstream
 import FootballEventPage  from "./Input_Progress/FootballEventPage";
 import AdminLeagueTable from "./LeagueTable/AdminLeagueTable";
+=======
+import FootballEventPage from "./Input_Progress/FootballEventPage"
+import Schedule from "./MatchSchedule";
+>>>>>>> Stashed changes
 
 const { Header, Content, Sider } = Layout;
 
@@ -69,22 +73,39 @@ const AdminDashboard = () => {
 
   const renderContent = () => {
     switch (selectedMenuKey) {
+<<<<<<< Updated upstream
       case "3":
         return <div>Content for Huấn luyện viên</div>;
       case "4":
         return <FootballEventPage /> ;
+=======
+      case "5":
+        return <div>Content for Huấn luyện viên</div>;
+      case "3":
+        return <Schedule/>;
+      case "4":
+        return <FootballEventPage/>;
+>>>>>>> Stashed changes
       case "1":
         return <ClubAdd />;
       case "2":
         return <TeamGrid />;
       case "6":
+<<<<<<< Updated upstream
         return <AdminLeagueTable />;
+=======
+        return <div>Content for Huấn luyện viên</div>;
+>>>>>>> Stashed changes
       case "7":
         return <RuleFormat />;
       case "9":
         return <div>Content for Xếp hạng</div>;
       case "sub4":
         return <UserAuth />;
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
       default:
         return null;
     }
