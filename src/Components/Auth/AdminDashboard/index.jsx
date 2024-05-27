@@ -11,6 +11,11 @@ import RuleFormat from "./Rule/RuleFormat";
 import ClubAdd from "./Club/ClubAdd";
 import PlayerManagement from "../ManagerDashboard/PlayerManagement";
 import TeamGrid from "../../ClubInfo/TeamGrid";
+<<<<<<< Updated upstream
+=======
+import UserAuth from "./UserAuth";
+import Lineup from "./LineUp/LineUp";
+>>>>>>> Stashed changes
 
 const { Header, Content, Sider } = Layout;
 
