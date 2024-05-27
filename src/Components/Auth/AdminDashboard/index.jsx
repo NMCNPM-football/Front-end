@@ -5,12 +5,11 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
-import MatchManagement from "./MatchManagement";
 import RuleFormat from "./Rule/RuleFormat";
 import ClubAdd from "./Club/ClubAdd"
 import PlayerManagement from "../ManagerDashboard/PlayerManagement";
-import MatchScheduler from "./MatchScheduler";
 import TeamGrid from "../../ClubInfo/TeamGrid";
+import FootballEventPage from "./Input_Progress/FootballEventPage";
 
 const { Header, Content, Sider } = Layout;
 
@@ -67,14 +66,14 @@ const AdminDashboard = () => {
         return <PlayerManagement />;
       case "3":
         return <div>Content for Huấn luyện viên</div>;
-      case "4": <MatchManagement />
-        return ;
+      case "4": 
+        return <FootballEventPage />;
       case "1":
         return <ClubAdd />;
       case "2":
         return <TeamGrid />;
       case "6":
-        return <MatchScheduler />;
+        return <div />;
       case "7":
         return <RuleFormat />;
       case "8":

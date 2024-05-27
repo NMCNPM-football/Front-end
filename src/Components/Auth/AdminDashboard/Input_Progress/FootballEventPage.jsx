@@ -24,13 +24,13 @@ const FootballEventPage = () => {
   const [goalEvents, setGoalEvents] = useState([]);
   const [cardEvents, setCardEvents] = useState([]);
 
-  const [goalTypeMappings, setGoalTypeMappings] = useState({
+  const [goalTypeMappings] = useState({
     'Trực tiếp': 'LBT01',
     'Đá Phạt': 'LBT02',
     'Phản Lưới': 'LBT03'
   });
 
-  const [cardTypeMappings, setCardTypeMappings] = useState({
+  const [cardTypeMappings] = useState({
     'Thẻ Đỏ': 'LT02',
     'Thẻ Vàng': 'LT01'
   });
@@ -209,44 +209,6 @@ const FootballEventPage = () => {
       });
   };
 
-  const handleAddGoalType = () => {
-    const newGoalType = prompt('Enter new goal type:');
-    if (newGoalType) {
-      const newKey = `LBT${Object.keys(goalTypeMappings).length + 1}`;
-      setGoalTypeMappings(prevState => ({
-        ...prevState,
-        [newGoalType]: newKey
-      }));
-    }
-  };
-
-  const handleDeleteGoalType = (type) => {
-    setGoalTypeMappings(prevState => {
-      const updatedMappings = { ...prevState };
-      delete updatedMappings[type];
-      return updatedMappings;
-    });
-  };
-
-  const handleAddCardType = () => {
-    const newCardType = prompt('Enter new card type:');
-    if (newCardType) {
-      const newKey = `LT${Object.keys(cardTypeMappings).length + 1}`;
-      setCardTypeMappings(prevState => ({
-        ...prevState,
-        [newCardType]: newKey
-      }));
-    }
-  };
-
-  const handleDeleteCardType = (type) => {
-    setCardTypeMappings(prevState => {
-      const updatedMappings = { ...prevState };
-      delete updatedMappings[type];
-      return updatedMappings;
-    });
-  };
-
   return (
     <div className="container-IP">
       <h1 className="header-IP">Football Event Page</h1>
@@ -264,7 +226,7 @@ const FootballEventPage = () => {
         Chọn vòng đấu:
         <input
           className="input-IP"
-          type="number"
+          type="text"
           value={selectedRound}
           onChange={(e) => setSelectedRound(e.target.value)} />
       </label>
@@ -321,15 +283,7 @@ const FootballEventPage = () => {
                   <option key={index} value={type}>{type}</option>
                 ))}
               </select>
-              <ul className="event-type-list-IP">
-                {Object.keys(goalTypeMappings).map((type, index) => (
-                  <li className="event-type-item-IP" key={index}>
-                    {type}
-                    <button className="button-IP" onClick={() => handleDeleteGoalType(type)}>Xóa</button>
-                  </li>
-                ))}
-              </ul>
-              <button className="button-IP" onClick={handleAddGoalType}>Thêm Loại Bàn Thắng</button>
+        
             </>
           ) : (
             <>
@@ -338,15 +292,6 @@ const FootballEventPage = () => {
                   <option key={index} value={type}>{type}</option>
                 ))}
               </select>
-              <ul className="event-type-list-IP">
-                {Object.keys(cardTypeMappings).map((type, index) => (
-                  <li className="event-type-item-IP" key={index}>
-                    {type}
-                    <button className="button-IP" onClick={() => handleDeleteCardType(type)}>Xóa</button>
-                  </li>
-                ))}
-              </ul>
-              <button className="button-IP" onClick={handleAddCardType}>Thêm Loại Thẻ</button>
             </>
           )}
           <label className="label-IP">
