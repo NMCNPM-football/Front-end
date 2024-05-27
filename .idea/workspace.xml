@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86503c1a-504d-4893-97aa-2e418f0d147c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/LeagueTable/AdminLeagueTable.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Coach/CoachAdd.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Coach/CoachAdd.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Player/DataTeamAdmin.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Club/ClubAdd.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Club/ClubAdd.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/LineUp/LineUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/LineUp/LineUp.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Rule/RuleFormat.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Rule/RuleFormat.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Player/PlayerAdd.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/Player/PlayerAdd.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/TeamFomation.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/ManagerDashboard/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Input_Progress/FootballEventPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/AdminDashboard/Input_Progress/FootballEventPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +110,7 @@
       <workItem from="1716770626469" duration="6479000" />
       <workItem from="1716781506746" duration="5980000" />
       <workItem from="1716788785382" duration="8201000" />
-      <workItem from="1716811489197" duration="7642000" />
+      <workItem from="1716811489197" duration="7832000" />
     </task>
     <servers />
   </component>

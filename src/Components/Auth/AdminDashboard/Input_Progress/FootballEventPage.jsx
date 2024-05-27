@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux'; // Import useSelector from react-redux
+import { useSelector } from 'react-redux';
 import './IP.css';
 
 const FootballEventPage = () => {
@@ -20,52 +20,23 @@ const FootballEventPage = () => {
   const [updatedMaxTime, setUpdatedMaxTime] = useState(90);
   const [isGoal, setIsGoal] = useState(true);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [editingEventId, setEditingEventId] = useState(null);
   const [goalEvents, setGoalEvents] = useState([]);
   const [cardEvents, setCardEvents] = useState([]);
+  const [goalTypeMappings, setGoalTypeMappings] = useState({});
+  const [cardTypeMappings, setCardTypeMappings] = useState({});
 
-  const [goalTypeMappings] = useState({
-    'Trực tiếp': 'LBT01',
-    'Đá Phạt': 'LBT02',
-    'Phản Lưới': 'LBT03'
-  });
-
-  const [cardTypeMappings] = useState({
-    'Thẻ Đỏ': 'LT02',
-    'Thẻ Vàng': 'LT01'
-  });
-
-  const accessToken = useSelector((state) => state.user.accessToken); // Get access token from Redux
-
-  useEffect(() => {
-    if (selectedRound) {
-      axios.get(`http://localhost:8888/match/result_score/${selectedRound}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}` // Add access token to headers
-        }
-      })
-        .then(response => {
-          setMatches(response.data.data);
-        })
-        .catch(error => {
-          console.error('Error fetching matches:', error);
-          setError('Error fetching matches. Please try again later.');
-        });
-    }
-  }, [selectedRound, selectedSeason, accessToken]);
+  const accessToken = useSelector((state) => state.user.accessToken);
 
   const fetchGoalEvents = useCallback(() => {
     axios.get(`http://localhost:8888/match/progress_score/${selectedMatch}`, {
       headers: {
-        Authorization: `Bearer ${accessToken}` // Add access token to headers
+        Authorization: `Bearer ${accessToken}`
       }
     })
       .then(response => {
-        console.log('Goal Events:', response.data.data);
         setGoalEvents(response.data.data);
       })
       .catch(error => {
-        console.error('Error fetching goal events:', error);
         setError('Error fetching goal events. Please try again later.');
       });
   }, [selectedMatch, accessToken]);
@@ -73,15 +44,13 @@ const FootballEventPage = () => {
   const fetchCardEvents = useCallback(() => {
     axios.get(`http://localhost:8888/match/progress_card/${selectedMatch}`, {
       headers: {
-        Authorization: `Bearer ${accessToken}` // Add access token to headers
+        Authorization: `Bearer ${accessToken}`
       }
     })
       .then(response => {
-        console.log('Card Events:', response.data.data);
         setCardEvents(response.data.data);
       })
       .catch(error => {
-        console.error('Error fetching card events:', error);
         setError('Error fetching card events. Please try again later.');
       });
   }, [selectedMatch, accessToken]);
@@ -95,6 +64,22 @@ const FootballEventPage = () => {
   }, [isGoal, fetchGoalEvents, fetchCardEvents]);
 
   useEffect(() => {
+    if (selectedRound) {
+      axios.get(`http://localhost:8888/match/result_score/${selectedRound}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      })
+        .then(response => {
+          setMatches(response.data.data);
+        })
+        .catch(error => {
+          setError('Error fetching matches. Please try again later.');
+        });
+    }
+  }, [selectedRound, selectedSeason, accessToken]);
+
+  useEffect(() => {
     if (selectedMatch) {
       const match = matches.find(match => match.matchId === selectedMatch);
       if (match) {
@@ -105,6 +90,61 @@ const FootballEventPage = () => {
       }
     }
   }, [selectedMatch, matches, fetchEvents]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8888/match_event/goal_type`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
+      .then(response => {
+        const goalTypes = response.data.data.reduce((acc, type) => {
+          acc[type.goalTypeName] = type.goalTypeId;
+          return acc;
+        }, {});
+        setGoalTypeMappings(goalTypes);
+      })
+      .catch(error => {
+        setError('Error fetching goal types. Please try again later.');
+      });
+
+    axios.get(`http://localhost:8888/match_event/card_type`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
+      .then(response => {
+        const cardTypes = response.data.data.reduce((acc, type) => {
+          acc[type.cardTypeName] = type.cardTypeId;
+          return acc;
+        }, {});
+        setCardTypeMappings(cardTypes);
+      })
+      .catch(error => {
+        setError('Error fetching card types. Please try again later.');
+      });
+  }, [accessToken]);
+
+  const generateNewGoalTypeId = () => {
+    const existingIds = Object.values(goalTypeMappings);
+    for (let i = 1; i <= 9; i++) {
+      const newId = `LBT0${i}`;
+      if (!existingIds.includes(newId)) {
+        return newId;
+      }
+    }
+    return null;
+  };
+  const generateNewCardTypeId = () => {
+    const existingIds = Object.values(cardTypeMappings);
+    for (let i = 1; i <= 9; i++) {
+      const newId = `LT0${i}`;
+      if (!existingIds.includes(newId)) {
+        return newId;
+      }
+    }
+    return null;
+  };
 
   const handleUpdateMaxTime = () => {
     if (updatedMaxTime <= 0) {
@@ -132,30 +172,26 @@ const FootballEventPage = () => {
       newEvent.goalType = goalTypeMappings[eventType];
       axios.post('http://localhost:8888/match/progress_score', newEvent, {
         headers: {
-          Authorization: `Bearer ${accessToken}` // Add access token to headers
+          Authorization: `Bearer ${accessToken}`
         }
       })
         .then(response => {
-          console.log('Goal event added successfully:', response.data);
           fetchGoalEvents();
         })
         .catch(error => {
-          console.error('Error adding goal event:', error);
           setError('Error adding goal event. Please try again later.');
         });
     } else if (!isGoal && eventType !== 'Select Event Type') {
       newEvent.cardType = cardTypeMappings[eventType];
       axios.post('http://localhost:8888/match/progress_card', newEvent, {
         headers: {
-          Authorization: `Bearer ${accessToken}` // Add access token to headers
+          Authorization: `Bearer ${accessToken}`
         }
       })
         .then(response => {
-          console.log('Card event added successfully:', response.data);
           fetchCardEvents();
         })
         .catch(error => {
-          console.error('Error adding card event:', error);
           setError('Error adding card event. Please try again later.');
         });
     }
@@ -164,9 +200,7 @@ const FootballEventPage = () => {
       const updatedEvents = [...events];
       updatedEvents[editingIndex] = newEvent;
       setEvents(updatedEvents);
-      updateEventInDatabase(editingEventId, newEvent);
       setEditingIndex(null);
-      setEditingEventId(null);
     } else {
       setPlayerName('');
       setTime('');
@@ -177,35 +211,104 @@ const FootballEventPage = () => {
   const handleDeleteEvent = (index, eventId) => {
     axios.delete(`http://localhost:8888/api/events/${eventId}`, {
       headers: {
-        Authorization: `Bearer ${accessToken}` // Add access token to headers
+        Authorization: `Bearer ${accessToken}`
       }
     })
       .then(response => {
-        console.log('Event deleted successfully:', response.data);
         const updatedEvents = [...events];
         updatedEvents.splice(index, 1);
         setEvents(updatedEvents);
       })
       .catch(error => {
-        console.error('Error deleting event:', error);
         setError('Error deleting event. Please try again later.');
       });
   };
 
-  const updateEventInDatabase = (eventId, updatedEvent) => {
-    const apiUrl = isGoal ? 'http://localhost:8888/match/progress_score' : 'http://localhost:8888/match/progress_card';
-    axios.put(`${apiUrl}/${eventId}`, updatedEvent, {
+
+  const handleAddGoalType = () => {
+    const newGoalType = prompt('Enter new goal type:');
+    if (newGoalType) {
+      const newGoalTypeId = generateNewGoalTypeId();
+      if (!newGoalTypeId) {
+        setError('Cannot create new goal type. Maximum limit reached.');
+        return;
+      }
+      axios.post('http://localhost:8888/match_event/goal_type', { goal_type_id: newGoalTypeId, goal_type_name: newGoalType }, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      })
+        .then(response => {
+          setGoalTypeMappings(prevState => ({
+            ...prevState,
+            [newGoalType]: newGoalTypeId
+          }));
+        })
+        .catch(error => {
+          setError('Error adding goal type. Please try again later.');
+        });
+    }
+  };
+
+  const handleDeleteGoalType = (type) => {
+    const typeId = goalTypeMappings[type];
+    axios.delete(`http://localhost:8888/delete/goal_type/${typeId}`, {
       headers: {
-        Authorization: `Bearer ${accessToken}` // Add access token to headers
+        Authorization: `Bearer ${accessToken}`
       }
     })
       .then(response => {
-        console.log('Event updated successfully:', response.data);
-        fetchEvents();
+        setGoalTypeMappings(prevState => {
+          const updatedMappings = { ...prevState };
+          delete updatedMappings[type];
+          return updatedMappings;
+        });
       })
       .catch(error => {
-        console.error('Error updating event:', error);
-        setError('Error updating event. Please try again later.');
+        setError('Error deleting goal type. Please try again later.');
+      });
+  };
+
+  const handleAddCardType = () => {
+    const newCardType = prompt('Enter new card type:');
+    if (newCardType) {
+      const newCardTypeId = generateNewCardTypeId();
+      if (!newCardTypeId) {
+        setError('Cannot create new card type. Maximum limit reached.');
+        return;
+      }
+      axios.post('http://localhost:8888/match_event/card_type', { cardTypeId: newCardTypeId, cardTypeName: newCardType }, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      })
+        .then(response => {
+          setCardTypeMappings(prevState => ({
+            ...prevState,
+            [newCardType]: newCardTypeId
+          }));
+        })
+        .catch(error => {
+          setError('Error adding card type. Please try again later.');
+        });
+    }
+  };
+  const handleDeleteCardType = (type) => {
+    const typeId = cardTypeMappings[type];
+    axios.delete(`http://localhost:8888/delete/goal_type/${typeId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
+      .then(response => {
+        setCardTypeMappings(prevState => {
+          const updatedMappings = { ...prevState };
+          delete updatedMappings[type];
+          return updatedMappings;
+        });
+      })
+      .catch(error => {
+        setError('Error deleting card type. Please try again later.');
       });
   };
 
@@ -226,7 +329,7 @@ const FootballEventPage = () => {
         Chọn vòng đấu:
         <input
           className="input-IP"
-          type="text"
+          type="number"
           value={selectedRound}
           onChange={(e) => setSelectedRound(e.target.value)} />
       </label>
@@ -283,7 +386,15 @@ const FootballEventPage = () => {
                   <option key={index} value={type}>{type}</option>
                 ))}
               </select>
-        
+              <ul className="event-type-list-IP">
+                {Object.keys(goalTypeMappings).map((type, index) => (
+                  <li className="event-type-item-IP" key={index}>
+                    {type}
+                    <button className="button-IP" onClick={() => handleDeleteGoalType(type)}>Xóa</button>
+                  </li>
+                ))}
+              </ul>
+              <button className="button-IP" onClick={handleAddGoalType}>Thêm Loại Bàn Thắng</button>
             </>
           ) : (
             <>
@@ -292,6 +403,15 @@ const FootballEventPage = () => {
                   <option key={index} value={type}>{type}</option>
                 ))}
               </select>
+              <ul className="event-type-list-IP">
+                {Object.keys(cardTypeMappings).map((type, index) => (
+                  <li className="event-type-item-IP" key={index}>
+                    {type}
+                    <button className="button-IP" onClick={() => handleDeleteCardType(type)}>Xóa</button>
+                  </li>
+                ))}
+              </ul>
+              <button className="button-IP" onClick={handleAddCardType}>Thêm Loại Thẻ</button>
             </>
           )}
           <label className="label-IP">
@@ -313,9 +433,9 @@ const FootballEventPage = () => {
         {goalEvents.length > 0 && isGoal ? (
           goalEvents.map((event, index) => (
             <li className="event-item-IP" key={index}>
-              {event.timeInMatch} - 
-              {event.clubName} - 
-              {event.playerName} - 
+              {event.timeInMatch} -
+              {event.clubName} -
+              {event.playerName} -
               {Object.keys(goalTypeMappings).find(key => goalTypeMappings[key] === event.goalType)}
               <button className="button-IP" onClick={() => handleDeleteEvent(index, event._id)}>Xóa</button>
             </li>
@@ -323,9 +443,9 @@ const FootballEventPage = () => {
         ) : cardEvents.length > 0 && !isGoal ? (
           cardEvents.map((event, index) => (
             <li className="event-item-IP" key={index}>
-              {event.timeInMatch} - 
-              {event.clubName} - 
-              {event.playerName} - 
+              {event.timeInMatch} -
+              {event.clubName} -
+              {event.playerName} -
               {Object.keys(cardTypeMappings).find(key => cardTypeMappings[key] === event.cardType)}
               <button className="button-IP" onClick={() => handleDeleteEvent(index, event._id)}>Xóa</button>
             </li>
@@ -339,3 +459,4 @@ const FootballEventPage = () => {
 };
 
 export default FootballEventPage;
+
