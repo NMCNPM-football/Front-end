@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './RuleFormat.css';  // Import the CSS file
 
-const RuleFormat = ({ onAgeLimitChange }) => {
+const RuleFormat = () => {
   const [rules, setRules] = useState({
     maxAge: 22,
     maxForeignPlayers: 3,
@@ -38,9 +38,6 @@ const RuleFormat = ({ onAgeLimitChange }) => {
       [rule]: '',
     });
 
-    if (rule === 'maxAge') {
-      onAgeLimitChange(newValue);
-    }
   };
 
   return (

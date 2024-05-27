@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './PlayerAdd.css';
 
 const PlayerAdd = ({ ageLimit }) => {
   const [formData, setFormData] = useState({
-    clubName: '',
-    seaSon: '',
-    typePlayer: '',
     height: '',
     weight: '',
     position: '',
     nationality: '',
+    type_player: '',
     kit: '',
-    achievement: '',
     name: '',
-    birthDay: '',
+    birth_day: '',
     status: ''
   });
 
   const [entries, setEntries] = useState([]);
   const [isEditing, setIsEditing] = useState(null);
   const [error, setError] = useState('');
+
+  const accessToken = useSelector((state) => state.user.accessToken); // Get the accessToken from the Redux store
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,29 +41,50 @@ const PlayerAdd = ({ ageLimit }) => {
   };
 
   const handleConfirm = () => {
-    const age = calculateAge(formData.birthDay);
+    const age = calculateAge(formData.birth_day);
     if (age < ageLimit) {
       setError(`Độ tuổi giới hạn là ${ageLimit} tuổi.`);
       return;
     }
 
-    if (Object.values(formData).every(value => value.trim() !== '')) {
-      setEntries([...entries, { ...formData, id: Date.now() }]);
-      setFormData({
-        clubName: '',
-        seaSon: '',
-        typePlayer: '',
-        height: '',
-        weight: '',
-        position: '',
-        nationality: '',
-        kit: '',
-        achievement: '',
-        name: '',
-        birthDay: '',
-        status: ''
-      });
-      setError('');
+    const requiredFields = ['height', 'weight', 'position', 'nationality', 'kit', 'type_player', 'name', 'birth_day', 'status'];
+
+    if (requiredFields.every(field => formData[field])) {
+      // Add fetch POST API call here
+      fetch('http://localhost:8888/player', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}` // Use the accessToken from the Redux store
+        },
+        body: JSON.stringify(formData),
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log(data);
+          setEntries([...entries, { ...formData, id: Date.now() }]);
+          setFormData({
+            height: '',
+            weight: '',
+            position: '',
+            nationality: '',
+            kit: '',
+            type_player: '',
+            name: '',
+            birth_day: '',
+            status: ''
+          });
+          setError('');
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      alert("Player added successfully")
     } else {
       alert("Please fill in all fields");
     }
@@ -94,31 +115,12 @@ const PlayerAdd = ({ ageLimit }) => {
   return (
     <div className="player-add">
       <div className="form-group">
-        <label>Tên câu lạc bộ:</label>
-        <input
-          type="text"
-          name="clubName"
-          placeholder="Nhập tên câu lạc bộ"
-          value={formData.clubName}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="form-group">
-        <label>Mùa giải:</label>
-        <select name="seaSon" value={formData.seaSon} onChange={handleChange}>
-          <option value="">Chọn mùa giải</option>
-          <option value="2022-2023">2022-2023</option>
-          <option value="2023-2024">2023-2024</option>
-          <option value="2024-2025">2024-2025</option>
-        </select>
-      </div>
-      <div className="form-group">
         <label>Loại cầu thủ:</label>
         <input
           type="text"
-          name="typePlayer"
+          name="type_player"
           placeholder="Nhập loại cầu thủ"
-          value={formData.typePlayer}
+          value={formData.type_player}
           onChange={handleChange}
         />
       </div>
@@ -173,16 +175,6 @@ const PlayerAdd = ({ ageLimit }) => {
         />
       </div>
       <div className="form-group">
-        <label>Thành tích:</label>
-        <input
-          type="text"
-          name="achievement"
-          placeholder="Nhập thành tích"
-          value={formData.achievement}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="form-group">
         <label>Tên cầu thủ:</label>
         <input
           type="text"
@@ -196,8 +188,8 @@ const PlayerAdd = ({ ageLimit }) => {
         <label>Ngày sinh:</label>
         <input
           type="date"
-          name="birthDay"
-          value={formData.birthDay}
+          name="birth_day"
+          value={formData.birth_day}
           onChange={handleChange}
         />
       </div>
@@ -227,8 +219,8 @@ const PlayerAdd = ({ ageLimit }) => {
                 />
                 <input
                   type="date"
-                  name="birthDay"
-                  value={entry.birthDay}
+                  name="birth_day"
+                  value={entry.birth_day}
                   onChange={(e) => handleEntryChange(e, entry.id)}
                 />
                 {/* Thêm các trường nhập khác nếu cần */}
@@ -237,7 +229,7 @@ const PlayerAdd = ({ ageLimit }) => {
             ) : (
               <div>
                 <span>Tên: {entry.name}</span>
-                <span>Ngày sinh: {entry.birthDay}</span>
+                <span>Ngày sinh: {entry.birth_day}</span>
                 {/* Hiển thị các thông tin khác nếu cần */}
                 <button onClick={() => handleEdit(entry.id)}>Chỉnh sửa</button>
                 <button onClick={() => handleDelete(entry.id)}>Xóa</button>

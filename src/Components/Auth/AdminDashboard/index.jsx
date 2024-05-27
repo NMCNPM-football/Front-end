@@ -8,7 +8,7 @@ import { Breadcrumb, Layout, Menu, theme } from "antd";
 import MatchManagement from "./MatchManagement";
 import RuleFormat from "./Rule/RuleFormat";
 import ClubAdd from "./Club/ClubAdd"
-import PlayerManagement from "../ManagerDashboard/PlayerManagement";
+
 import MatchScheduler from "./MatchScheduler";
 import TeamGrid from "../../ClubInfo/TeamGrid";
 
@@ -63,8 +63,6 @@ const AdminDashboard = () => {
 
   const renderContent = () => {
     switch (selectedMenuKey) {
-      case "5":
-        return <PlayerManagement />;
       case "3":
         return <div>Content for Huấn luyện viên</div>;
       case "4": <MatchManagement />

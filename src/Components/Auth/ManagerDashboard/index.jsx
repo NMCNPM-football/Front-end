@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import {
-  TeamOutlined,
-  CalendarOutlined,
-} from "@ant-design/icons";
+import { TeamOutlined, CalendarOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
-import PlayerManagement from "./PlayerManagement";
-import MatchScheduler from "../AdminDashboard/MatchScheduler";
+import PlayerAdd from "./Player/PlayerAdd";
 import TeamFormation from "./TeamFomation";
 
 const { Header, Content, Sider } = Layout;
@@ -32,18 +28,13 @@ const items2 = [
     label: "Quản lý trận đấu",
     children: [{ key: "6", label: "Lập lịch thi đấu" }],
   },
-
 ];
 
 const ManagerDashboard = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-  const [ageLimit, setAgeLimit] = useState(20); // Giá trị mặc định của giới hạn tuổi là 20
-
-  const handleAgeLimitChange = (newAgeLimit) => {
-    setAgeLimit(newAgeLimit);
-  };
+  const [ageLimit] = useState(20); // Giá trị mặc định của giới hạn tuổi là 20
   const [selectedMenuKey, setSelectedMenuKey] = useState(
     items2[0].children[0].key
   );
@@ -55,13 +46,11 @@ const ManagerDashboard = () => {
   const renderContent = () => {
     switch (selectedMenuKey) {
       case "2":
-        return <PlayerManagement />;
+        return <PlayerAdd ageLimit={ageLimit} />;
       case "3":
         return <div>Content for Huấn luyện viên</div>;
       case "4":
         return <TeamFormation />;
-      case "6":
-        return <MatchScheduler />;
       default:
         return null;
     }

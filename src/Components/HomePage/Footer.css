@@ -89,8 +89,8 @@ body, html {
 
 .footer-content {
   display: flex;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: center;
+  padding: 25px;
   text-align: left;
 }
 

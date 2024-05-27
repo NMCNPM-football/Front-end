@@ -36,9 +36,9 @@ const Footer = () => {
         </nav>
       </div>
       <div className="footer-content">
-        <div className="footer-column">
-          <div className="footer-section">
-            <img style={{height:'50px', width:'49px', paddingLeft :'40px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-1.png" alt="Icon 1" />
+        <div className="footer-column" style={{marginLeft : '50px'}}>
+          <div className="footer-section" >
+            <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-1.png" alt="Icon 1" />
             <p>
               <strong>Đơn vị chủ quản</strong>
               <br />
@@ -46,15 +46,15 @@ const Footer = () => {
             </p>
           </div>
           <div className="footer-section">
-            <img style={{height:'50px',width:'50px', paddingLeft :'40px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-2.png" alt="Icon 2" />
+            <img style={{height:'50px',width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-2.png" alt="Icon 2" />
             <p><strong>Địa chỉ</strong>
               <br />
               <span style={{ fontSize: '15px' }}>Số 18, Phố Lý Văn Phức, Cát Linh, Đống Đa, TP. Hà Nội.</span>
             </p>
           </div>
         </div>
-        <div className="footer-column">
-          <div className="footer-section">
+        <div className="footer-column" style={{marginLeft : '50px'}}>
+          <div className="footer-section" >
             <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-3.png" alt="Icon 3" />
             <p><strong>Giấy phép</strong>
               <br />
@@ -69,16 +69,16 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="footer-column">
+        <div className="footer-column" style={{marginLeft : '100px'}}>
           <div className="footer-section">
-            <img style={{height:'50px', width:'50px', paddingLeft :'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-5.png" alt="Icon 5" />
+            <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-5.png" alt="Icon 5" />
             <p><strong>Liên lạc</strong>
               <br />
               <span style={{ fontSize: '15px' }}>024.3785.8457/58 - FAX: 024.3785.8462</span>
             </p>
           </div>
           <div className="footer-section">
-            <img style={{height:'50px', width:'50px', paddingLeft :'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-6.png" alt="" />
+            <img style={{height:'50px', width:'50px'}} src="https://vpf.vn/wp-content/themes/VPF-child/assets/images/footer-icon-6.png" alt="" />
             <p>
               <a style={{paddingRight: '10px'}} href="https://www.vpf.vn">www.vpf.vn</a>
               <a style={{paddingRight: '10px'}} href="https://www.vnleague.com">www.vnleague.com</a>
