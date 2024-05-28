@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './CoachAdd.css';
 
 const CoachAdd = () => {
   const [formData, setFormData] = useState({
-    nameCoach: '',
-    birthDay: '',
-    nationality: '',
+    name: '',
+    birthday: '',
+    country: '',
     role: '',
   });
 
   const [entries, setEntries] = useState([]);
   const [isEditing, setIsEditing] = useState(null);
   const [error, setError] = useState('');
+
+  const accessToken = useSelector((state) => state.user.accessToken);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,25 +24,40 @@ const CoachAdd = () => {
     });
   };
 
-  const handleConfirm = () => {
-    // Trim whitespace from all form data fields before validation
+  const handleConfirm = async () => {
     const trimmedFormData = {};
     for (const key in formData) {
       trimmedFormData[key] = formData[key].trim();
     }
 
-    // Check if any field is empty after trimming
     if (Object.values(trimmedFormData).every(value => value !== '')) {
-      setEntries([...entries, { ...trimmedFormData, id: Date.now() }]);
-      setFormData({
-        nameCoach: '',
-        birthDay: '',
-        nationality: '',
-        role: '',
+      const response = await fetch('http://localhost:8888/coach', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+        },
+        body: JSON.stringify({
+          name: trimmedFormData.name,
+          country: trimmedFormData.country,
+          role: trimmedFormData.role,
+          birthday: trimmedFormData.birthday,
+        })
       });
-      setError('');
-      // Alert for successful addition
-      alert("Huấn luyện viên đã được thêm thành công!");
+
+      if (response.ok) {
+        alert('Huấn luyện viên đã được thêm thành công!');
+        setEntries([...entries, { ...trimmedFormData, id: Date.now() }]);
+        setFormData({
+          name: '',
+          birthday: '',
+          country: '',
+          role: '',
+        });
+        setError('');
+      } else {
+        alert('Error adding coach');
+      }
     } else {
       alert("Vui lòng điền đầy đủ thông tin huấn luyện viên.");
     }
@@ -73,9 +91,9 @@ const CoachAdd = () => {
         <label>Tên Huấn luyện viên:</label>
         <input
           type="text"
-          name="nameCoach"
+          name="name"
           placeholder="Nhập tên huấn luyện viên"
-          value={formData.nameCoach}
+          value={formData.name}
           onChange={handleChange}
         />
       </div>
@@ -83,8 +101,8 @@ const CoachAdd = () => {
         <label>Ngày sinh:</label>
         <input
           type="date"
-          name="birthDay"
-          value={formData.birthDay}
+          name="birthday"
+          value={formData.birthday}
           onChange={handleChange}
         />
       </div>
@@ -92,9 +110,9 @@ const CoachAdd = () => {
         <label>Quốc tịch:</label>
         <input
           type="text"
-          name="nationality"
+          name="country"
           placeholder="Nhập quốc tịch"
-          value={formData.nationality}
+          value={formData.country}
           onChange={handleChange}
         />
       </div>
@@ -105,10 +123,10 @@ const CoachAdd = () => {
           value={formData.role}
           onChange={handleChange}
         >
-          <option value="huấn luyện viên trưởng">Huấn luyện viên trưởng</option>
-          <option value="trợ lý huấn luyện viên">Trợ lý huấn luyện viên</option>
-          <option value="huấn luyện viên thể lực">Huấn luyện viên thể lực</option>
-          <option value="chuyên gia dinh dưỡng">Chuyên gia dinh dưỡng</option>
+          <option value="Head Coach">Huấn luyện viên trưởng</option>
+          <option value="Assistant coach">Trợ lý huấn luyện viên</option>
+          <option value="Fitness coach">Huấn luyện viên thể lực</option>
+          <option value="Nutrition Coach">Chuyên gia dinh dưỡng</option>
         </select>
       </div>
       {error && <div className="error-message">{error}</div>}
@@ -134,36 +152,36 @@ const CoachAdd = () => {
                 {isEditing === entry.id ? (
                   <input
                     type="text"
-                    name="nameCoach"
-                    value={entry.nameCoach}
+                    name="name"
+                    value={entry.name}
                     onChange={(e) => handleEntryChange(e, entry.id)}
                   />
                 ) : (
-                  entry.nameCoach
+                  entry.name
                 )}
               </td>
               <td>
                 {isEditing === entry.id ? (
                   <input
                     type="date"
-                    name="birthDay"
-                    value={entry.birthDay}
+                    name="birthday"
+                    value={entry.birthday}
                     onChange={(e) => handleEntryChange(e, entry.id)}
                   />
                 ) : (
-                  entry.birthDay
+                  entry.birthday
                 )}
               </td>
               <td>
                 {isEditing === entry.id ? (
                   <input
                     type="text"
-                    name="nationality"
-                    value={entry.nationality}
+                    name="country"
+                    value={entry.country}
                     onChange={(e) => handleEntryChange(e, entry.id)}
                   />
                 ) : (
-                  entry.nationality
+                  entry.country
                 )}
               </td>
               <td>
@@ -191,7 +209,7 @@ const CoachAdd = () => {
                   </>
                 ) : (
                   <>
-                    <button className="edit-button" onClick={() => handleEdit(entry.id)}>Sửa</button>
+                    <button style={{marginRight : '20px'}} className="edit-button" onClick={() => handleEdit(entry.id)}>Sửa</button>
                     <button className="delete-button" onClick={() => handleDelete(entry.id)}>Xóa</button>
                   </>
                 )}

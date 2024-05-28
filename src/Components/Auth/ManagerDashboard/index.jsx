@@ -7,6 +7,7 @@ import Lineup from "./LineUp/LineUp";
 import DataTeamAdmin from "./Player/DataTeamAdmin";
 import {useSelector} from "react-redux";
 import SavedLineups from './LineUp/SaveLineUp';
+import DataCoachAdmin from "./Coach/DataCoachAdmin";
 const { Header, Content, Sider } = Layout;
 
 const items2 = [
@@ -84,6 +85,8 @@ const ManagerDashboard = () => {
         return <DataTeamAdmin />;
       case "3.1":
         return <CoachAdd />;
+      case "3.2":
+        return <DataCoachAdmin />;
       case "4":
         return <Lineup setSavedLineups={setSavedLineups} />;
       case "5":
