@@ -153,57 +153,66 @@ const FootballEventPage = () => {
   };
 
   const handleAddEvent = () => {
-    if (!playerName || !selectedRound || !selectedMatch || !selectedTeam || !eventType || time <= 0 || time > maxTime) {
-      setError('Please fill in all required fields.');
-      return;
-    }
+  if (!playerName || !selectedRound || !selectedMatch || !selectedTeam || !eventType || time <= 0 || time > maxTime) {
+    setError('Please fill in all required fields.');
+    return;
+  }
 
-    const newEvent = {
-      timeInMatch: time,
-      clubName: selectedTeam,
-      playerName: playerName,
-      matchId: selectedMatch,
-    };
-
-    if (isGoal && eventType !== 'Select Event Type') {
-      newEvent.goalType = goalTypeMappings[eventType];
-      axios.post('http://localhost:8888/match/progress_score', newEvent, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
-      })
-        .then(response => {
-          fetchGoalEvents();
-        })
-        .catch(error => {
-          setError('Error adding goal event. Please try again later.');
-        });
-    } else if (!isGoal && eventType !== 'Select Event Type') {
-      newEvent.cardType = cardTypeMappings[eventType];
-      axios.post('http://localhost:8888/match/progress_card', newEvent, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        }
-      })
-        .then(response => {
-          fetchCardEvents();
-        })
-        .catch(error => {
-          setError('Error adding card event. Please try again later.');
-        });
-    }
-
-    if (editingIndex !== null) {
-      const updatedEvents = [...events];
-      updatedEvents[editingIndex] = newEvent;
-      setEvents(updatedEvents);
-      setEditingIndex(null);
-    } else {
-      setPlayerName('');
-      setTime('');
-      setError(null);
-    }
+  const newEvent = {
+    timeInMatch: time,
+    clubName: selectedTeam,
+    playerName: playerName,
+    matchId: selectedMatch,
   };
+
+  let eventApiUrl = '';
+  let fetchEventsFunc = null;
+
+  if (isGoal && eventType !== 'Select Event Type') {
+    newEvent.goalType = goalTypeMappings[eventType];
+    eventApiUrl = 'http://localhost:8888/match/progress_score';
+    fetchEventsFunc = fetchGoalEvents;
+  } else if (!isGoal && eventType !== 'Select Event Type') {
+    newEvent.cardType = cardTypeMappings[eventType];
+    eventApiUrl = 'http://localhost:8888/match/progress_card';
+    fetchEventsFunc = fetchCardEvents;
+  }
+
+  const resultScoreApiUrl = `http://localhost:8888/match/result_score/${selectedMatch}`;
+
+  axios.post(eventApiUrl, newEvent, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`
+    }
+  })
+  .then(() => {
+    fetchEventsFunc();
+    setTimeout(() => {
+      axios.post(resultScoreApiUrl, newEvent, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      })
+      .catch(error => {
+        setError('Error adding event. Please try again later.');
+      });
+    }, 5000); // Delay of 5 seconds
+  })
+  .catch(error => {
+    setError('Error adding event. Please try again later.');
+  });
+
+  if (editingIndex !== null) {
+    const updatedEvents = [...events];
+    updatedEvents[editingIndex] = newEvent;
+    setEvents(updatedEvents);
+    setEditingIndex(null);
+  } else {
+    setPlayerName('');
+    setTime('');
+    setError(null);
+  }
+};
 
   const handleDeleteEvent = (index, eventId) => {
     axios.delete(`http://localhost:8888/api/events/${eventId}`, {
