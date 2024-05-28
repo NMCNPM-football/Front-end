@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
-const FootballEventPage = () => {
-  const [selectedSeason, setSelectedSeason] = useState('2023-2024');
-  const [clubOneName, setClubOneName] = useState('');
-  const [clubTwoName, setClubTwoName] = useState('');
-  const [intendTime, setIntendTime] = useState('');
-  const [realTime, setRealTime] = useState('');
-  const [matchRound, setMatchRound] = useState('');
-  const [matchTurn, setMatchTurn] = useState('');
-  const [stadium, setStadium] = useState('');
+const Schedule = () => {
+  const [selectedSeason, setSelectedSeason] = useState("2023-2024");
+  const [clubOneName, setClubOneName] = useState("");
+  const [clubTwoName, setClubTwoName] = useState("");
+  const [intendTime, setIntendTime] = useState("");
+  const [realTime, setRealTime] = useState("");
+  const [matchRound, setMatchRound] = useState("");
+  const [matchTurn, setMatchTurn] = useState("");
+  const [stadium, setStadium] = useState("");
   const [schedule, setSchedule] = useState([]);
   const [error, setError] = useState(null);
 
   const accessToken = useSelector((state) => state.user.accessToken);
 
   const handleScheduleMatch = () => {
-    if (!selectedSeason || !clubOneName || !clubTwoName || !intendTime || !realTime || !matchRound || !matchTurn || !stadium) {
-      setError('Please fill in all required fields.');
+    if (
+      !selectedSeason ||
+      !clubOneName ||
+      !clubTwoName ||
+      !intendTime ||
+      !realTime ||
+      !matchRound ||
+      !matchTurn ||
+      !stadium
+    ) {
+      setError("Please fill in all required fields.");
       return;
     }
 
@@ -33,45 +42,65 @@ const FootballEventPage = () => {
       stadium,
     };
 
-    axios.post('http://localhost:8888/match/calendar', newMatch, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    })
-    .then(response => {
-      console.log('Match scheduled successfully:', response.data);
-      setSchedule([...schedule, newMatch]);
-      setClubOneName('');
-      setClubTwoName('');
-      setIntendTime('');
-      setRealTime('');
-      setMatchRound('');
-      setMatchTurn('');
-      setStadium('');
-      setError(null);
-    })
-    .catch(error => {
-      console.error('Error scheduling match:', error);
-      setError('Error scheduling match. Please try again later.');
-    });
+    axios
+      .post(
+        `http://localhost:8888/match/calendar/${selectedSeason}`,
+        newMatch,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log("Match scheduled successfully:", response.data);
+        setSchedule([...schedule, response.data]); // Update the schedule with response data
+        setClubOneName("");
+        setClubTwoName("");
+        setIntendTime("");
+        setRealTime("");
+        setMatchRound("");
+        setMatchTurn("");
+        setStadium("");
+        setError(null);
+      })
+      .catch((error) => {
+        console.error("Error scheduling match:", error);
+        setError("Error scheduling match. Please try again later.");
+      });
   };
 
   const handleIntendTimeChange = (e) => {
     const value = e.target.value;
-    const formattedValue = value.replace('T', ' ');
+    const formattedValue = value.replace("T", " ");
     setIntendTime(formattedValue);
-    setRealTime(formattedValue);  // Automatically update real time with the same value
+    setRealTime(formattedValue); // Automatically update real time with the same value
   };
 
   const formatDateTime = (dateTime) => {
     const date = new Date(dateTime);
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
     return `${year}-${month}-${day} ${hours}:${minutes}`;
   };
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8888/match/calendar/${selectedSeason}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((response) => {
+        setSchedule(response.data.matches); // Adjust based on your API response structure
+      })
+      .catch((error) => {
+        console.error("Error fetching match calendar:", error);
+      });
+  }, [selectedSeason, accessToken]);
 
   return (
     <div className="container-IP">
@@ -79,7 +108,11 @@ const FootballEventPage = () => {
 
       <label className="label-IP">
         Chọn Mùa:
-        <select className="select-IP" value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
+        <select
+          className="select-IP"
+          value={selectedSeason}
+          onChange={(e) => setSelectedSeason(e.target.value)}
+        >
           <option value="">Chọn Mùa</option>
           <option value="2021-2022">2021-2022</option>
           <option value="2022-2023">2022-2023</option>
@@ -94,7 +127,8 @@ const FootballEventPage = () => {
           className="input-IP"
           type="text"
           value={clubOneName}
-          onChange={(e) => setClubOneName(e.target.value)} />
+          onChange={(e) => setClubOneName(e.target.value)}
+        />
       </label>
       <label className="label-IP">
         Đội 2:
@@ -102,23 +136,26 @@ const FootballEventPage = () => {
           className="input-IP"
           type="text"
           value={clubTwoName}
-          onChange={(e) => setClubTwoName(e.target.value)} />
+          onChange={(e) => setClubTwoName(e.target.value)}
+        />
       </label>
       <label className="label-IP">
         Thời Gian Dự Kiến:
         <input
           className="input-IP"
           type="datetime-local"
-          value={intendTime.replace(' ', 'T')}
-          onChange={handleIntendTimeChange} />
+          value={intendTime.replace(" ", "T")}
+          onChange={handleIntendTimeChange}
+        />
       </label>
       <label className="label-IP">
         Thời Gian Thực:
         <input
           className="input-IP"
           type="datetime-local"
-          value={realTime.replace(' ', 'T')}
-          readOnly />
+          value={realTime.replace(" ", "T")}
+          readOnly
+        />
       </label>
       <label className="label-IP">
         Vòng Đấu:
@@ -126,7 +163,8 @@ const FootballEventPage = () => {
           className="input-IP"
           type="text"
           value={matchRound}
-          onChange={(e) => setMatchRound(e.target.value)} />
+          onChange={(e) => setMatchRound(e.target.value)}
+        />
       </label>
       <label className="label-IP">
         Lượt Đấu:
@@ -134,7 +172,8 @@ const FootballEventPage = () => {
           className="input-IP"
           type="text"
           value={matchTurn}
-          onChange={(e) => setMatchTurn(e.target.value)} />
+          onChange={(e) => setMatchTurn(e.target.value)}
+        />
       </label>
       <label className="label-IP">
         Sân Vận Động:
@@ -142,16 +181,23 @@ const FootballEventPage = () => {
           className="input-IP"
           type="text"
           value={stadium}
-          onChange={(e) => setStadium(e.target.value)} />
+          onChange={(e) => setStadium(e.target.value)}
+        />
       </label>
-      <button className="button-IP" onClick={handleScheduleMatch}>Lập Lịch</button>
+      <button className="button-IP" onClick={handleScheduleMatch}>
+        Lập Lịch
+      </button>
       {error && <p className="error-IP">{error}</p>}
 
       <h2 className="header-IP">Lịch Thi Đấu</h2>
       <ul className="schedule-list-IP">
-        {schedule.map((match, index) => (
+        {Array.isArray(schedule) && schedule.map((match, index) => (
           <li className="schedule-item-IP" key={index}>
-            Mùa giải: {match.season} - Vòng: {match.matchRound} - Thời gian dự kiến: {formatDateTime(match.intendTime)} - Thời gian thực: {formatDateTime(match.realTime)} - {match.clubOneName} vs {match.clubTwoName} - Vòng đấu: {match.matchRound} - Lượt đấu: {match.matchTurn} - Sân vận động: {match.stadium}
+            Mùa giải: {match.season} - Vòng: {match.matchRound} - Thời gian dự
+            kiến: {formatDateTime(match.intendTime)} - Thời gian thực:{" "}
+            {formatDateTime(match.realTime)} - {match.clubOneName} vs{" "}
+            {match.clubTwoName} - Vòng đấu: {match.matchRound} - Lượt đấu:{" "}
+            {match.matchTurn} - Sân vận động: {match.stadium}
           </li>
         ))}
       </ul>
@@ -159,4 +205,4 @@ const FootballEventPage = () => {
   );
 };
 
-export default FootballEventPage;
+export default Schedule;

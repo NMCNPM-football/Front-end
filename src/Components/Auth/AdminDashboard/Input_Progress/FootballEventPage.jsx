@@ -419,8 +419,10 @@ const FootballEventPage = () => {
               value={updatedMaxTime}
               onChange={(e) => setUpdatedMaxTime(e.target.value)} />
           </label>
-          <button className="button-IP" onClick={handleUpdateMaxTime}>Cập Nhật Max Time</button>
-          <button className="button-IP" onClick={handleAddEvent}>{editingIndex !== null ? 'Lưu' : 'Thêm'}</button>
+          <div className="butsave">
+            <button className="button-IP-save" onClick={handleUpdateMaxTime}>Cập Nhật Max Time</button>
+            <button className="button-IP-save button-save-center" onClick={handleAddEvent}>{'Lưu'}</button>
+          </div>
           {error && <p className="error-IP">{error}</p>}
         </div>
       )}

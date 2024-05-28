@@ -99,7 +99,7 @@ const Lineup = () => {
           ) : (
             <option disabled>No teams available</option>
           )}
-        </select>
+</select>
       </div>
 
       <div className="flex">
