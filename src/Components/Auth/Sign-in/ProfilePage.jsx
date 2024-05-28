@@ -34,18 +34,19 @@ export default function ProfilePage() {
   }, [accessToken]); // Add accessToken as a dependency to the useEffect hook
 
   if (!profileData) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
   }
 
   return (
-    <div>
-      <h1>Profile</h1>
-      <p>Name: {profileData.name}</p>
-      <p>Email: {profileData.email}</p>
-      <p>Phone: {profileData.phone}</p>
-      <p>Address: {profileData.address}</p>
-      <p>Position: {profileData.position}</p>
-      <p>Club Name: {profileData.clubName}</p>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <h1 className="text-4xl font-bold mb-4">Profile</h1>
+      <p className="text-xl mb-2">Name: {profileData.name}</p>
+      <p className="text-xl mb-2">Email: {profileData.email}</p>
+      <p className="text-xl mb-2">Phone: {profileData.phone}</p>
+      <p className="text-xl mb-2">Address: {profileData.address}</p>
+      <p className="text-xl mb-2">Position: {profileData.position}</p>
+      <p className="text-xl mb-2">Club Name: {profileData.clubName}</p>
+      <p className="text-xl mb-2">SeaSon: {profileData.seaSon}</p>
     </div>
   );
 }

@@ -53,9 +53,9 @@ export default function SignIn() {
       if (profileData.data.position === 'Admin') {
         localStorage.setItem('user', JSON.stringify({ email: profileData.data.email, role: 'admin' }));
         navigate('/admin-dashboard');
-      } else {
+      } else if (profileData.data.position === 'Manager' || profileData.data.position === 'Member') {
         localStorage.setItem('user', JSON.stringify({ email: profileData.data.email, role: 'user' }));
-        navigate('/user-dashboard');
+        navigate('/manager-dashboard');
       }
 
     } catch (error) {

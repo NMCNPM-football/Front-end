@@ -81,7 +81,7 @@ const DataTeam = () => {
     return new Date(dateString).toLocaleDateString('vi-VN', options);
   };
 
-  if (!team || !coach) {
+  if (!team) {
     return <div>Không tìm thấy thông tin đội</div>;
   }
 
@@ -98,7 +98,7 @@ const DataTeam = () => {
         </p>
         <p className='coachtab' style={{marginRight: "10px"}}>
           <FontAwesomeIcon icon={faPeopleGroup}/>
-          Huấn luyện viên: {coach.name}
+          Huấn luyện viên: {coach ? coach.name : 'N/A'}
         </p>
       </div>
       <table>

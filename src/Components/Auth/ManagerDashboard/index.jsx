@@ -1,21 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TeamOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import PlayerAdd from "./Player/PlayerAdd";
-<<<<<<< Updated upstream
 import CoachAdd from "./Coach/CoachAdd";
 import Lineup from "./LineUp/LineUp";
 import DataTeamAdmin from "./Player/DataTeamAdmin";
-=======
-import Lineup from "./LineUp/LineUp";
->>>>>>> Stashed changes
+import {useSelector} from "react-redux";
 
 const { Header, Content, Sider } = Layout;
-
-const items1 = ["1"].map((key) => ({
-  key,
-  label: `Quản trị ${key}`,
-}));
 
 const items2 = [
   {
@@ -29,7 +21,6 @@ const items2 = [
         children: [
           { key: "2.1", label: "Thêm cầu thủ" },
           { key: "2.2", label: "Sửa cầu thủ" },
-          // Add more children here if needed
         ]
       },
       { key: "3", label: "Huấn luyện viên",
@@ -40,10 +31,36 @@ const items2 = [
       },
     ],
   },
-
 ];
 
 const ManagerDashboard = () => {
+  const [user, setUser] = useState(null);
+  const accessToken = useSelector((state) => state.user.accessToken);
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch('http://localhost:8888/profile', {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch profile');
+        }
+
+        const profileData = await response.json();
+        setUser(profileData.data);
+      } catch (error) {
+        console.error("Failed to fetch profile", error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  const items1 = user ? [{ key: "1", label: `Quản trị của câu lạc bộ ${user.clubName}` }] : [];
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();

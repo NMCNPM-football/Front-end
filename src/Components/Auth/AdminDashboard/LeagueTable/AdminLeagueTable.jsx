@@ -88,27 +88,22 @@ const AdminLeagueTable = () => {
       accessor: 'points',
     },
   ];
-const fetchLeagueSummary = () => {
-  fetch(`http://localhost:8888/summary/${selectedSeason}`, {
-    method: 'POST', // Specify the method as POST
-    headers: {
-      'Authorization': `Bearer ${accessToken}`, // Use the accessToken from the Redux store
-      'Content-Type': 'application/json' // Specify the content type as JSON
-    },
-    body: JSON.stringify({}) // Send an empty body
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (Array.isArray(data.data)) {
-        setData(data.data);
-      } else {
-        console.error('Error: data is not an array');
-      }
+  const fetchLeagueSummary = () => {
+    fetch(`http://localhost:8888/summary/${selectedSeason}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({})
     })
-    .catch(error => console.error(`Error: ${error}`));
-};
-
-  useEffect(fetchLeagueSummary, [selectedSeason]);
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setData(data.data);
+      })
+      .catch(error => console.error(`Error: ${error}`));
+  };
 
   return (
     <div className="league-table">
@@ -126,7 +121,8 @@ const fetchLeagueSummary = () => {
       </div>
       <DataTable columns={columns} data={sortedData}/>
       <div style={{textAlign:'right', paddingTop:'20px'}}>
-      <button onClick={fetchLeagueSummary}>Update League Table</button></div>
+        <button onClick={fetchLeagueSummary}>Update League Table</button>
+      </div>
     </div>
   );
 };

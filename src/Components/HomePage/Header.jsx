@@ -82,17 +82,45 @@ const Header = () => {
     "https://vpf.vn/wp-content/uploads/2018/10/LOGO-TRuong-Tuoi-Binh-Phuoc_update.png",
   ];
 
-  let isLogin = useSelector((state) => state.user.accessToken !== "");
+  const [position, setPosition] = useState(null); // Add a new state variable for the position
 
+  let isLogin = useSelector((state) => state.user.accessToken !== "");
+  const accessToken = useSelector((state) => state.user.accessToken); // Get the accessToken from the Redux store
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Fetch the user's position when the component mounts
+    const fetchPosition = async () => {
+      try {
+        const response = await fetch('http://localhost:8888/profile', {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch profile');
+        }
+
+        const data = await response.json();
+        setPosition(data.data.position); // Set the position state variable
+      } catch (error) {
+        console.error(`Error: ${error}`);
+      }
+    };
+
+    if (isLogin) {
+      fetchPosition().then(r => console.log(r));
+    }
+  }, [isLogin, accessToken]);
+
 
 
   const handleLogout = () => {
     dispatch(logout());
     navigate("/"); // navigate to home page after logout
   };
-
   return (
     <div className="container">
       <header className="header">
@@ -189,8 +217,8 @@ const Header = () => {
               )}
               {isLogin && (
                 <>
-                  <li className="menu-item" onClick={() => navigate("/admin-dashboard")}>
-                    Admin Dashboard
+                  <li className="menu-item" onClick={() => navigate(position === 'Admin' ? "/admin-dashboard" : "/manager-dashboard")}>
+                    {position === 'Admin' ? 'Admin Dashboard' : 'Manager Dashboard'}
                   </li>
                   <li className="menu-item" onClick={handleLogout}>
                     Logout
