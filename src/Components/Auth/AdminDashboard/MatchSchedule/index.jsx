@@ -3,7 +3,8 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const Schedule = () => {
-  const [selectedSeason, setSelectedSeason] = useState("2023-2024");
+  const [selectedSeason, setSelectedSeason] = useState("");
+  const [clubList, setClubList] = useState([]);
   const [clubOneName, setClubOneName] = useState("");
   const [clubTwoName, setClubTwoName] = useState("");
   const [intendTime, setIntendTime] = useState("");
@@ -15,6 +16,25 @@ const Schedule = () => {
   const [error, setError] = useState(null);
 
   const accessToken = useSelector((state) => state.user.accessToken);
+
+  // Fetch club list for selected season
+  useEffect(() => {
+    if (selectedSeason) {
+      axios
+        .get(`http://localhost:8888/club-list/${selectedSeason}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((response) => {
+          const clubNames = response.data.data.map((club) => club.name);
+          setClubList(clubNames || []);
+        })
+        .catch((error) => {
+          console.error("Error fetching club list:", error);
+        });
+    }
+  }, [selectedSeason, accessToken]);
 
   const handleScheduleMatch = () => {
     if (
@@ -54,7 +74,7 @@ const Schedule = () => {
       )
       .then((response) => {
         console.log("Match scheduled successfully:", response.data);
-        setSchedule([...schedule, response.data]); // Update the schedule with response data
+        setSchedule([...schedule, response.data]);
         setClubOneName("");
         setClubTwoName("");
         setIntendTime("");
@@ -74,7 +94,7 @@ const Schedule = () => {
     const value = e.target.value;
     const formattedValue = value.replace("T", " ");
     setIntendTime(formattedValue);
-    setRealTime(formattedValue); // Automatically update real time with the same value
+    setRealTime(formattedValue);
   };
 
   const formatDateTime = (dateTime) => {
@@ -88,18 +108,20 @@ const Schedule = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8888/match/calendar/${selectedSeason}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      .then((response) => {
-        setSchedule(response.data.matches); // Adjust based on your API response structure
-      })
-      .catch((error) => {
-        console.error("Error fetching match calendar:", error);
-      });
+    if (selectedSeason) {
+      axios
+        .get(`http://localhost:8888/match/calendar/${selectedSeason}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((response) => {
+          setSchedule(response.data.matches || []);
+        })
+        .catch((error) => {
+          console.error("Error fetching match calendar:", error);
+        });
+    }
   }, [selectedSeason, accessToken]);
 
   return (
@@ -120,7 +142,6 @@ const Schedule = () => {
         </select>
       </label>
 
-      <h2 className="header-IP">Lịch Thi Đấu</h2>
       <label className="label-IP">
         Đội 1:
         <input
@@ -128,6 +149,7 @@ const Schedule = () => {
           type="text"
           value={clubOneName}
           onChange={(e) => setClubOneName(e.target.value)}
+          list="club-list"
         />
       </label>
       <label className="label-IP">
@@ -137,8 +159,15 @@ const Schedule = () => {
           type="text"
           value={clubTwoName}
           onChange={(e) => setClubTwoName(e.target.value)}
+          list="club-list"
         />
       </label>
+      <datalist id="club-list">
+        {clubList.map((club, index) => (
+          <option key={index} value={club} />
+        ))}
+      </datalist>
+
       <label className="label-IP">
         Thời Gian Dự Kiến:
         <input
@@ -191,15 +220,35 @@ const Schedule = () => {
 
       <h2 className="header-IP">Lịch Thi Đấu</h2>
       <ul className="schedule-list-IP">
-        {Array.isArray(schedule) && schedule.map((match, index) => (
-          <li className="schedule-item-IP" key={index}>
-            Mùa giải: {match.season} - Vòng: {match.matchRound} - Thời gian dự
-            kiến: {formatDateTime(match.intendTime)} - Thời gian thực:{" "}
-            {formatDateTime(match.realTime)} - {match.clubOneName} vs{" "}
-            {match.clubTwoName} - Vòng đấu: {match.matchRound} - Lượt đấu:{" "}
-            {match.matchTurn} - Sân vận động: {match.stadium}
-          </li>
-        ))}
+        {Array.isArray(schedule) && schedule.length > 0 ? (
+          schedule.map((match, index) => (
+            <li key={index} className="match-item-IP">
+              <div>
+                <strong>Đội 1:</strong> {match.clubOneName}
+              </div>
+              <div>
+                <strong>Đội 2:</strong> {match.clubTwoName}
+              </div>
+              <div>
+                <strong>Thời Gian Dự Kiến:</strong> {formatDateTime(match.intendTime)}
+              </div>
+              <div>
+                <strong>Thời Gian Thực:</strong> {formatDateTime(match.realTime)}
+              </div>
+              <div>
+                <strong>Vòng Đấu:</strong> {match.matchRound}
+              </div>
+              <div>
+                <strong>Lượt Đấu:</strong> {match.matchTurn}
+              </div>
+              <div>
+                <strong>Sân Vận Động:</strong> {match.stadium}
+              </div>
+            </li>
+          ))
+        ) : (
+          <li>Không có trận đấu nào được lên lịch.</li>
+        )}
       </ul>
     </div>
   );
