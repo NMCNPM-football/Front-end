@@ -1,15 +1,47 @@
 import React, { useState, useEffect } from 'react';
-
-const positions = ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CM', 'CM', 'RM', 'ST', 'ST'];
-
+import { useSelector } from 'react-redux';
+import './LineUp.css'; // Import a CSS file to style your components
+import html2canvas from 'html2canvas';
 const Lineup = () => {
-  const [teams, setTeams] = useState([]);
-  const [selectedTeam, setSelectedTeam] = useState('');
   const [players, setPlayers] = useState([]);
-  const [lineup, setLineup] = useState(Array(11).fill(null));
+  const [lineup, setLineup] = useState([]);
+  const accessToken = useSelector((state) => state.user.accessToken);
+  {lineup.map((player, index) => player && (
+    <div key={index} className="player" style={{ left: player.x, top: player.y }}>
+      {player.name}
+    </div>
+  ))}
+  const [ setSavedLineups] = useState([]);
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const player = e.dataTransfer.getData('text');
+
+    // Check if player is already in the lineup
+    if (lineup.some(p => p.name === player)) {
+      alert('This player is already on the field.');
+      return;
+    }
+
+    // Check if lineup already has 11 players
+    if (lineup.length >= 11) {
+      alert('There are already 11 players on the field.');
+      return;
+    }
+
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left; //x position within the element.
+    const y = e.clientY - rect.top;  //y position within the element.
+    const newLineup = [...lineup, { name: player, x, y }];
+    setLineup(newLineup);
+  };
 
   useEffect(() => {
-    fetch('http://localhost:8888/club/player-all/')
+    fetch('http://localhost:8888/club/player-all', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    })
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
@@ -17,94 +49,58 @@ const Lineup = () => {
         return res.json();
       })
       .then((data) => {
-        if (Array.isArray(data)) {
-          setTeams(data);
+        if (Array.isArray(data.data)) {
+          setPlayers(data.data.map(player => player.name));
         } else {
-          console.error('Teams response is not an array:', data);
-          setTeams([]);
+          console.error('Players response is not an array:', data);
+          setPlayers([]);
         }
       })
       .catch((error) => {
-        console.error('Error fetching teams:', error);
-        setTeams([]); // Ensure teams is an array even if the fetch fails
+        console.error('Error fetching players:', error);
+        setPlayers([]); // Ensure players is an array even if the fetch fails
       });
-  }, []);
+  }, [accessToken]);
 
-  useEffect(() => {
-    if (selectedTeam) {
-      fetch(`http://localhost:8888/club/player-all/${selectedTeam}`)
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error(`HTTP error! Status: ${res.status}`);
-          }
-          return res.json();
-        })
-        .then((data) => {
-          if (Array.isArray(data)) {
-            setPlayers(data);
-          } else {
-            console.error('Players response is not an array:', data);
-            setPlayers([]);
-          }
-        })
-        .catch((error) => {
-          console.error('Error fetching players:', error);
-          setPlayers([]); // Ensure players is an array even if the fetch fails
-        });
-    } else {
-      setPlayers([]);
-    }
-  }, [selectedTeam]);
-
-  const handleDrop = (index, player) => {
-    const newLineup = [...lineup];
-    newLineup[index] = player;
-    setLineup(newLineup);
-  };
+  // const handleDrop = (index, player) => {
+  //   const newLineup = [...lineup];
+  //   newLineup[index] = player;
+  //   setLineup(newLineup);
+  // };
 
   const handleSubmit = async () => {
-    try {
-      const response = await fetch('http://localhost:8888/lineup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ teamName: selectedTeam, lineup }),
-      });
-      if (response.ok) {
-        alert('Lineup saved successfully!');
-      } else {
-        alert(`Error saving lineup: ${response.statusText}`);
-      }
-    } catch (error) {
-      alert(`Error saving lineup: ${error.message}`);
+  try {
+    const field = document.querySelector('.football-field');
+    const canvas = await html2canvas(field);
+    const img = canvas.toDataURL();
+
+    const response = await fetch('http://localhost:8888/lineup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        lineup,
+        img,
+        filename: 'your_desired_filename.png' // Replace this with your desired filename
+      }),
+    });
+
+    setSavedLineups(prevLineups => [...prevLineups, img]);
+    if (response.ok) {
+      alert('Lineup saved successfully!');
+    } else {
+      alert(`Error saving lineup: ${response.statusText}`);
     }
-  };
-
+  } catch (error) {
+    alert(`Error saving lineup: ${error.message}`);
+  }
+};
   return (
-    <div className="container mx-auto p-4">
-      <div className="mb-4">
-        <select
-          value={selectedTeam}
-          onChange={(e) => setSelectedTeam(e.target.value)}
-          className="p-2 border"
-        >
-          <option value="">Select a team</option>
-          {Array.isArray(teams) && teams.length > 0 ? (
-            teams.map((team, index) => (
-              <option key={index} value={team}>
-                {team}
-              </option>
-            ))
-          ) : (
-            <option disabled>No teams available</option>
-          )}
-</select>
-      </div>
-
+    <div className="lineup-container mx-auto p-4">
       <div className="flex">
         <div className="w-1/4 p-4 border">
-          {Array.isArray(players) && players.length > 0 ? (
+          {players.length > 0 ? (
             players.map((player, index) => (
               <div
                 key={index}
@@ -120,22 +116,30 @@ const Lineup = () => {
           )}
         </div>
 
-        <div className="w-3/4 p-4">
-          <div className="grid grid-cols-4 gap-4">
-            {positions.map((pos, index) => (
-              <div
-                key={index}
-                onDrop={(e) => {
-                  e.preventDefault();
-                  handleDrop(index, e.dataTransfer.getData('text'));
-                }}
-                onDragOver={(e) => e.preventDefault()}
-                className="border p-4 text-center"
-              >
-                {lineup[index] || pos}
-              </div>
-            ))}
+       <div className="w-3/4 p-4">
+      <div
+        className="football-field resized-image"
+        style={{
+          backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/c/c9/Boisko.svg')`,
+          backgroundSize: 'contain', // Change this from 'cover' to 'contain'
+          height: '100%',
+          backgroundRepeat: 'no-repeat'
+        }}
+        onDrop={handleDrop}
+        onDragOver={(e) => e.preventDefault()}
+      >
+        {lineup.map((player, index) => player && (
+          <div
+            key={index}
+            className="player"
+            style={{left: player.x, top: player.y}}
+          >
+            {player.name}
           </div>
+        ))}
+      </div>
+
+
           <button
             onClick={handleSubmit}
             className="w-full bg-blue-500 text-white p-2 mt-4"

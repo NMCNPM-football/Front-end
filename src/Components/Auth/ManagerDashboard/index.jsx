@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TeamOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import PlayerAdd from "./Player/PlayerAdd";
 import CoachAdd from "./Coach/CoachAdd";
 import Lineup from "./LineUp/LineUp";
-import DataTeamAdmin from "./Player/DataTeamAdmin"
-
+import DataTeamAdmin from "./Player/DataTeamAdmin";
+import {useSelector} from "react-redux";
+import SavedLineups from './LineUp/SaveLineUp';
 const { Header, Content, Sider } = Layout;
-
-const items1 = ["1"].map((key) => ({
-  key,
-  label: `Quản trị ${key}`,
-}));
 
 const items2 = [
   {
@@ -25,7 +21,6 @@ const items2 = [
         children: [
           { key: "2.1", label: "Thêm cầu thủ" },
           { key: "2.2", label: "Sửa cầu thủ" },
-          // Add more children here if needed
         ]
       },
       { key: "3", label: "Huấn luyện viên",
@@ -34,18 +29,41 @@ const items2 = [
             {key: "3.2", label: "Sửa huấn luyện viên"}
         ]
       },
-      { key: "4", label: "Trận đấu",
-        children :[
-            {key: "4.1", label: "Xếp đội hình"},
-           
-        ]
-      },
+      { key: "4", label: "Đội hình"},
+      { key: "5", label: "Lưu đội hình"}
     ],
   },
-
 ];
 
 const ManagerDashboard = () => {
+  const [user, setUser] = useState(null);
+  const [savedLineups, setSavedLineups] = useState([]);
+  const accessToken = useSelector((state) => state.user.accessToken);
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch('http://localhost:8888/profile', {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch profile');
+        }
+
+        const profileData = await response.json();
+        setUser(profileData.data);
+      } catch (error) {
+        console.error("Failed to fetch profile", error);
+      }
+    };
+
+    fetchProfile().then(r => console.log(r));
+  }, [accessToken]);
+
+  const items1 = user ? [{ key: "1", label: `Quản trị của câu lạc bộ ${user.clubName}` }] : [];
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -66,8 +84,10 @@ const ManagerDashboard = () => {
         return <DataTeamAdmin />;
       case "3.1":
         return <CoachAdd />;
-      case "4.1":
-        return <Lineup />;
+      case "4":
+        return <Lineup setSavedLineups={setSavedLineups} />;
+      case "5":
+        return <SavedLineups savedLineups={savedLineups} />;
       default:
         return null;
     }
@@ -116,4 +136,5 @@ const ManagerDashboard = () => {
     </Layout>
   );
 };
+
 export default ManagerDashboard;

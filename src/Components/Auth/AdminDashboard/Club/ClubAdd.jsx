@@ -9,7 +9,7 @@ const ClubAdd = () => {
     season: '',
   });
 
-  const accessToken = useSelector((state) => state.user.accessToken); // Get the accessToken from the Redux store
+    const accessToken = useSelector((state) => state.user.accessToken); // Get the accessToken from the Redux store
 
   const handleChange = (e) => {
     const { name, value } = e.target;
