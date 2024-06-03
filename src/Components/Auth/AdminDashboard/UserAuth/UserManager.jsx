@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { FaTrash } from "react-icons/fa";
 
 const UserManager = () => {
   const API_BASE_URL = "http://localhost:8888"; // Thay đổi URL này tùy theo backend của bạn
@@ -12,7 +13,7 @@ const UserManager = () => {
       <select
         value={currentRole}
         onChange={(e) => onChange(e.target.value)}
-        className="border p-2 rounded"
+        className="border p-2 rounded bg-white shadow-sm"
       >
         <option value="Guest">Guest</option>
         <option value="Manager">Manager</option>
@@ -103,43 +104,42 @@ const UserManager = () => {
 
     return (
       <div className="container mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-4">Danh sách tài khoản</h1>
-        <table className="min-w-full bg-white border">
-          <thead>
-            <tr>
-              <th className="py-2 px-4 border">Tên</th>
-              <th className="py-2 px-4 border">Email</th>
-              <th className="py-2 px-4 border">Vị trí</th>
-              <th className="py-2 px-4 border">Câu lạc bộ</th>
-              <th className="py-2 px-4 border">Phân quyền</th>
-              <th className="py-2 px-4 border">Xóa</th>
-            </tr>
-          </thead>
-          <tbody>
-            {usersData.map((user) => (
-              <tr key={user.id} className="border-b">
-                <td className="py-2 px-4 border">{user.name}</td>
-                <td className="py-2 px-4 border">{user.email}</td>
-                <td className="py-2 px-4 border">{user.position}</td>
-                <td className="py-2 px-4 border">{user.clubName}</td>
-                <td className="py-2 px-4 border">
-                  <RoleSelect
-                    currentRole={user.position}
-                    onChange={(newRole) => handleUpdateRole(user.id, newRole)}
-                  />
-                </td>
-                <td className="py-2 px-4 border">
-                  <button
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => handleDeleteUser(user.id)}
-                  >
-                    Xóa
-                  </button>
-                </td>
+        <h1 className="text-3xl font-bold mb-6 text-center">Phân quyền người dùng</h1>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white rounded-lg overflow-hidden shadow">
+            <thead className="bg-gray-100 text-gray-700">
+              <tr>
+                <th className="py-3 px-4 uppercase font-semibold text-sm border-b">Tên</th>
+                <th className="py-3 px-4 uppercase font-semibold text-sm border-b">Email</th>
+                <th className="py-3 px-4 uppercase font-semibold text-sm border-b">Vai trò</th>
+                <th className="py-3 px-4 uppercase font-semibold text-sm border-b">Câu lạc bộ</th>
+                <th className="py-3 px-4 uppercase font-semibold text-sm border-b">Phân quyền</th>
+                <th className="py-3 px-4 uppercase font-semibold text-sm border-b">Xóa</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="text-gray-700">
+              {usersData.map((user) => (
+                <tr key={user.id} className="border-b">
+                  <td className="py-3 px-4 border-r">{user.name}</td>
+                  <td className="py-3 px-4 border-r">{user.email}</td>
+                  <td className="py-3 px-4 border-r">{user.position}</td>
+                  <td className="py-3 px-4 border-r">{user.clubName}</td>
+                  <td className="py-3 px-4 border-r">
+                    <RoleSelect
+                      currentRole={user.position}
+                      onChange={(newRole) => handleUpdateRole(user.id, newRole)}
+                    />
+                  </td>
+                  <td className="py-3 px-4 text-center">
+                    <button onClick={() => handleDeleteUser(user.id)}>
+                      <FaTrash className="text-red-500 hover:text-red-700" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   };
