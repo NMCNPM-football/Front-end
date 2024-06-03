@@ -27,8 +27,7 @@ const Schedule = () => {
           },
         })
         .then((response) => {
-          const clubNames = response.data.data.map((club) => club.name);
-          setClubList(clubNames || []);
+          setClubList(response.data.data || []);
         })
         .catch((error) => {
           console.error("Error fetching club list:", error);
@@ -42,32 +41,29 @@ const Schedule = () => {
       !clubOneName ||
       !clubTwoName ||
       !intendTime ||
-      !realTime ||
       !matchRound ||
-      !matchTurn ||
-      !stadium
+      !matchTurn
     ) {
       setError("Please fill in all required fields.");
       return;
     }
 
     const newMatch = {
-      season: selectedSeason,
-      clubOneName,
-      clubTwoName,
-      intendTime,
-      realTime,
-      matchRound,
-      matchTurn,
-      stadium,
+      club_one_name: clubOneName,
+      club_two_name: clubTwoName,
+      intend_time: intendTime,
+      match_round: matchRound,
+      match_turn: matchTurn,
+      stadium: stadium, // Ensure the stadium is included in the new match object
     };
 
     axios
       .post(
         `http://localhost:8888/match/calendar/${selectedSeason}`,
-        newMatch,
+        JSON.stringify(newMatch),
         {
           headers: {
+            "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
           },
         }
@@ -89,6 +85,7 @@ const Schedule = () => {
         setError("Error scheduling match. Please try again later.");
       });
   };
+
 
   const handleIntendTimeChange = (e) => {
     const value = e.target.value;
@@ -144,27 +141,44 @@ const Schedule = () => {
 
       <label className="label-IP">
         Đội 1:
-        <input
-          className="input-IP"
-          type="text"
+        <select
+          className="select-IP"
           value={clubOneName}
-          onChange={(e) => setClubOneName(e.target.value)}
-          list="club-list"
-        />
+          onChange={(e) => {
+            setClubOneName(e.target.value);
+            const selectedClub = clubList.find(club => club.nameClub === e.target.value);
+            if (selectedClub) {
+              setStadium(selectedClub.nameStadium);
+            }
+          }}
+        >
+          <option value="">Chọn Đội</option>
+          {clubList.map((club, index) => (
+            <option key={index} value={club.nameClub}>
+              {club.nameClub}
+            </option>
+          ))}
+        </select>
       </label>
+
       <label className="label-IP">
         Đội 2:
-        <input
-          className="input-IP"
-          type="text"
+        <select
+          className="select-IP"
           value={clubTwoName}
           onChange={(e) => setClubTwoName(e.target.value)}
-          list="club-list"
-        />
+        >
+          <option value="">Chọn Đội</option>
+          {clubList.map((club, index) => (
+            <option key={index} value={club}>
+              {club.nameClub}
+            </option>
+          ))}
+        </select>
       </label>
       <datalist id="club-list">
         {clubList.map((club, index) => (
-          <option key={index} value={club} />
+          <option key={index} value={club}/>
         ))}
       </datalist>
 
@@ -210,7 +224,7 @@ const Schedule = () => {
           className="input-IP"
           type="text"
           value={stadium}
-          onChange={(e) => setStadium(e.target.value)}
+          readOnly
         />
       </label>
       <button className="button-IP" onClick={handleScheduleMatch}>
