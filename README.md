@@ -1,5 +1,4 @@
-# Quản lý giải vô địch bóng đá quốc gia - Đồ án Nhập môn công nghệ phần mềm
-
+# Quản lý giải vô địch bóng đá quốc gia 
 Dự án này là một ứng dụng quản lý giải vô địch bóng đá quốc gia được xây dựng bằng ReactJS, TailwindCSS,... Dự án này được xây dựng theo quy trình thác nước với đầy đủ các bước, đây là bước xây dựng giao diện người dùng mà nhóm đã thực hiện. Nếu bạn thấy hữu ích hãy cho 1 star nhé <33
 ## Mục lục
 - [Công nghệ áp dụng](#cong-nghe-ap-dung)
